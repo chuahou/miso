@@ -11,6 +11,7 @@ ghc-options:
     - -fwarn-incomplete-uni-patterns
     - -fwarn-incomplete-record-updates
     - -static
+    - -threaded
 
 default-extensions:
     - BangPatterns
@@ -18,12 +19,16 @@ default-extensions:
     - LambdaCase
     - QuasiQuotes
     - TupleSections
+    - OverloadedStrings
 
 dependencies:
-    - base          >= 4.13 && < 5
+    - base      >= 4.13 && < 5
+    - filepath ^>= 1.4.2.1
+    - hakyll   ^>= 4.13.4.0
+    - pandoc   ^>= 2.10.1
 
 executable:
-    main:         Main.hs
+    main: site.hs
 
 extra-doc-files:
     - README.rst

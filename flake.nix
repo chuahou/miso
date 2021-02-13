@@ -28,6 +28,13 @@
         unstable.legacyPackages.${super.system}.haskell-language-server;
     });
 
+    hakyllOverlay = hsOverrideOverlay (self: super: hpSelf: hpSuper: {
+      hakyll =
+        super.haskell.lib.appendConfigureFlags
+          [ "-f" "watchServer" "-f" "previewServer" ]
+          hpSuper.hakyll;
+    });
+
   in rec {
     defaultPackage.${system} = pkgs.haskell.lib.dontHaddock
       (pkgs.haskellPackages.callCabal2nix "miso" ./. {});
@@ -37,6 +44,7 @@
         buildTools = (old.buildTools or []) ++ (with pkgs.haskellPackages; [
           cabal-install
           haskell-language-server
+          pkgs.python38Packages.livereload
         ]);
       })).env;
   };
