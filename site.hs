@@ -14,7 +14,7 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "src/**.md" $ do
+    match "**.md" $ do
         route $ setExtension "html"
         compile $ pandocCompilerWith defaultHakyllReaderOptions withTOC
             >>= loadAndApplyTemplate "tmpl/default.html" defaultContext
