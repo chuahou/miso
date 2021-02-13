@@ -1,0 +1,29 @@
+name:        miso
+version:     0.1.0.0
+synopsis:    Personal notes with Hakyll
+description: A personal "wiki" containing notes/summaries, built with Hakyll
+category:    Web
+github:      chuahou/miso
+maintainer:  Chua Hou <human+github@chuahou.dev>
+
+ghc-options:
+    - -Wall
+    - -fwarn-incomplete-uni-patterns
+    - -fwarn-incomplete-record-updates
+    - -static
+
+default-extensions:
+    - BangPatterns
+    - DeriveGeneric
+    - LambdaCase
+    - QuasiQuotes
+    - TupleSections
+
+dependencies:
+    - base          >= 4.13 && < 5
+
+executable:
+    main:         Main.hs
+
+extra-doc-files:
+    - README.rst
