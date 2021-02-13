@@ -4,5 +4,5 @@
 #
 # Runs both the Hakyll build server and livereload servers.
 
-cabal run . -- watch &
+cabal run . -- watch --no-server &
 livereload docs/
