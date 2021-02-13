@@ -4,7 +4,7 @@ import           Hakyll
 import           Text.Pandoc
 
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
 
     match "img/*" $ do
         route   idRoute

@@ -5,4 +5,4 @@
 # Runs both the Hakyll build server and livereload servers.
 
 cabal run . -- watch &
-livereload _site/
+livereload docs/
