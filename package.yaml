@@ -22,10 +22,14 @@ default-extensions:
     - OverloadedStrings
 
 dependencies:
-    - base      >= 4.13 && < 5
-    - filepath ^>= 1.4.2.1
-    - hakyll   ^>= 4.13.4.0
-    - pandoc   ^>= 2.10.1
+    - base          >= 4.13 && < 5
+    - bytestring   ^>= 0.10.10.1
+    - filepath     ^>= 1.4.2.1
+    - hakyll       ^>= 4.13.4.0
+    - pandoc       ^>= 2.10.1
+    - pandoc-types ^>= 1.21
+    - text         ^>= 1.2.4.0
+    - uri-encode   ^>= 1.5.0.6
 
 executable:
     main: site.hs

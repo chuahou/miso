@@ -45,6 +45,10 @@
           cabal-install
           haskell-language-server
           pkgs.python38Packages.livereload
+
+          # for tikz rendering
+          pkgs.rubber
+          pkgs.poppler_utils
         ]);
       })).env;
   };
