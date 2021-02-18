@@ -24,7 +24,7 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
         compile $ pandocCompilerWithTransformM
                     defaultHakyllReaderOptions
                     withTOC
-                    (walkM tikzFilter)
+                    (walkM texFilter)
             >>= loadAndApplyTemplate "tmpl/default.html" defaultContext
             >>= relativizeUrls
             >>= urlMd2Html
@@ -57,30 +57,46 @@ withTOC = defaultHakyllWriterOptions
 \</div>\n\
 \$body$"
 
--- | Compiles @```tikz@ environments with @rubber@ and @pdftocairo@.
+-- | Compiles @```tex@ environments with @rubber@ and @pdftocairo@.
 -- Based on <https://taeer.bar-yam.me/blog/posts/hakyll-tikz/>.
-tikzFilter :: Block -> Compiler Block
-tikzFilter (CodeBlock attr@(_, "tikz":_, _) contents) =
-    fmap (imageBlock . addHeader . URI.encode . filter (/= '\n') . itemBody) $
+-- Applies @tmpl/[tmpl].tex@ template, or none if @tmpl@ is @none@.
+texFilter :: Block -> Compiler Block
+texFilter (CodeBlock attr@(_, "tex":tmpl:_, _) contents) = case tmpl of
 
-        -- Create item with contents to be compiled
-        makeItem (Text.unpack contents)
+    "none" -> -- no template
+        go pure
 
-        -- Apply tikz template
-        >>= loadAndApplyTemplate (fromFilePath "tmpl/tikz.tex")
-                                 (bodyField "body")
+    _ -> -- some template
+        go $ loadAndApplyTemplate
+                (fromFilePath $ "tmpl/" <> Text.unpack tmpl <> ".tex")
+                (bodyField "body")
 
-        -- Compile LaTeX and convert to SVG
-        >>= withItemBody (return . C8.pack
-                            >=> unixFilterLBS "rubber-pipe" ["--module", "xelatex", "--pdf"]
-                            >=> unixFilterLBS "pdftocairo"  ["-svg", "-", "-"]
-                            >=> return . C8.unpack)
     where
+        -- | Runs compiler, with template given by 't'.
+        go t =
+            fmap (imageBlock . addHeader . URI.encode . filter (/= '\n') . itemBody) $
+
+                -- Create item with contents to be compiled
+                makeItem (Text.unpack contents)
+
+                -- Apply template
+                >>= t
+
+                -- Compile LaTeX and convert to SVG
+                >>= withItemBody (return . C8.pack
+                                    >=> unixFilterLBS "rubber-pipe" ["--module", "xelatex", "--pdf"]
+                                    >=> unixFilterLBS "pdftocairo"  ["-svg", "-", "-"]
+                                    >=> return . C8.unpack)
+
         -- | Creates an image block pointing to the generated image.
         imageBlock fname = Para [Image attr [] (Text.pack fname, "")]
 
         -- | Adds data URI header.
         addHeader = ("data:image/svg+xml;utf8," ++)
 
+-- A singular @tex@ class is treated as @{.tex .default}@.
+texFilter (CodeBlock (ident, ["tex"], kvs) contents) =
+    texFilter (CodeBlock (ident, ["tex", "default"], kvs) contents)
+
 -- Do nothing for all other blocks.
-tikzFilter x = return x
+texFilter x = return x

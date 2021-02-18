@@ -11,7 +11,7 @@ head-extra: "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://latex.now
 
 <br/>
 
-```tikz
+```{.tex .tikz}
 \pgfdeclarelayer{background}
 \pgfsetlayers{background,main}
 \tikzset{
