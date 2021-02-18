@@ -19,8 +19,8 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "**.md" $ do
-        route $ setExtension "html"
+    match "src/**.md" $ do
+        route $ setExtension "html" `composeRoutes` removeLeadingDirectory
         compile $ pandocCompilerWithTransformM
                     defaultHakyllReaderOptions
                     withTOC
@@ -30,6 +30,10 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
             >>= urlMd2Html
 
     match "tmpl/*" $ compile templateBodyCompiler
+
+-- | Removes leading directory in route.
+removeLeadingDirectory :: Routes
+removeLeadingDirectory = customRoute $ tail . dropWhile (/= '/') . toFilePath
 
 -- | Converts @*.md@ urls to @*.html@.
 urlMd2Html :: Item String -> Compiler (Item String)
