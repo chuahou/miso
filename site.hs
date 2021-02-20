@@ -23,11 +23,16 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
         route $ setExtension "html" `composeRoutes` removeLeadingDirectory
         compile $ pandocCompilerWithTransformM
                     defaultHakyllReaderOptions
-                    withTOC
+                    (withTOC . withMath $ defaultHakyllWriterOptions)
                     (walkM texFilter)
             >>= loadAndApplyTemplate "tmpl/default.html" defaultContext
             >>= relativizeUrls
             >>= urlMd2Html
+
+    match "deps/katex/dist/**" $ do
+        route $ customRoute $ ("katex/" <>) .
+            (!! 3) . iterate (tail . dropWhile (/= '/')) . toFilePath
+        compile copyFileCompiler
 
     match "tmpl/*" $ compile templateBodyCompiler
 
@@ -43,9 +48,9 @@ urlMd2Html = return . fmap (withUrls go)
                    (name, ".md") -> name ++ ".html"
                    _             -> url
 
--- | Writer options with TOC.
-withTOC :: WriterOptions
-withTOC = defaultHakyllWriterOptions
+-- | Adds writer options with TOC.
+withTOC :: WriterOptions -> WriterOptions
+withTOC x = x
     { writerNumberSections  = True
     , writerTableOfContents = True
     , writerTOCDepth        = 2
@@ -60,6 +65,17 @@ withTOC = defaultHakyllWriterOptions
 \$toc$\n\
 \</div>\n\
 \$body$"
+
+-- | Adds writer options for maths.
+withMath :: WriterOptions -> WriterOptions
+withMath x = x
+    { writerExtensions = foldr enableExtension (writerExtensions x)
+        [ Ext_tex_math_dollars
+        , Ext_tex_math_double_backslash
+        , Ext_latex_macros
+        ]
+    , writerHTMLMathMethod = MathJax ""
+    }
 
 -- | Compiles @```tex@ environments with @rubber@ and @pdftocairo@.
 -- Based on <https://taeer.bar-yam.me/blog/posts/hakyll-tikz/>.

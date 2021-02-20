@@ -20,17 +20,21 @@ head-extra: "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://latex.now
 \node[fill=purple!20, draw=black] (1) at (0, 1.7) {Hakyll};
 \node[fill=blue!20, draw=black] (2) at (2.3, 0.32) {Pandoc};
 \node[fill=green!20, draw=black] (3) at (1.3, -1.42) {Tikz};
-\node[draw=black] (4) at (-1.3, -1.42) {KaTeX};
+\node[fill=orange!20, draw=black] (4) at (-1.3, -1.42) {KaTeX};
 \node[draw=black] (5) at (-2.3, 0.32) {Styles};
 \node (centre) at (0, 0) {miso};
 
-\foreach \a/\b in {1/2,2/3} {\draw (\a) -- (\b);}
-\foreach \a/\b in {3/4,4/5,5/1} {\draw[dotted] (\a) -- (\b);}
+\foreach \a/\b in {1/2,2/3,3/4} {\draw (\a) -- (\b);}
+\foreach \a/\b in {4/5,5/1} {\draw[dotted] (\a) -- (\b);}
 
 \begin{pgfonlayer}{background}
 \draw[fill=yellow!30, draw=none] (centre) ellipse (6mm and 3mm);
 \end{pgfonlayer}
 ```
+
+<br/>
+
+$$\bm y = \lambda f. (\lambda x.f(xx))(\lambda x.f(xx))$$
 
 <br/>
 

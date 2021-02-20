@@ -7,6 +7,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" type="text/css" href="/css/default.css">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="/katex/katex.min.css">
+		<script defer src="/katex/katex.min.js"></script>
+		<script defer src="/katex/contrib/auto-render.min.js"></script>
+
 		$if(head-extra)$
 		$head-extra$
 		$endif$
@@ -24,5 +30,13 @@
 		<!-- Generated body ends here -->
 
 		<p style="font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
 	</body>
 </html>
