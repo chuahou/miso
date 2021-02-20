@@ -13,3 +13,13 @@ img.tikz {
 	width: 60%;
 	height: auto;
 }
+
+#toc {
+	margin-left: 1rem;
+	margin-top: 2rem;
+	width: 50%;
+}
+
+#toc li::marker {
+	font-size: 0.7em;
+}

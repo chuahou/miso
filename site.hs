@@ -60,8 +60,7 @@ urlMd2Html = return . fmap (withUrls go)
 -- | Adds writer options with TOC.
 withTOC :: WriterOptions -> WriterOptions
 withTOC x = x
-    { writerNumberSections  = True
-    , writerTableOfContents = True
+    { writerTableOfContents = True
     , writerTOCDepth        = 2
     , writerTemplate        = Just tocTemplate
     }
