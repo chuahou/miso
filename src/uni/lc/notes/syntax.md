@@ -18,10 +18,7 @@ $$
 
 ## [1.2] $\lambda$-terms
 
-A $\lambda$-term is a **finite string** made up of symbols $\lambda$, brackets
-$(,)$, $.$, and variables from countable set $\mathcal V$.
-
-The **set of $\lambda$ terms** $\Lambda$ is then defined by
+The **set of $\lambda$ terms** $\Lambda$ are finite strings defined by
 
 $$
 \frac{}{x \in \Lambda} \; x \in \mathcal V
@@ -33,9 +30,28 @@ $$
 
 which represent variables, applications and abstractions respectively.
 
-**Subterms** are subsequences that are also terms.
+### [1.2] Subterms
+
+**Subterms** are subsequences that are also terms, given by (based on the above
+rules)
+\begin{aligned}
+\operatorname{sub}(x) &= \{ x \} \\
+\operatorname{sub}(\lambda x.s) &= \{ \lambda x.s \} \cup \operatorname{sub}(s) \\
+\operatorname{sub}(st) &=
+\{ st \} \cup \operatorname{sub}(s) \cup \operatorname{sub}(t)
+\end{aligned}
+
+**Strict subterms** are subterms excluding the full term.
 
 ### [1.2] Conventions
+
+* Omit outermost brackets $(\lambda x.s) \equiv \lambda x.s$
+* Application is left-associative $(((wx)y)z) \equiv wxyz$
+* $\lambda$ binds to the longest well-defined term
+  $\lambda x.abc \equiv \lambda x.(abc)$
+* Nested abstractions are condensed $\lambda x.\lambda y.s\equiv \lambda xy.s$
+* Application on abstractions to the right do not need brackets
+  $f(\lambda x.s) \equiv f\lambda x.s$
 
 ### [1.3] Construction trees
 
@@ -63,3 +79,43 @@ $x(\lambda y.(\lambda z.z)w)$.
 
 where variables are leaves, abstractions $\lambda x.s$ have $\lambda x$ with a
 single subtree $s$, and applications $st$ have $@$ with subtrees $s$ and $t$.
+
+## [1.2] Structural induction
+
+Induction on $\Lambda$ will be done for property $P$ with
+
+* **Base case**: $P(x)$ for all variables $x \in \mathcal V$
+* **Inductive step**
+	* Application: if $P(s)$ and $P(t)$ then $P(st)$
+	* Abstraction: if $P(s)$ then $P(\lambda x.s)$ for all $x \in \mathcal V$
+
+Strong induction can also be done where the inductive step is: if $P(s)$ for all
+*strict* subterms $s$ of term $t$, then $P(t)$.
+
+# [1.4] Free/bound variables
+
+Variables can be
+
+* **Bound** by a $\lambda$-abstraction (e.g. $\lambda x.s$ has bound $x$)
+* **Free** otherwise, defined inductively
+\begin{aligned}
+\operatorname{FV}(x) &= \{x\} \\
+\operatorname{FV}(st) &= \operatorname{FV}(s) \cup \operatorname{FV}(t) \\
+\operatorname{FV}(\lambda x.s) &= \operatorname{FV}(s) \setminus \{x\}
+\end{aligned}
+
+A term without free variables is **closed**.
+
+# [1.5] Contexts
+
+Contexts are terms with "holes", where blind **contextual substitution** can
+occur. For example, for a context $\mathcal C[X] \equiv sX$, then
+$\mathcal C[xyz] \equiv s(xyz)$. Unary contexts have 1 hole, while $n$-ary
+contexts have $n$ holes.
+
+## Capture
+
+Variables can be captured if they are blindly substituted where they would be
+captured by a $\lambda$-abstraction. For example, for a context
+$\mathcal C[X] \equiv \lambda x.X$, we would have $\mathcal C[x]$ leading to $x$
+being captured in $\lambda x.x$ (it becomes a bound variable).
