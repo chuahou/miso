@@ -1,8 +1,6 @@
 ---
 title: miso
 no-title: true
-
-head-extra: <link rel="stylesheet" type="text/css" href="https://latex.now.sh/style.min.css"/>
 ---
 
 <br/>

@@ -34,6 +34,15 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
             (!! 3) . iterate (tail . dropWhile (/= '/')) . toFilePath
         compile copyFileCompiler
 
+    match "deps/latex-css/style.css" $ do
+        route $ constRoute "css/latex.css"
+        compile compressCssCompiler
+
+    match "deps/latex-css/fonts/*" $ do
+        route $ customRoute $ ("css/fonts/" <>) .
+            (!! 3) . iterate (tail . dropWhile (/= '/')) . toFilePath
+        compile copyFileCompiler
+
     match "tmpl/*" $ compile templateBodyCompiler
 
 -- | Removes leading directory in route.
