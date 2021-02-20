@@ -1,0 +1,13 @@
+[input]
+base_directory = "."
+files = [
+	{title = "miso", url = "/index.html", path = "docs/index.html"},
+	{title = "Search", url = "/misc/search.html", path = "docs/misc/search.html"},
+	{title = "University Summaries", url = "/uni/index.html", path = "docs/uni/index.html"},
+	{title = "Lambda Calculus", url = "/uni/lc/index.html", path = "docs/uni/lc/index.html"},
+	{title = "Syntax", url = "/uni/lc/notes/syntax.html", path = "docs/uni/lc/notes/syntax.html"},
+	{title = "Equational theories", url = "/uni/lc/notes/theories.html", path = "docs/uni/lc/notes/theories.html"},
+]
+
+[output]
+filename = "stork/index.st"

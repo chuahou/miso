@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>$title$ | chuahou.dev</title>
+		<title>Search | chuahou.dev</title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- KaTeX -->
-		<link rel="stylesheet" href="/katex/katex.min.css">
-		<script defer src="/katex/katex.min.js"></script>
-		<script defer src="/katex/contrib/auto-render.min.js"></script>
+		<link rel="stylesheet" href="../katex/katex.min.css">
+		<script defer src="../katex/katex.min.js"></script>
+		<script defer src="../katex/contrib/auto-render.min.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="/css/latex.css">
-		<link rel="stylesheet" type="text/css" href="/css/default.css">
+		<link rel="stylesheet" type="text/css" href="../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../css/default.css">
 
-		$if(head-extra)$
-		$head-extra$
-		$endif$
+		
+		<link rel="stylesheet" type="text/css" href="../stork/basic.css" />
+		
 	</head>
 	<body>
-		$if(no-title)$
-		$else$
+		
 		<div id="header">
-			<h1 id="$title$" class="title">$title$</h1>
+			<h1 id="Search" class="title">Search</h1>
 			<p style="text-align:center; font-size:0.9em">
 				<code>
 					&dollar; cd
@@ -31,18 +30,31 @@
 				</code>
 			</p>
 		</div>
-		$endif$
+		
 
-		$if(no-sidebar)$
-		$else$
+		
 		<div class="side">
 			<p><a href="#">To page top</a></p>
 		</div>
-		$endif$
+		
 
 		<!-- Generated body starts here -->
 		<main>
-		$body$
+		<div id="toc">
+
+</div>
+<center>
+Enter your search query
+</center>
+<input style="width:100%" data-stork="stork" />
+<div data-stork="stork-output">
+
+</div>
+<script src="../stork/stork.js"></script>
+<script>
+	stork.initialize("../stork/stork.wasm");
+	stork.register("stork", "../stork/index.st");
+</script>
 		</main>
 		<!-- Generated body ends here -->
 

@@ -6,12 +6,20 @@
 
     # unstable branch used for HLS
     unstable.url = "nixpkgs/nixpkgs-unstable";
+
+    stork = {
+      url   = "github:jameslittle230/stork/v1.1.0";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, unstable }:
+  outputs = inputs@{ self, nixpkgs, unstable, ... }:
   let
     system = "x86_64-linux";
-    pkgs   = import nixpkgs { inherit system; overlays = [ hlsOverlay ]; };
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [ hlsOverlay storkOverlay ];
+    };
 
     hsOverrideOverlay =
       override:
@@ -28,12 +36,14 @@
         unstable.legacyPackages.${super.system}.haskell-language-server;
     });
 
-    hakyllOverlay = hsOverrideOverlay (self: super: hpSelf: hpSuper: {
-      hakyll =
-        super.haskell.lib.appendConfigureFlags
-          [ "-f" "watchServer" "-f" "previewServer" ]
-          hpSuper.hakyll;
-    });
+    storkOverlay = self: super: {
+      stork = super.rustPlatform.buildRustPackage {
+        pname       = "stork";
+        version     = "v1.1.0";
+        src         = inputs.stork;
+        cargoSha256 = "sha256-BAdNrj8OqG93c177w0SsnLFUQXW9dXVgBagaZT3CxmM=";
+      };
+    };
 
   in rec {
     defaultPackage.${system} = pkgs.haskell.lib.dontHaddock
@@ -49,6 +59,9 @@
           # for tikz rendering
           pkgs.rubber
           pkgs.poppler_utils
+
+          # stork search
+          pkgs.stork
         ]);
       })).env;
   };

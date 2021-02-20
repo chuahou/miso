@@ -29,6 +29,10 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
             >>= relativizeUrls
             >>= urlMd2Html
 
+    match "stork/index.st" $ do
+        route $ constRoute "stork/index.st"
+        compile copyFileCompiler
+
     match "deps/katex/dist/**" $ do
         route $ customRoute $ ("katex/" <>) .
             (!! 3) . iterate (tail . dropWhile (/= '/')) . toFilePath
@@ -41,6 +45,16 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
     match "deps/latex-css/fonts/*" $ do
         route $ customRoute $ ("css/fonts/" <>) .
             (!! 3) . iterate (tail . dropWhile (/= '/')) . toFilePath
+        compile copyFileCompiler
+
+    match "deps/stork@*/*.css" $ do
+        route $ customRoute $ ("stork/" <>) .
+            (!! 2) . iterate (tail . dropWhile (/= '/')) . toFilePath
+        compile compressCssCompiler
+
+    match ("deps/stork@*/*" .&&. complement "deps/stork@*/*.css") $ do
+        route $ customRoute $ ("stork/" <>) .
+            (!! 2) . iterate (tail . dropWhile (/= '/')) . toFilePath
         compile copyFileCompiler
 
     match "tmpl/*" $ compile templateBodyCompiler

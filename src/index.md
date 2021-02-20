@@ -16,4 +16,6 @@ brain~~.*
 
 * [University Summaries](uni/index.md)
 
-<br/>
+<h2 style="text-align:left">Others</h2>
+
+* [Stork Search](misc/search.md)
