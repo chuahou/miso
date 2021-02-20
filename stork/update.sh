@@ -11,7 +11,7 @@ file_entry () {
 	local file=$1
 	local prefix=$2
 	local title=$(sed -n 's/.*<title>\(.*\) | chuahou.dev<\/title>.*/\1/p' $1)
-	local url=$(echo /${file#$prefix})
+	local url=$(echo https://chuahou.dev/miso/${file#$prefix})
 	echo "	{title = \"${title}\", url = \"${url}\", path = \"${file}\"},"
 }
 
