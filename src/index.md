@@ -38,6 +38,17 @@ $$\bm y = \lambda f. (\lambda x.f(xx))(\lambda x.f(xx))$$
 
 <br/>
 
+```{.tex .algorithm}
+\State \(i \gets 0\)
+\If {\(i = 0\)}
+	\State \(i \gets 3\)
+\Else
+	\State \(i \gets 2\)
+\EndIf
+```
+
+<br/>
+
 <center>
 *Is this really markdown if there's really more HTML and LaTeX than markdown in
 the source file?*

@@ -2,6 +2,11 @@
 	font-size: 1.1rem;
 }
 
+img.algorithm {
+	width: 106%;
+	max-width: 106%;
+}
+
 img.tikz {
 	margin-left: auto;
 	margin-right: auto;
