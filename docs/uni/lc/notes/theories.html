@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Equational theories | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="Equational theories" class="title">Equational theories</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<div id="toc">
+<ul>
+<li><a href="#syntactic-equality">Syntactic equality</a></li>
+<li><a href="#alpha-conversion">[1.4] <span class="math inline">\(\alpha\)</span>-conversion</a></li>
+<li><a href="#beta-conversion">[1.5] <span class="math inline">\(\beta\)</span>-conversion</a>
+<ul>
+<li><a href="#capture-avoiding-substitution">Capture-avoiding substitution</a></li>
+<li><a href="#beta-conversion-1"><span class="math inline">\(\beta\)</span>-conversion</a></li>
+</ul></li>
+<li><a href="#theories">[1.7] Theories</a>
+<ul>
+<li><a href="#standard-lambdabeta-theory">Standard <span class="math inline">\(\lambda\beta\)</span> theory</a></li>
+<li><a href="#extensionality-lambdabetaeta">Extensionality (<span class="math inline">\(\lambda\beta\eta\)</span>)</a></li>
+<li><a href="#properties">Properties</a></li>
+</ul></li>
+<li><a href="#fixed-points">[1.9] Fixed points</a></li>
+</ul>
+</div>
+<h1 id="syntactic-equality">Syntactic equality</h1>
+<p>Two terms <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are syntactically equal if they are the same string, written <span class="math inline">\(s \equiv t\)</span>.</p>
+<h1 id="alpha-conversion">[1.4] <span class="math inline">\(\alpha\)</span>-conversion</h1>
+<p>Two terms <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are <strong><span class="math inline">\(\alpha\)</span>-convertible/equivalent</strong> if they are the same term up to renaming <em>bound</em> variables, written <span class="math inline">\(s \equiv_\alpha t\)</span>.</p>
+<p>We write “swap variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>” as <span class="math inline">\((x\;y)\,\boldsymbol\cdot\)</span>. Then, <span class="math inline">\(\equiv_\alpha\)</span> is defined by</p>
+<p><span class="math display">\[
+\frac{}{x \equiv_\alpha x}
+\hspace{2em}
+\frac{s \equiv_\alpha s' \hspace{1em} t \equiv_\alpha t'}{st \equiv_\alpha s't'}
+\hspace{2em}
+\frac{(y\;x)\boldsymbol\cdot s \equiv_\alpha (y\;x')\boldsymbol\cdot s'}
+	{\lambda x.s \equiv_\alpha \lambda x.s'}
+\;y \notin \operatorname{FV}(ss')
+\]</span></p>
+<p>We typically consider <span class="math inline">\(\alpha\)</span>-convertible terms to be identical syntactically as well (i.e. we consider <span class="math inline">\(\Lambda/\!\!\equiv_\alpha\)</span>, which is <span class="math inline">\(\Lambda\)</span> <a href="https://en.wikipedia.org/wiki/Equivalence_class">quotiented</a> by <span class="math inline">\(\equiv_\alpha\)</span>.)</p>
+<p><strong>Variable convention</strong>: when countably many terms appear in a definition/theorem/proof, we silently <span class="math inline">\(\alpha\)</span>-convert to have unique bound variables that are not the same as any other bound/free variables.</p>
+<h1 id="beta-conversion">[1.5] <span class="math inline">\(\beta\)</span>-conversion</h1>
+<h2 id="capture-avoiding-substitution">Capture-avoiding substitution</h2>
+<p>“Substituting <span class="math inline">\(t\)</span> for every free occurrence of variable <span class="math inline">\(x\)</span> in <span class="math inline">\(s\)</span>” is written as <span class="math inline">\(s[t/x]\)</span>. It is defined, for variables <span class="math inline">\(x, y\)</span>, and terms <span class="math inline">\(s, t, u\)</span> as</p>
+<span class="math display">\[\begin{aligned}
+y[t/x] &amp;\equiv \begin{cases}
+	t &amp; x \equiv y \\
+	y &amp; x \not\equiv y
+\end{cases} \\
+(su)[t/x] &amp;\equiv (s[t/x])(u[t/x]) \\
+(\lambda y.s)[t/x] &amp;\equiv \lambda y.s[t/x] &amp;\text{if } y \not\equiv x \text{
+	and } y \notin \operatorname{FV}(t)
+\end{aligned}\]</span>
+<p>and performing <span class="math inline">\(\alpha\)</span>-conversion when necessary.</p>
+<p>We can compare this to <a href="syntax.html#contexts">blind substitution in contexts</a>, which does not care about variable capture.</p>
+<h2 id="beta-conversion-1"><span class="math inline">\(\beta\)</span>-conversion</h2>
+<p>Then, <strong><span class="math inline">\(\beta\)</span>-conversion</strong> is written infix as <span class="math inline">\(\beta\)</span>, defined by</p>
+<p><span class="math display">\[(\lambda x.s)t \;\,\beta\,\; s[t/x].\]</span></p>
+<h1 id="theories">[1.7] Theories</h1>
+<p>A <strong>theory</strong> <span class="math inline">\(\mathcal T\)</span> is a set of equations <span class="math inline">\(s = t\)</span>, written <span class="math inline">\(\mathcal T \vdash s = t\)</span> to indicate <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are equal in the theory <span class="math inline">\(\mathcal T\)</span>.</p>
+<h2 id="standard-lambdabeta-theory">Standard <span class="math inline">\(\lambda\beta\)</span> theory</h2>
+<p>The standard <strong><span class="math inline">\(\lambda\beta\)</span> theory</strong> is defined by</p>
+<ul>
+<li><p>equivalence rules <span class="math display">\[
+(\text{reflexivity}) \; \frac{}{s = s}
+\hspace{2em}
+(\text{symmetry}) \; \frac{s = t}{t = s}
+\hspace{2em}
+(\text{transitivity}) \; \frac{s = t\;\;\;t = u}{s = u}
+\]</span></p></li>
+<li><p>congruence rules (equality combined with inductive rules) <span class="math display">\[
+(\text{application}) \; \frac{s = s'\;\;\;t = t'}{st = s't'}
+\hspace{2em}
+(\text{abstraction}) \; \frac{s = t}{\lambda x.s = \lambda x.t}
+\]</span></p></li>
+<li><p><span class="math inline">\(\beta\)</span> rule <span class="math display">\[
+(\beta) \; \frac{}{(\lambda x.s) t = s[t/x]}
+\]</span></p></li>
+</ul>
+<p>Equality under this theory is also written <span class="math inline">\(=_\beta\)</span>.</p>
+<h2 id="extensionality-lambdabetaeta">Extensionality (<span class="math inline">\(\lambda\beta\eta\)</span>)</h2>
+<p>Functions are <strong>extensionally equal</strong> iff they have the same output for the same input on all inputs. This is captured by the <span class="math inline">\(\eta\)</span> rule <span class="math display">\[
+(\eta) \; \frac{}{\lambda x.sx = s} \; x \notin \operatorname{FV}(s)
+\]</span> which when added to <span class="math inline">\(\lambda\beta\)</span> gives the <span class="math inline">\(\lambda\beta\eta\)</span> theory.</p>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>A theory is a <strong><span class="math inline">\(\lambda\)</span> theory</strong> if all the rules of <span class="math inline">\(\lambda\beta\)</span> are valid under it.
+<ul>
+<li>The <strong>least <span class="math inline">\(\lambda\)</span> theory</strong> containing a set of equations <span class="math inline">\(A\)</span> is given by adding all equations in <span class="math inline">\(A\)</span> to the axioms of <span class="math inline">\(\lambda\beta\)</span>.</li>
+</ul></li>
+<li>A theory is <strong>consistent</strong> if there are some terms <span class="math inline">\(s, t\)</span> such that under the theory <span class="math inline">\(s \neq t\)</span>.</li>
+<li>A theory is <strong>maximally consistent</strong> (aka <strong>Hilbert-Post complete</strong>) if adding any equations to it makes it inconsistent.</li>
+</ul>
+<h1 id="fixed-points">[1.9] Fixed points</h1>
+<p>A <strong>fixed point</strong> of <span class="math inline">\(s\)</span> is <span class="math inline">\(u\)</span> such that <span class="math inline">\(s u =_\beta u\)</span>.</p>
+<p>A <strong>fixed point combinator</strong> is <span class="math inline">\(s\)</span> such that, given any term <span class="math inline">\(f\)</span>, <span class="math inline">\(sf\)</span> is a fixed point of <span class="math inline">\(f\)</span>, i.e. it produces a fixed point of any <span class="math inline">\(f\)</span>. Examples include</p>
+<ul>
+<li>Curry’s “paradoxical” combinator: <span class="math inline">\(\mathbf y \equiv \lambda f.(\lambda x.f(xx))(\lambda x.f(xx))\)</span></li>
+<li>Turing’s combinator: <span class="math inline">\(\bm \theta \equiv (\lambda xy.y(xxy))(\lambda xy.y(xxy))\)</span></li>
+</ul>
+<p>The <strong>First Recursion Theorem</strong> directly follows: <em>every term has a fixed point</em> (simply apply a fixed point combinator to any term).</p>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+	</body>
+</html>

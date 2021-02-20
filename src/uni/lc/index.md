@@ -9,7 +9,7 @@ computation. Its most basic form consists of variables, $\lambda$-abstractions
 and applications.
 
 * [Syntax](notes/syntax.md)
-* Equational theories
+* [Equational theories](notes/theories.md)
 * Reductions
 * Normal forms
 * Consistency
