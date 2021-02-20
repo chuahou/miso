@@ -1,5 +1,17 @@
+html, body {
+	overflow-x: hidden;
+}
+
 .katex {
 	font-size: 1.1rem;
+}
+
+.katex-display {
+	max-width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
 }
 
 img.algorithm {
