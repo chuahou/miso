@@ -2,7 +2,7 @@
 title: miso
 no-title: true
 
-head-extra: "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://latex.now.sh/style.min.css\"/><style> .tikz { margin-left: auto; margin-right: auto; width: 60%; height: auto; } </style>"
+head-extra: <link rel="stylesheet" type="text/css" href="https://latex.now.sh/style.min.css"/>
 ---
 
 <br/>

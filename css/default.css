@@ -1,3 +1,10 @@
 .katex {
 	font-size: 1.1rem;
 }
+
+img.tikz {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	height: auto;
+}
