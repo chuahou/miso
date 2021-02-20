@@ -23,3 +23,31 @@ img.tikz {
 #toc li::marker {
 	font-size: 0.7em;
 }
+
+.side {
+	position: fixed;
+	top: 2em;
+	right: 2em;
+	z-index: 999;
+	text-align: right;
+}
+
+.side > p {
+	margin: 1em 0.5em;
+}
+
+.side > p > a {
+	color: #292;
+	background-color: #bdbd;
+	border: 2px solid #292;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+	.side {
+		top: 0em;
+		right: 0em;
+		font-size: 0.8em;
+	}
+}
