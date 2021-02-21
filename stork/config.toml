@@ -7,6 +7,7 @@ files = [
 	{title = "Lambda Calculus", url = "https://chuahou.dev/miso/uni/lc/index.html", path = "docs/uni/lc/index.html"},
 	{title = "Syntax", url = "https://chuahou.dev/miso/uni/lc/notes/syntax.html", path = "docs/uni/lc/notes/syntax.html"},
 	{title = "Equational theories", url = "https://chuahou.dev/miso/uni/lc/notes/theories.html", path = "docs/uni/lc/notes/theories.html"},
+	{title = "Reductions", url = "https://chuahou.dev/miso/uni/lc/notes/reductions.html", path = "docs/uni/lc/notes/reductions.html"},
 ]
 
 [output]

@@ -2,15 +2,18 @@
 title: Lambda Calculus
 ---
 
-*Based on the course taught by Hugo Paquet in Hilary Term 2021.*
+*Based on the course taught by Hugo Paquet in Hilary Term 2021 and lecture notes
+by Andrew Ker.*
 
 Lambda calculus is a way to reason about functions, and is also a model of
 computation. Its most basic form consists of variables, $\lambda$-abstractions
 and applications.
 
-* [Syntax](notes/syntax.md)
-* [Equational theories](notes/theories.md)
-* Reductions
+* [Syntax](notes/syntax.md) ($\lambda$-terms, free/bound variables, contexts,
+  capture)
+* [Equational theories](notes/theories.md) (equalities, theories, fixed points)
+* [Reductions](notes/reductions.md) (reductions, $\lambda I$/affine/linear
+  terms, $\beta$/$\eta$-reductions)
 * Normal forms
 * Consistency
 * Reduction strategies
