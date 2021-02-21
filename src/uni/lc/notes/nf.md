@@ -75,3 +75,28 @@ $s \equiv C[\lambda x.s'x]$ and $t \equiv C[s']$ for some one-hole unary context
 $C[X]$. Then by case analysis (see slides) we deduce that
 $\twoheadrightarrow_\eta$ has the diamond property and hence $\to_\eta$ is
 Church-Rosser.
+
+# $\beta\eta$-reduction is Church-Rosser
+
+Relations $R, S$ **commute** if $s \;R\; t_1$ and $s \;S\; t_2$ implies that
+exists some $u$ such that $t_1 \;S\; u$ and $t_2 \;R\; u$.
+
+```{.tex .tikz width=23%}
+\tikzset{prove/.style = { thick, draw=green!60!black }}
+\node (s) at (0,0) {\(s\)};
+\node (t1) at (-1,-1) {\(t_1\)};
+\node (t2) at (1,-1) {\(t_2\)};
+\node (u) at (0,-2) {\({\color{green!60!black}\exists u}\)};
+
+\draw[thick] (s) -- node[xshift=-8,yshift=8] {\(R\)} (t1);
+\draw[thick] (s) -- node[xshift=8,yshift=8] {\(S\)} (t2);
+\draw[dotted,prove] (t1) -- node[xshift=-8,yshift=-8] {\({\color{green!60!black}S}\)} (u);
+\draw[dotted,prove] (t2) -- node[xshift=8,yshift=-8] {\({\color{green!60!black}R}\)} (u);
+```
+
+**Lemma.** If $R, S$ commute and have the diamond property, then so does
+$R \cup S$.
+
+Finally, since $\twoheadrightarrow_\beta$ and
+$\twoheadrightarrow_\eta^{\text{red}}$ commute and have the diamond property,
+$\to_{\beta\eta}$ is Church-Rosser.

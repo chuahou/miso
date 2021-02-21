@@ -14,7 +14,8 @@ and applications.
 * [Equational theories](notes/theories.md) (equalities, theories, fixed points)
 * [Reductions](notes/reductions.md) (reductions, $\lambda I$/affine/linear
   terms, $\beta$/$\eta$-reductions)
-* [Normal forms](notes/nf.md) (NFs, normalizing, diamond/Church-Rosser/unique-NF,
-  $\beta$/$\eta$ CR)
-* Consistency
+* [Normal forms](notes/nf.md) (NFs, normalizing, diamond/CR/unique-NF,
+  $\beta$/$\eta$ CR, commute)
+* [Consistency](notes/consistency.md) ($\lambda\beta$/$\lambda\eta$ consistent,
+  $\mathcal T_{\text{NF}}$ inconsistent, Böhm's Theorem)
 * Reduction strategies

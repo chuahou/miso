@@ -5,6 +5,7 @@ files = [
 	{title = "Search", url = "https://chuahou.dev/miso/misc/search.html", path = "docs/misc/search.html"},
 	{title = "University Summaries", url = "https://chuahou.dev/miso/uni/index.html", path = "docs/uni/index.html"},
 	{title = "Lambda Calculus", url = "https://chuahou.dev/miso/uni/lc/index.html", path = "docs/uni/lc/index.html"},
+	{title = "Consistency", url = "https://chuahou.dev/miso/uni/lc/notes/consistency.html", path = "docs/uni/lc/notes/consistency.html"},
 	{title = "Normal forms", url = "https://chuahou.dev/miso/uni/lc/notes/nf.html", path = "docs/uni/lc/notes/nf.html"},
 	{title = "Reductions", url = "https://chuahou.dev/miso/uni/lc/notes/reductions.html", path = "docs/uni/lc/notes/reductions.html"},
 	{title = "Syntax", url = "https://chuahou.dev/miso/uni/lc/notes/syntax.html", path = "docs/uni/lc/notes/syntax.html"},
