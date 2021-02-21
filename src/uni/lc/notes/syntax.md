@@ -16,6 +16,9 @@ $$
 \frac{P_1 \hspace{1em} P_2}{C} \; (S)
 $$
 
+* **Lemma 1.1.1.** For inductively defined sets $S$ and $T$, if every rule for
+  $S$ is valid for $T$ then $S \subseteq T$.
+
 ## [1.2] $\lambda$-terms
 
 The **set of $\lambda$ terms** $\Lambda$ are finite strings defined by
@@ -109,21 +112,21 @@ A term without free variables is **closed**.
 # [1.5] Contexts
 
 Contexts are terms with "holes", where blind **contextual substitution** can
-occur. For example, for a context $\mathcal C[X] \equiv sX$, then
-$\mathcal C[xyz] \equiv s(xyz)$. Unary contexts have 1 hole, while $n$-ary
+occur. For example, for a context $C[X] \equiv sX$, then
+$C[xyz] \equiv s(xyz)$. Unary contexts have 1 hole, while $n$-ary
 contexts have $n$ holes.
 
 Contexts are not considered up to
 [$\alpha$-equivalence](theories.html#alpha-conversion), as changing the bound
 variable names will have significant impact. E.g. for
-$\mathcal C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv \mathcal
+$C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv \mathcal
 D[X]$,
-$\mathcal C[x] \equiv \lambda x.xx \not\equiv_\alpha \mathcal D[x] \equiv
+$C[x] \equiv \lambda x.xx \not\equiv_\alpha \mathcal D[x] \equiv
 \lambda y.yx$.
 
 ## Capture
 
 Variables can be captured if they are blindly substituted where they would be
 captured by a $\lambda$-abstraction. For example, for a context
-$\mathcal C[X] \equiv \lambda x.X$, we would have $\mathcal C[x]$ leading to $x$
+$C[X] \equiv \lambda x.X$, we would have $C[x]$ leading to $x$
 being captured in $\lambda x.x$ (it becomes a bound variable).

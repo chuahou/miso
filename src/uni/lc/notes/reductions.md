@@ -74,8 +74,8 @@ $$ s \equiv s_0 \to_R s_1 \to_R \ldots \to_R s_n \equiv t $$
 
 ### Lemma 2.1.2
 
-$s \to_R t$ iff there is a unary context $\mathcal C[X]$ and terms $u, v$ such
-that $\mathcal C[u] \equiv s$ and $\mathcal C[v] \equiv t$ and $u \; R \; v$.
+$s \to_R t$ iff there is a one-hole unary context $C[X]$ and terms
+$u, v$ such that $C[u] \equiv s$ and $C[v] \equiv t$ and $u \; R \; v$.
 
 We call $u$ a $R$-redex that is contracted to $v$.
 

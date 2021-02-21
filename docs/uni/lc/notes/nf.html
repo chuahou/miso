@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Normal forms | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="Normal forms" class="title">Normal forms</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#definitions">[2.4] Definitions</a>
+<ul>
+<li><a href="#diamond-and-church-rosser-properties">Diamond and Church-Rosser properties</a></li>
+</ul></li>
+<li><a href="#beta-reduction-is-church-rosser">[2.5] <span class="math inline">\(\beta\)</span>-reduction is Church-Rosser</a></li>
+<li><a href="#eta-reduction-is-church-rosser"><span class="math inline">\(\eta\)</span>-reduction is Church-Rosser</a></li>
+</ul>
+</div>
+<h1 id="definitions">[2.4] Definitions</h1>
+<p>A term <span class="math inline">\(s\)</span> is</p>
+<ul>
+<li>in <strong><span class="math inline">\(R\)</span>-normal form</strong> if there is no term <span class="math inline">\(t\)</span> for which <span class="math inline">\(s \to_R t\)</span>.</li>
+<li><strong><span class="math inline">\(R\)</span>-normalizable</strong> if <span class="math inline">\(s \twoheadrightarrow_R t\)</span> and <span class="math inline">\(t\)</span> is in <span class="math inline">\(R\)</span>-NF.</li>
+<li><strong>strongly <span class="math inline">\(R\)</span>-normalizable</strong> if there is no infinite sequence <span class="math inline">\(s \to_R t_1 \to_R t_2 \to_R \ldots\)</span> (i.e. any sequence of reductions must reach <span class="math inline">\(R\)</span>-NF in finite steps)</li>
+</ul>
+<p>A notion of reduction <span class="math inline">\(R\)</span> is</p>
+<ul>
+<li><strong>weakly normalizing</strong> if every term is <span class="math inline">\(R\)</span>-normalizable.</li>
+<li><strong>strongly normalizing</strong> if every term is <em>strongly</em> <span class="math inline">\(R\)</span>-normalizable.</li>
+</ul>
+<h2 id="diamond-and-church-rosser-properties">Diamond and Church-Rosser properties</h2>
+<ul>
+<li><p>The <strong>diamond property</strong> is satisfied by <span class="math inline">\(\to_R\)</span> if <span class="math display">\[s \to_R t_1 \land s \to_R t_2 \implies t_1 \to_R u \land t_2 \to_R u\]</span> for some term <span class="math inline">\(u\)</span>.</p></li>
+<li><p><span class="math inline">\(\to_R\)</span> is <strong>Church-Rosser</strong> if its reflexive/transitive closure <span class="math inline">\(\twoheadrightarrow_R\)</span> satisfies the diamond property.</p></li>
+<li><p><span class="math inline">\(\to_R\)</span> has the <strong>unique normal form property</strong> if for every term <span class="math inline">\(s\)</span>, if <span class="math inline">\(s \twoheadrightarrow_R t_1\)</span> and <span class="math inline">\(s \twoheadrightarrow_R t_2\)</span> where <span class="math inline">\(t_1,t_2\)</span> are in <span class="math inline">\(R\)</span>-NF, then <span class="math inline">\(t_1 \equiv t_2\)</span>.</p></li>
+</ul>
+<h3 id="lemma-2.4.1">Lemma 2.4.1</h3>
+<ul>
+<li>If <span class="math inline">\(\to_R\)</span> satisfies the diamond property then so does <span class="math inline">\(\twoheadrightarrow_R\)</span> (hence <span class="math inline">\(\to_R\)</span> is also Church-Rosser).</li>
+<li>If <span class="math inline">\(\to_R\)</span> is Church-Rosser, then <span class="math inline">\(s =_R t\)</span> iff for some <span class="math inline">\(u\)</span>, <span class="math inline">\(s \twoheadrightarrow_R u\)</span> and <span class="math inline">\(t \twoheadrightarrow_R u\)</span>.</li>
+<li>Church-Rosser <span class="math inline">\(\implies\)</span> unique normal form.</li>
+</ul>
+<h1 id="beta-reduction-is-church-rosser">[2.5] <span class="math inline">\(\beta\)</span>-reduction is Church-Rosser</h1>
+<p>We first define <span class="math inline">\(\to_\Vert\)</span>, the parallel <span class="math inline">\(\beta\)</span>-reduction as</p>
+<span class="math display">\[\begin{aligned}
+(\text{refl}) &amp;\; \frac{}{s \to_\Vert s} \\
+(\Vert\text{-app}) &amp;\; \frac{s \to_\Vert s' \hspace{1.5em} t \to_\Vert t'}
+	{st \to_\Vert s't'} \\
+(\text{abs}) &amp;\; \frac{s \to_\Vert s'}{\lambda x.s \to_\Vert \lambda x.s'} \\
+(\Vert\text{-}\beta) &amp;\; \frac{s \to_\Vert s' \hspace{1.5em} t \to_\Vert t'}
+	{(\lambda x.s)t \to_\Vert s'[t'/x]}
+\end{aligned}\]</span>
+<p>which performs more changes in parallel.</p>
+<p>In notes/sheet 2 we show that <span class="math inline">\(\to_\Vert\)</span> has the diamond property, and by checking validity of rules and <a href="syntax.html#inductively-defined-sets">Lemma 1.1.1</a>, we have</p>
+<p><span class="math display">\[\to_\beta \; \subseteq \; \to_\Vert \; \subseteq \; \twoheadrightarrow_\beta\]</span></p>
+<p>We also note that <span class="math inline">\(\twoheadrightarrow_\Vert \;=\; \twoheadrightarrow_\beta\)</span>, so finally</p>
+<ol>
+<li><span class="math inline">\(\to_\Vert\)</span> has diamond property <span class="math inline">\(\implies\)</span> so does <span class="math inline">\(\twoheadrightarrow_\Vert\)</span></li>
+<li><span class="math inline">\(\twoheadrightarrow_\beta \;=\; \twoheadrightarrow_\Vert\)</span> also has diamond property</li>
+<li>Hence <span class="math inline">\(\to_\beta\)</span> is Church-Rosser by <a href="#lemma-2.4.1">Lemma 2.4.1</a></li>
+</ol>
+<h1 id="eta-reduction-is-church-rosser"><span class="math inline">\(\eta\)</span>-reduction is Church-Rosser</h1>
+<p>From <a href="reductions.html#lemma-2.1.2">Lemma 2.1.2</a> we have that <span class="math inline">\(s \to_\eta t\)</span> iff <span class="math inline">\(s \equiv C[\lambda x.s'x]\)</span> and <span class="math inline">\(t \equiv C[s']\)</span> for some one-hole unary context <span class="math inline">\(C[X]\)</span>. Then by case analysis (see slides) we deduce that <span class="math inline">\(\twoheadrightarrow_\eta\)</span> has the diamond property and hence <span class="math inline">\(\to_\eta\)</span> is Church-Rosser.</p>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+	</body>
+</html>

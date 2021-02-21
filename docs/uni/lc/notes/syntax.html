@@ -62,6 +62,9 @@
 <p><span class="math display">\[
 \frac{P_1 \hspace{1em} P_2}{C} \; (S)
 \]</span></p>
+<ul>
+<li><strong>Lemma 1.1.1.</strong> For inductively defined sets <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span>, if every rule for <span class="math inline">\(S\)</span> is valid for <span class="math inline">\(T\)</span> then <span class="math inline">\(S \subseteq T\)</span>.</li>
+</ul>
 <h2 id="lambda-terms">[1.2] <span class="math inline">\(\lambda\)</span>-terms</h2>
 <p>The <strong>set of <span class="math inline">\(\lambda\)</span> terms</strong> <span class="math inline">\(\Lambda\)</span> are finite strings defined by</p>
 <p><span class="math display">\[
@@ -117,10 +120,10 @@
 </ul>
 <p>A term without free variables is <strong>closed</strong>.</p>
 <h1 id="contexts">[1.5] Contexts</h1>
-<p>Contexts are terms with “holes”, where blind <strong>contextual substitution</strong> can occur. For example, for a context <span class="math inline">\(\mathcal C[X] \equiv sX\)</span>, then <span class="math inline">\(\mathcal C[xyz] \equiv s(xyz)\)</span>. Unary contexts have 1 hole, while <span class="math inline">\(n\)</span>-ary contexts have <span class="math inline">\(n\)</span> holes.</p>
-<p>Contexts are not considered up to <a href="theories.html#alpha-conversion"><span class="math inline">\(\alpha\)</span>-equivalence</a>, as changing the bound variable names will have significant impact. E.g. for <span class="math inline">\(\mathcal C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv \mathcal D[X]\)</span>, <span class="math inline">\(\mathcal C[x] \equiv \lambda x.xx \not\equiv_\alpha \mathcal D[x] \equiv \lambda y.yx\)</span>.</p>
+<p>Contexts are terms with “holes”, where blind <strong>contextual substitution</strong> can occur. For example, for a context <span class="math inline">\(C[X] \equiv sX\)</span>, then <span class="math inline">\(C[xyz] \equiv s(xyz)\)</span>. Unary contexts have 1 hole, while <span class="math inline">\(n\)</span>-ary contexts have <span class="math inline">\(n\)</span> holes.</p>
+<p>Contexts are not considered up to <a href="theories.html#alpha-conversion"><span class="math inline">\(\alpha\)</span>-equivalence</a>, as changing the bound variable names will have significant impact. E.g. for <span class="math inline">\(C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv \mathcal D[X]\)</span>, <span class="math inline">\(C[x] \equiv \lambda x.xx \not\equiv_\alpha \mathcal D[x] \equiv \lambda y.yx\)</span>.</p>
 <h2 id="capture">Capture</h2>
-<p>Variables can be captured if they are blindly substituted where they would be captured by a <span class="math inline">\(\lambda\)</span>-abstraction. For example, for a context <span class="math inline">\(\mathcal C[X] \equiv \lambda x.X\)</span>, we would have <span class="math inline">\(\mathcal C[x]\)</span> leading to <span class="math inline">\(x\)</span> being captured in <span class="math inline">\(\lambda x.x\)</span> (it becomes a bound variable).</p>
+<p>Variables can be captured if they are blindly substituted where they would be captured by a <span class="math inline">\(\lambda\)</span>-abstraction. For example, for a context <span class="math inline">\(C[X] \equiv \lambda x.X\)</span>, we would have <span class="math inline">\(C[x]\)</span> leading to <span class="math inline">\(x\)</span> being captured in <span class="math inline">\(\lambda x.x\)</span> (it becomes a bound variable).</p>
 		</main>
 		<!-- Generated body ends here -->
 
