@@ -18,4 +18,4 @@ and applications.
   $\beta$/$\eta$ CR, commute)
 * [Consistency](notes/consistency.md) ($\lambda\beta$/$\lambda\eta$ consistent,
   $\mathcal T_{\text{NF}}$ inconsistent, Böhm's Theorem)
-* Reduction strategies
+* [Reduction strategies](notes/redstrats.md)
