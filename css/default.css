@@ -2,7 +2,7 @@ html, body {
 	overflow-x: hidden;
 }
 
-p .katex {
+p .katex, li .katex {
 	font-size: 1.1rem;
 }
 
