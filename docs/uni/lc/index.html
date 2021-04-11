@@ -39,17 +39,72 @@
 		<!-- Generated body starts here -->
 		<main>
 		<div id="toc">
-
+<ul>
+<li><a href="#syntax">Syntax</a>
+<ul>
+<li><a href="#lambda-terms"><span class="math inline">\(\lambda\)</span>-terms</a></li>
+<li><a href="#structural-induction">Structural induction</a></li>
+<li><a href="#binding-of-variables">Binding of variables</a></li>
+<li><a href="#contexts">Contexts</a></li>
+</ul></li>
+</ul>
 </div>
 <p><em>Based on the course taught by Hugo Paquet in Hilary Term 2021 and lecture notes by Andrew Ker.</em></p>
-<p>Lambda calculus is a way to reason about functions, and is also a model of computation. Its most basic form consists of variables, <span class="math inline">\(\lambda\)</span>-abstractions and applications.</p>
+<h1 id="syntax">Syntax</h1>
+<h2 id="lambda-terms"><span class="math inline">\(\lambda\)</span>-terms</h2>
 <ul>
-<li><a href="notes/syntax.html">Syntax</a> (<span class="math inline">\(\lambda\)</span>-terms, free/bound variables, contexts, capture)</li>
-<li><a href="notes/theories.html">Equational theories</a> (equalities, theories, fixed points)</li>
-<li><a href="notes/reductions.html">Reductions</a> (reductions, <span class="math inline">\(\lambda I\)</span>/affine/linear terms, <span class="math inline">\(\beta\)</span>/<span class="math inline">\(\eta\)</span>-reductions)</li>
-<li><a href="notes/nf.html">Normal forms</a> (NFs, normalizing, diamond/CR/unique-NF, <span class="math inline">\(\beta\)</span>/<span class="math inline">\(\eta\)</span> CR, commute)</li>
-<li><a href="notes/consistency.html">Consistency</a> (<span class="math inline">\(\lambda\beta\)</span>/<span class="math inline">\(\lambda\eta\)</span> consistent, <span class="math inline">\(\mathcal T_{\text{NF}}\)</span> inconsistent, Böhm’s Theorem)</li>
-<li><a href="notes/redstrats.html">Reduction strategies</a></li>
+<li>[1.1] <strong>Inductively-defined</strong> sets are the smallest sets for which a set of rules are all valid (conclusion holds whenever the side condition and premisses hold).
+<ul>
+<li><strong>Lemma 1.1.1.</strong> For inductively defined sets <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span>, if every rule for <span class="math inline">\(S\)</span> is valid for <span class="math inline">\(T\)</span> then <span class="math inline">\(S \subseteq T\)</span>.</li>
+</ul></li>
+<li>[1.2] <strong>Set of <span class="math inline">\(\lambda\)</span> terms</strong> (<span class="math inline">\(\Lambda\)</span>) are finite strings defined by</li>
+</ul>
+<p><span class="math display">\[
+\frac{}{x \in \Lambda} \; x \in \mathcal V
+\hspace{2em}
+\frac{s \in \Lambda \;\;\; t \in \Lambda}{(st) \in \Lambda}
+\hspace{2em}
+\frac{s \in \Lambda}{(\lambda x.s) \in \Lambda} \; x \in \mathcal V
+\]</span></p>
+<ul>
+<li>Notational conventions include abstractions <span class="math inline">\(\lambda x.\)</span> binding as far right as possible, and</li>
+</ul>
+<p><span class="math display">\[
+(\lambda x.s) \equiv \lambda x.s \hspace{1em}
+(((wx)y)z) \equiv wxyz \\ \vphantom{\frac11}
+\lambda x.\lambda y.s \equiv \lambda xy.s \hspace{1em}
+f(\lambda x.s) \equiv f\lambda x.s
+\]</span></p>
+<ul>
+<li><strong>Subterms</strong> are substrings that are also terms, <strong>strict</strong> if they are not the full term. (Recursive rules in notes.)</li>
+</ul>
+<h2 id="structural-induction">Structural induction</h2>
+<ul>
+<li>[1.2] <strong>Structural induction</strong> on terms done with
+<ul>
+<li>Base case on variables (<span class="math inline">\(P(x)\)</span> for all <span class="math inline">\(x \in \mathcal V\)</span>), and</li>
+<li>Recursive cases for application and abstraction.</li>
+</ul></li>
+<li><strong>Strong induction</strong> done with
+<ul>
+<li>Same base case, and</li>
+<li>Inductive case “if <span class="math inline">\(P(s)\)</span> for every <em>strict subterm</em> <span class="math inline">\(s\)</span>”.</li>
+</ul></li>
+</ul>
+<h2 id="binding-of-variables">Binding of variables</h2>
+<ul>
+<li>[1.4] Variables can be
+<ul>
+<li><strong>Bound</strong> by a <span class="math inline">\(\lambda\)</span>-abstraction (e.g. <span class="math inline">\(\lambda x.s\)</span> has bound <span class="math inline">\(x\)</span>), or</li>
+<li><strong>Free</strong> otherwise (inductive definition in notes).</li>
+</ul></li>
+<li><strong>Closed terms</strong> (<span class="math inline">\(\Lambda^0\)</span>) have no free variables.</li>
+</ul>
+<h2 id="contexts">Contexts</h2>
+<ul>
+<li>[1.6] A <strong>context</strong> <span class="math inline">\(C[X]\)</span> is a term with holes that can be <em>blindly</em> substituted for any term (<strong>contextual substitution</strong>).</li>
+<li>Blind substitution allows variables to be <strong>captured</strong>, e.g. <span class="math inline">\(C[x] \equiv \lambda x.xx\)</span> from above has <span class="math inline">\(x\)</span> being captured.</li>
+<li>Not considered up to <span class="math inline">\(\alpha\)</span>-equivalence, as <span class="math inline">\(C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv D[X]\)</span> but <span class="math inline">\(C[x] \equiv \lambda x.xx \not\equiv_\alpha \lambda y.yx \equiv D[x]\)</span>.</li>
 </ul>
 		</main>
 		<!-- Generated body ends here -->
