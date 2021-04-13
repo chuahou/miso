@@ -29,6 +29,10 @@ main = hakyllWith (defaultConfiguration { destinationDirectory = "docs" }) $ do
             >>= relativizeUrls
             >>= urlMd2Html
 
+    match "js/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "stork/index.st" $ do
         route $ constRoute "stork/index.st"
         compile copyFileCompiler
