@@ -69,3 +69,12 @@ body {
 li {
 	margin-top: 0.3rem;
 }
+
+h1.collapsed,
+h2.collapsed,
+h3.collapsed,
+h4.collapsed,
+h5.collapsed,
+h6.collapsed {
+	color: #9B9898;
+}
