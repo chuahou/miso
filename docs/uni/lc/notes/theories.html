@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Equational Theories | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Equational Theories" class="title">LC, Equational Theories</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#notions-of-equality">Notions of equality</a></li>
+<li><a href="#theories">Theories</a></li>
+<li><a href="#fixed-points">Fixed points</a></li>
+</ul>
+</div>
+<h1 id="notions-of-equality">Notions of equality</h1>
+<ul>
+<li><strong>Syntactic equality</strong> (<span class="math inline">\(\equiv\)</span>) equates terms that are the same string.</li>
+<li>[1.4] Terms are <strong><span class="math inline">\(\alpha\)</span>-convertible/equivalent</strong> (<span class="math inline">\(\equiv_\alpha\)</span>) if they are the same term up to renaming <em>bound</em> variables. (Slides show formal definition using variable swapping operation <span class="math inline">\((y\;x)\,\boldsymbol\cdot\)</span>)</li>
+<li>[1.5] Terms are <strong><span class="math inline">\(\beta\)</span>-convertible</strong> (infix <span class="math inline">\(\beta\)</span>) using <strong>capture-avoiding substitution</strong> (cf. <a href="#contexts">blind contextual substitution</a>).
+<ul>
+<li>Substituting <span class="math inline">\(t\)</span> for every <em>free</em> occurrrence of variable <span class="math inline">\(x\)</span> in <span class="math inline">\(s\)</span> is written as <span class="math inline">\(s[t/x]\)</span>, defined inductively in slides.</li>
+<li><span class="math inline">\(\beta\)</span>-conversion: <span class="math inline">\((\lambda x.s)t \;\beta\; s[t/x]\)</span>.</li>
+</ul></li>
+</ul>
+<h1 id="theories">Theories</h1>
+<ul>
+<li>[1.7] A <strong>theory</strong> <span class="math inline">\(\mathcal T\)</span> is a set of equations <span class="math inline">\(s = t\)</span>, written <span class="math inline">\(\mathcal T \vdash s = t\)</span> to indicate <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are equal in the theory <span class="math inline">\(\mathcal T\)</span>, or written <span class="math inline">\(s =_\mathcal T t\)</span></li>
+<li><strong>Standard <span class="math inline">\(\lambda\beta\)</span> theory</strong>, defined by
+<ul>
+<li>equivalence rules <span class="math display">\[
+(\text{reflexivity}) \; \frac{}{s = s}
+\hspace{1.3em}
+(\text{symmetry}) \; \frac{s = t}{t = s}
+\hspace{1.3em}
+(\text{transitivity}) \; \frac{s = t\;\;\;t = u}{s = u}
+\]</span></li>
+<li>congruence rules (equality combined with inductive rules) <span class="math display">\[
+(\text{application}) \; \frac{s = s'\;\;\;t = t'}{st = s't'}
+\hspace{2em}
+(\text{abstraction}) \; \frac{s = t}{\lambda x.s = \lambda x.t}
+\]</span></li>
+<li><span class="math inline">\(\beta\)</span> rule <span class="math display">\[
+(\beta) \; \frac{}{(\lambda x.s) t = s[t/x]}
+\]</span></li>
+</ul></li>
+<li><strong>Extensional equality</strong> by <span class="math inline">\(\eta\)</span> rule, which when added to <span class="math inline">\(\lambda\beta\)</span> gives the <span class="math inline">\(\lambda\beta\eta\)</span> theory. <span class="math display">\[
+(\eta) \; \frac{}{\lambda x.sx = s} \; x \notin \operatorname{FV}(s)
+\]</span></li>
+<li>[1.8] A theory is…
+<ul>
+<li>a <strong><span class="math inline">\(\lambda\)</span>-theory</strong> if all the <span class="math inline">\(\lambda\beta\)</span> rules are valid under it.</li>
+<li><strong>consistent</strong> if not all terms are equated under it.</li>
+<li><strong>maximally consistent/Hilbert-Post complete</strong> if adding any equations makes it inconsistent.</li>
+</ul></li>
+</ul>
+<h1 id="fixed-points">Fixed points</h1>
+<ul>
+<li>[1.9] A <strong>fixed point</strong> of <span class="math inline">\(s\)</span> is <span class="math inline">\(u\)</span> such that <span class="math inline">\(s u =_\beta u\)</span>.</li>
+<li>A <strong>fixed point combinator</strong> is <span class="math inline">\(s\)</span> such that, given any term <span class="math inline">\(f\)</span>, <span class="math inline">\(sf\)</span> is a fixed point of <span class="math inline">\(f\)</span>. Examples include
+<ul>
+<li>Curry’s “paradoxical” combinator: <span class="math inline">\(\mathbf y \equiv \lambda f.(\lambda x.f(xx))(\lambda x.f(xx))\)</span></li>
+<li>Turing’s combinator: <span class="math inline">\(\bm \theta \equiv (\lambda xy.y(xxy))(\lambda xy.y(xxy))\)</span></li>
+</ul></li>
+<li><strong>First Recursion Theorem</strong>: every term has a fixed point (just apply a fixed point combinator to it).</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

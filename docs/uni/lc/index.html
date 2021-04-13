@@ -39,106 +39,20 @@
 		<!-- Generated body starts here -->
 		<main>
 		<div id="toc">
-<ul>
-<li><a href="#syntax">Syntax</a>
-<ul>
-<li><a href="#lambda-terms"><span class="math inline">\(\lambda\)</span>-terms</a></li>
-<li><a href="#binding-of-variables">Binding of variables</a></li>
-<li><a href="#contexts">Contexts</a></li>
-</ul></li>
-<li><a href="#equational-theories">Equational theories</a>
-<ul>
-<li><a href="#theories">Theories</a></li>
-<li><a href="#fixed-points">Fixed points</a></li>
-</ul></li>
-</ul>
+
 </div>
 <p><em>Based on the course taught by Hugo Paquet in Hilary Term 2021 and lecture notes by Andrew Ker.</em></p>
-<h1 id="syntax">Syntax</h1>
-<h2 id="lambda-terms"><span class="math inline">\(\lambda\)</span>-terms</h2>
+<p>Lambda calculus is a way to reason about functions, and is also a model of computation. Its most basic form consists of variables, <span class="math inline">\(\lambda\)</span>-abstractions and applications.</p>
 <ul>
-<li>[1.1] <strong>Inductively-defined</strong> sets are the smallest sets for which a set of rules are all valid (conclusion holds whenever the side condition and premisses hold).
-<ul>
-<li><strong>Lemma 1.1.1.</strong> For inductively defined sets <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span>, if every rule for <span class="math inline">\(S\)</span> is valid for <span class="math inline">\(T\)</span> then <span class="math inline">\(S \subseteq T\)</span>.</li>
-<li>[1.2] Structural induction using the same rules.</li>
-</ul></li>
-<li>[1.2] <strong>Set of <span class="math inline">\(\lambda\)</span> terms</strong> (<span class="math inline">\(\Lambda\)</span>) are finite strings defined by (notational conventions in notes)</li>
+<li><a href="notes/syntax.html">Syntax</a> (<span class="math inline">\(\lambda\)</span>-terms <a href="notes/syntax.html#lambda-terms"><span class="math inline">\(\gets\)</span></a>, free/bound variables and capture <a href="notes/syntax.html#binding-of-variables"><span class="math inline">\(\gets\)</span></a>, contexts <a href="notes/syntax.html#contexts"><span class="math inline">\(\gets\)</span></a>)</li>
+<li><a href="notes/theories.html">Equational theories</a> (equalities <a href="notes/theories.html#notions-of-equality"><span class="math inline">\(\gets\)</span></a>, theories <a href="notes/theories.html#theories"><span class="math inline">\(\gets\)</span></a>, fixed points <a href="notes/theories.html#fixed-points"><span class="math inline">\(\gets\)</span></a>)</li>
 </ul>
-<p><span class="math display">\[
-\frac{}{x \in \Lambda} \; x \in \mathcal V
-\hspace{2em}
-\frac{s \in \Lambda \;\;\; t \in \Lambda}{(st) \in \Lambda}
-\hspace{2em}
-\frac{s \in \Lambda}{(\lambda x.s) \in \Lambda} \; x \in \mathcal V
-\]</span></p>
+<p>…</p>
 <ul>
-<li><strong>Subterms</strong> are substrings that are also terms, <strong>strict</strong> if they are not the full term. (Recursive rules in notes.) <strong>Strong structural induction</strong> on subterms.</li>
-</ul>
-<h2 id="binding-of-variables">Binding of variables</h2>
-<ul>
-<li>[1.4] Variables can be
-<ul>
-<li><strong>Bound</strong> by a <span class="math inline">\(\lambda\)</span>-abstraction (e.g. <span class="math inline">\(\lambda x.s\)</span> has bound <span class="math inline">\(x\)</span>), or</li>
-<li><strong>Free</strong> otherwise (inductive definition in notes).</li>
-</ul></li>
-<li><strong>Closed terms</strong> (<span class="math inline">\(\Lambda^0\)</span>) have no free variables.</li>
-</ul>
-<h2 id="contexts">Contexts</h2>
-<ul>
-<li>[1.6] A <strong>context</strong> <span class="math inline">\(C[X]\)</span> is a term with holes that can be <em>blindly</em> substituted for any term (<strong>contextual substitution</strong>).</li>
-<li>Blind substitution allows variables to be <strong>captured</strong>.</li>
-<li>Not considered up to <a href="#equational-theories"><span class="math inline">\(\alpha\)</span>-equivalence</a>, as <span class="math inline">\(C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv D[X]\)</span> but <span class="math inline">\(C[x] \equiv \lambda x.xx \not\equiv_\alpha \lambda y.yx \equiv D[x]\)</span>.</li>
-</ul>
-<h1 id="equational-theories">Equational theories</h1>
-<ul>
-<li><strong>Syntactic equality</strong> (<span class="math inline">\(\equiv\)</span>) equates terms that are the same string.</li>
-<li>[1.4] Terms are <strong><span class="math inline">\(\alpha\)</span>-convertible/equivalent</strong> (<span class="math inline">\(\equiv_\alpha\)</span>) if they are the same term up to renaming <em>bound</em> variables. (Slides show formal definition using variable swapping operation <span class="math inline">\((y\;x)\,\boldsymbol\cdot\)</span>)</li>
-<li>[1.5] Terms are <strong><span class="math inline">\(\beta\)</span>-convertible</strong> (infix <span class="math inline">\(\beta\)</span>) using <strong>capture-avoiding substitution</strong> (cf. <a href="#contexts">blind contextual substitution</a>).
-<ul>
-<li>Substituting <span class="math inline">\(t\)</span> for every <em>free</em> occurrrence of variable <span class="math inline">\(x\)</span> in <span class="math inline">\(s\)</span> is written as <span class="math inline">\(s[t/x]\)</span>, defined inductively in slides.</li>
-<li><span class="math inline">\(\beta\)</span>-conversion: <span class="math inline">\((\lambda x.s)t \;\beta\; s[t/x]\)</span>.</li>
-</ul></li>
-</ul>
-<h2 id="theories">Theories</h2>
-<ul>
-<li>[1.7] A <strong>theory</strong> <span class="math inline">\(\mathcal T\)</span> is a set of equations <span class="math inline">\(s = t\)</span>, written <span class="math inline">\(\mathcal T \vdash s = t\)</span> to indicate <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> are equal in the theory <span class="math inline">\(\mathcal T\)</span>, or written <span class="math inline">\(s =_\mathcal T t\)</span></li>
-<li><strong>Standard <span class="math inline">\(\lambda\beta\)</span> theory</strong>, defined by
-<ul>
-<li>equivalence rules <span class="math display">\[
-(\text{reflexivity}) \; \frac{}{s = s}
-\hspace{1.3em}
-(\text{symmetry}) \; \frac{s = t}{t = s}
-\hspace{1.3em}
-(\text{transitivity}) \; \frac{s = t\;\;\;t = u}{s = u}
-\]</span></li>
-<li>congruence rules (equality combined with inductive rules) <span class="math display">\[
-(\text{application}) \; \frac{s = s'\;\;\;t = t'}{st = s't'}
-\hspace{2em}
-(\text{abstraction}) \; \frac{s = t}{\lambda x.s = \lambda x.t}
-\]</span></li>
-<li><span class="math inline">\(\beta\)</span> rule <span class="math display">\[
-(\beta) \; \frac{}{(\lambda x.s) t = s[t/x]}
-\]</span></li>
-</ul></li>
-<li><strong>Extensional equality</strong> by <span class="math inline">\(\eta\)</span> rule, which when added to <span class="math inline">\(\lambda\beta\)</span> gives the <span class="math inline">\(\lambda\beta\eta\)</span> theory. <span class="math display">\[
-(\eta) \; \frac{}{\lambda x.sx = s} \; x \notin \operatorname{FV}(s)
-\]</span></li>
-<li>[1.8] A theory is…
-<ul>
-<li>a <strong><span class="math inline">\(\lambda\)</span>-theory</strong> if all the <span class="math inline">\(\lambda\beta\)</span> rules are valid under it.</li>
-<li><strong>consistent</strong> if not all terms are equated under it.</li>
-<li><strong>maximally consistent/Hilbert-Post complete</strong> if adding any equations makes it inconsistent.</li>
-</ul></li>
-</ul>
-<h2 id="fixed-points">Fixed points</h2>
-<ul>
-<li>[1.9] A <strong>fixed point</strong> of <span class="math inline">\(s\)</span> is <span class="math inline">\(u\)</span> such that <span class="math inline">\(s u =_\beta u\)</span>.</li>
-<li>A <strong>fixed point combinator</strong> is <span class="math inline">\(s\)</span> such that, given any term <span class="math inline">\(f\)</span>, <span class="math inline">\(sf\)</span> is a fixed point of <span class="math inline">\(f\)</span>. Examples include
-<ul>
-<li>Curry’s “paradoxical” combinator: <span class="math inline">\(\mathbf y \equiv \lambda f.(\lambda x.f(xx))(\lambda x.f(xx))\)</span></li>
-<li>Turing’s combinator: <span class="math inline">\(\bm \theta \equiv (\lambda xy.y(xxy))(\lambda xy.y(xxy))\)</span></li>
-</ul></li>
-<li><strong>First Recursion Theorem</strong>: every term has a fixed point (just apply a fixed point combinator to it).</li>
+<li><a href="notes/reductions.html">Reductions</a> (reductions, <span class="math inline">\(\lambda I\)</span>/affine/linear terms, <span class="math inline">\(\beta\)</span>/<span class="math inline">\(\eta\)</span>-reductions)</li>
+<li><a href="notes/nf.html">Normal forms</a> (NFs, normalizing, diamond/CR/unique-NF, <span class="math inline">\(\beta\)</span>/<span class="math inline">\(\eta\)</span> CR, commute)</li>
+<li><a href="notes/consistency.html">Consistency</a> (<span class="math inline">\(\lambda\beta\)</span>/<span class="math inline">\(\lambda\eta\)</span> consistent, <span class="math inline">\(\mathcal T_{\text{NF}}\)</span> inconsistent, Böhm’s Theorem)</li>
+<li><a href="notes/redstrats.html">Reduction strategies</a></li>
 </ul>
 		</main>
 		<!-- Generated body ends here -->

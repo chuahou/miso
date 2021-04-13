@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Syntax | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Syntax" class="title">LC, Syntax</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#lambda-terms"><span class="math inline">\(\lambda\)</span>-terms</a></li>
+<li><a href="#binding-of-variables">Binding of variables</a></li>
+<li><a href="#contexts">Contexts</a></li>
+</ul>
+</div>
+<h1 id="lambda-terms"><span class="math inline">\(\lambda\)</span>-terms</h1>
+<ul>
+<li>[1.1] <strong>Inductively-defined</strong> sets are the smallest sets for which a set of rules are all valid (conclusion holds whenever the side condition and premisses hold).
+<ul>
+<li><strong>Lemma 1.1.1.</strong> For inductively defined sets <span class="math inline">\(S\)</span> and <span class="math inline">\(T\)</span>, if every rule for <span class="math inline">\(S\)</span> is valid for <span class="math inline">\(T\)</span> then <span class="math inline">\(S \subseteq T\)</span>.</li>
+<li>[1.2] Structural induction using the same rules.</li>
+</ul></li>
+<li>[1.2] <strong>Set of <span class="math inline">\(\lambda\)</span> terms</strong> (<span class="math inline">\(\Lambda\)</span>) are finite strings defined by (notational conventions in notes)</li>
+</ul>
+<p><span class="math display">\[
+\frac{}{x \in \Lambda} \; x \in \mathcal V
+\hspace{2em}
+\frac{s \in \Lambda \;\;\; t \in \Lambda}{(st) \in \Lambda}
+\hspace{2em}
+\frac{s \in \Lambda}{(\lambda x.s) \in \Lambda} \; x \in \mathcal V
+\]</span></p>
+<ul>
+<li><strong>Subterms</strong> are substrings that are also terms, <strong>strict</strong> if they are not the full term. (Recursive rules in notes.) <strong>Strong structural induction</strong> on subterms.</li>
+</ul>
+<h1 id="binding-of-variables">Binding of variables</h1>
+<ul>
+<li>[1.4] Variables can be
+<ul>
+<li><strong>Bound</strong> by a <span class="math inline">\(\lambda\)</span>-abstraction (e.g. <span class="math inline">\(\lambda x.s\)</span> has bound <span class="math inline">\(x\)</span>), or</li>
+<li><strong>Free</strong> otherwise (inductive definition in notes).</li>
+</ul></li>
+<li><strong>Closed terms</strong> (<span class="math inline">\(\Lambda^0\)</span>) have no free variables.</li>
+</ul>
+<h1 id="contexts">Contexts</h1>
+<ul>
+<li>[1.6] A <strong>context</strong> <span class="math inline">\(C[X]\)</span> is a term with holes that can be <em>blindly</em> substituted for any term (<strong>contextual substitution</strong>).</li>
+<li>Blind substitution allows variables to be <strong>captured</strong>.</li>
+<li>Not considered up to <a href="#equational-theories"><span class="math inline">\(\alpha\)</span>-equivalence</a>, as <span class="math inline">\(C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv D[X]\)</span> but <span class="math inline">\(C[x] \equiv \lambda x.xx \not\equiv_\alpha \lambda y.yx \equiv D[x]\)</span>.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
