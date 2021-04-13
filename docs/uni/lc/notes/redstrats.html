@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Reduction strategies | chuahou.dev</title>
+		<title>LC, Reduction Strategies | chuahou.dev</title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
 	<body>
 		
 		<div id="header">
-			<h1 id="Reduction strategies" class="title">Reduction strategies</h1>
+			<h1 id="LC, Reduction Strategies" class="title">LC, Reduction Strategies</h1>
 			<p style="text-align:center; font-size:0.9em">
 				<code>
 					&dollar; cd
@@ -40,65 +40,36 @@
 		<main>
 		<div id="toc">
 <ul>
-<li><a href="#definitions">[3.1] Definitions</a>
-<ul>
-<li><a href="#general-form-for-terms">General form for terms</a></li>
-</ul></li>
-<li><a href="#strategies-for-beta-reduction">[3.1] Strategies for <span class="math inline">\(\beta\)</span>-reduction</a>
-<ul>
-<li><a href="#advancement-of-head-reduction">Advancement of head reduction</a></li>
-</ul></li>
-<li><a href="#reduction-sequences">[3.1] Reduction sequences</a>
-<ul>
-<li><a href="#standard-reduction-sequences">[3.2] Standard reduction sequences</a></li>
-</ul></li>
+<li><a href="#reduction-strategies">Reduction strategies</a></li>
+<li><a href="#reduction-sequences">Reduction sequences</a></li>
 </ul>
 </div>
-<h1 id="definitions">[3.1] Definitions</h1>
-<p>A <strong>reduction strategy</strong> <span class="math inline">\(\to\)</span> is a binary relation on <span class="math inline">\(\Lambda\)</span> such that it has a <em>unique reduction/choice of redex</em>, i.e. if <span class="math inline">\(s \to t_1\)</span> and <span class="math inline">\(s \to t_2\)</span>, then <span class="math inline">\(t_1 \equiv t_2\)</span>.</p>
-<p>Reduction strategies are <em>not</em> compatible with term formation rules, e.g. <span class="math inline">\(s \to t\)</span> does not mean <span class="math inline">\(\lambda x.s \to \lambda x.t\)</span>.</p>
-<h2 id="general-form-for-terms">General form for terms</h2>
-<p>All terms can be written in the form <span class="math display">\[
-\lambda x_1 \ldots x_m . u_1 \ldots u_n
-\]</span> where <span class="math inline">\(m \geq 0, n\geq 1\)</span> and <span class="math inline">\(u_1\)</span> is not an application (otherwise rename and shift).</p>
-<h1 id="strategies-for-beta-reduction">[3.1] Strategies for <span class="math inline">\(\beta\)</span>-reduction</h1>
+<h1 id="reduction-strategies">Reduction strategies</h1>
 <ul>
-<li><strong>Head reduction</strong> <span class="math inline">\(\overset{\!\!h}{\to}\)</span> reduces the <em>head redex</em> (underlined) <span class="math display">\[
-\lambda x_1\ldots x_m.\underline{(\lambda y.t)u}s_1\ldots s_n
+<li>[3.1] A binary relation on <span class="math inline">\(\Lambda\)</span> with unique choice of redex.</li>
+<li><strong>Head reduction</strong> <span class="math inline">\(\overset{\!\!h}{\to}\)</span> reduces the <em>head redex</em> (underlined) <span class="math display">\[ \lambda x_1\ldots x_m.\underline{(\lambda y.t)u}s_1\ldots s_n
 \overset{\!\!h}{\to}
 \lambda x_1\ldots x_m.\underline{t[u/y]}s_1\ldots s_n
 \]</span></li>
-<li><strong>Leftmost reduction</strong> <span class="math inline">\(\overset{\!l}{\to}\)</span> reduces the <em>leftmost redex</em> (note that <span class="math inline">\(\overset{\!\!h}{\to} \;\subset\; \overset{\!l}{\to}\)</span>)</li>
-<li><strong>Internal reduction</strong> <span class="math inline">\(\overset{\!i}{\to}\)</span> is <strong>NOT</strong> a reduction strategy, defined as any <span class="math inline">\(\to_\beta\)</span> that is not a head reduction</li>
+<li><strong>Leftmost reduction</strong> <span class="math inline">\(\overset{\!l}{\to}\)</span> reduces the <em>leftmost redex</em> (note that <span class="math inline">\(\overset{\!\!h}{\to} \;\subset\; \overset{\!l}{\to}\)</span>).</li>
+<li><strong>Internal reduction</strong> <span class="math inline">\(\overset{\!i}{\to}\)</span> is <strong>NOT</strong> a reduction strategy, defined as any <span class="math inline">\(\to_\beta\)</span> that is not a head reduction.</li>
+<li><strong>Advancement of head reduction (3.1.1).</strong> If <span class="math inline">\(s \twoheadrightarrow_\beta t\)</span> then there is some <span class="math inline">\(u\)</span> such that <span class="math inline">\(s \overset{\!\!h}{\twoheadrightarrow} u \overset{\!i}{\twoheadrightarrow} t\)</span>.</li>
 </ul>
-<p>The normal form for head reduction, <strong>head normal form</strong>/<strong>hnf</strong>, is a subset of <span class="math inline">\(\beta\)</span>-nf.</p>
-<h2 id="advancement-of-head-reduction">Advancement of head reduction</h2>
-<p>(Lemma 3.1.1). If <span class="math inline">\(s \twoheadrightarrow_\beta t\)</span> then there is some <span class="math inline">\(u\)</span> such that <span class="math inline">\(s \overset{\!\!h}{\twoheadrightarrow} u \overset{\!i}{\twoheadrightarrow} t\)</span>.</p>
-<h1 id="reduction-sequences">[3.1] Reduction sequences</h1>
-<p>A <strong>reduction sequence</strong> for term <span class="math inline">\(s\)</span> with binary relation <span class="math inline">\(\to\)</span> is a (possibly infinite) sequence <span class="math inline">\(s \to s_1 \to s_2 \to \ldots\)</span>.</p>
-<p>If <span class="math inline">\(\to\)</span> is a reduction <em>strategy</em>, then by definition it has a <em>unique</em> maximal reduction sequence that ends in a <span class="math inline">\(\to\)</span>-nf if finite, and infinite otherwise.</p>
-<h2 id="standard-reduction-sequences">[3.2] Standard reduction sequences</h2>
-<p>A <span class="math inline">\(\beta\)</span>-reduction sequence <span class="math inline">\(s \twoheadrightarrow_s t\)</span> is standard if it reduces redexes from left to right. More precisely,</p>
-<blockquote>
-<p><em>Start with the term <span class="math inline">\(s\)</span> written in black, and if <span class="math inline">\(s_i \to_\beta s_{i+1}\)</span> by reducing redex <span class="math inline">\(R = (\lambda x.p)q\)</span> in <span class="math inline">\(s_i\)</span>, then all <span class="math inline">\(\lambda\)</span>s to the left of this <span class="math inline">\(\lambda\)</span> are coloured red (frozen) in <span class="math inline">\(s_{i+1}\)</span>. Only redexes with a black <span class="math inline">\(\lambda\)</span> are allowed to reduce at each step in the sequence.</em></p>
-</blockquote>
-<p>For example, <span class="math display">\[
-\lambda x.(\underline\lambda y.(\lambda z.z)y)(\lambda w.x) \to_\beta
-\red\lambda x.(\underline\lambda z.z)(\lambda w.x) \to_\beta
-\red\lambda x.\lambda w.x
-\]</span> is standard, but not the below that reduces a red <span class="math inline">\(\red\lambda\)</span>. <span class="math display">\[
-\lambda x.(\lambda y.(\underline\lambda z.z)y)(\lambda w.x) \to_\beta
-\red\lambda x.(\underline\red\lambda y.y)(\lambda w.x) \to_\beta
-\red\lambda x.\lambda w.x
-\]</span></p>
-<h3 id="lemma-3.2.1">Lemma 3.2.1</h3>
+<h1 id="reduction-sequences">Reduction sequences</h1>
+<ul>
+<li>[3.1] A <strong>reduction sequence</strong> for term <span class="math inline">\(s\)</span> with binary relation <span class="math inline">\(\to\)</span> is a (possibly infinite) sequence <span class="math inline">\(s \to s_1 \to s_2 \to \ldots\)</span>.</li>
+<li>If <span class="math inline">\(\to\)</span> is a reduction <em>strategy</em>, then it has a <em>unique</em> maximal reduction sequence that ends in a <span class="math inline">\(\to\)</span>-nf if finite, and infinite otherwise.</li>
+<li>[3.2] A <strong>standard reduction sequence</strong> reduces redexes from left to right.
+<ul>
+<li><strong>Lemma 3.2.1.</strong>
 <ul>
 <li>Any subsequence of a standard reduction sequence is standard.</li>
 <li>Every <span class="math inline">\(\overset{\!l}{\to}\)</span>-reduction sequence is standard (and hence likewise for <span class="math inline">\(\overset{\!\!h}{\to}\)</span>).</li>
-<li>Every standard reduction ending in a <span class="math inline">\(\beta\)</span>-nf (i.e. <span class="math inline">\(s \twoheadrightarrow_s t\)</span> where <span class="math inline">\(t\)</span> is a <span class="math inline">\(\beta\)</span>-nf) is also a <span class="math inline">\(\overset{\!l}{\to}\)</span> reduction sequence.</li>
+<li>Every standard reduction ending in a <span class="math inline">\(\beta\)</span>-nf is a <span class="math inline">\(\overset{\!l}{\to}\)</span> reduction sequence.</li>
+</ul></li>
+<li><strong>Standardization theorem (3.2.2).</strong> If <span class="math inline">\(s \twoheadrightarrow_\beta t\)</span> then <span class="math inline">\(s \twoheadrightarrow_s t\)</span> (not necessarily the same sequence).</li>
+</ul></li>
 </ul>
-<h3 id="standardization-theorem">Standardization theorem</h3>
-<p>If <span class="math inline">\(s \twoheadrightarrow_\beta t\)</span> then <span class="math inline">\(s \twoheadrightarrow_s t\)</span> (not necessarily the same sequence).</p>
 		</main>
 		<!-- Generated body ends here -->
 

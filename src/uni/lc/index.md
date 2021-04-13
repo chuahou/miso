@@ -12,14 +12,10 @@ and applications.
 * [Syntax](notes/syntax.md)
   ($\lambda$-terms, free/bound variables and capture, contexts)
 * [Equational theories](notes/theories.md)
-  (equalities, theories, fixed points)
+  (equalities, theories, fixed points, consistency, Bohm's thm)
 * [Reductions](notes/reductions.md)
   (reductions, $\lambda I$/affine/linear terms)
-
-...
-
 * [Normal forms](notes/nf.md) (NFs, normalizing, diamond/CR/unique-NF,
-  $\beta$/$\eta$ CR, commute)
-* [Consistency](notes/consistency.md) ($\lambda\beta$/$\lambda\eta$ consistent,
-  $\mathcal T_{\text{NF}}$ inconsistent, Böhm's Theorem)
-* [Reduction strategies](notes/redstrats.md)
+  $\beta$/$\eta$/$\beta\eta$ CR)
+* [Reduction strategies](notes/redstrats.md) (strategies, red. sequences,
+  standard red. sequences)

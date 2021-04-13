@@ -43,6 +43,7 @@
 <li><a href="#notions-of-equality">Notions of equality</a></li>
 <li><a href="#theories">Theories</a></li>
 <li><a href="#fixed-points">Fixed points</a></li>
+<li><a href="#consistency">Consistency</a></li>
 </ul>
 </div>
 <h1 id="notions-of-equality">Notions of equality</h1>
@@ -82,7 +83,7 @@
 <li>[1.8] A theory is…
 <ul>
 <li>a <strong><span class="math inline">\(\lambda\)</span>-theory</strong> if all the <span class="math inline">\(\lambda\beta\)</span> rules are valid under it.</li>
-<li><strong>consistent</strong> if not all terms are equated under it.</li>
+<li><a href="#consistency"><strong>consistent</strong></a> if not all terms are equated under it.</li>
 <li><strong>maximally consistent/Hilbert-Post complete</strong> if adding any equations makes it inconsistent.</li>
 </ul></li>
 </ul>
@@ -95,6 +96,14 @@
 <li>Turing’s combinator: <span class="math inline">\(\bm \theta \equiv (\lambda xy.y(xxy))(\lambda xy.y(xxy))\)</span></li>
 </ul></li>
 <li><strong>First Recursion Theorem</strong>: every term has a fixed point (just apply a fixed point combinator to it).</li>
+</ul>
+<h1 id="consistency">Consistency</h1>
+<ul>
+<li><strong>Theorem 2.6.1.</strong> <span class="math inline">\(\lambda\beta\)</span> and <span class="math inline">\(\lambda\beta\eta\)</span> are consistent, as they do not equate <span class="math inline">\(\mathbf k\)</span> and <span class="math inline">\(\mathbf i\)</span>.</li>
+<li><strong>Lemma 2.6.2.</strong> <span class="math inline">\(\mathcal T_{\mathrm{NF}}\)</span> which equates closed terms without NFs, is inconsistent.</li>
+<li><strong>Bohm’s Theorem</strong> states that for any distinct closed <span class="math inline">\(\beta\eta\)</span>-NF terms, they can be applied to the same sequence of terms to give <span class="math inline">\(\mathbf t\)</span> and <span class="math inline">\(\mathbf f\)</span>.</li>
+<li><strong>Lemma 2.7.2.</strong> For any distinct closed <span class="math inline">\(\beta\)</span>(<span class="math inline">\(\eta\)</span>)-NF terms, they are not equal under <span class="math inline">\(\lambda\beta\)</span>(<span class="math inline">\(\eta\)</span>).</li>
+<li><strong>Lemma 2.7.1.</strong> Any <span class="math inline">\(\lambda\)</span>-theory that equates such terms is inconsistent.</li>
 </ul>
 		</main>
 		<!-- Generated body ends here -->

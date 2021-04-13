@@ -46,7 +46,7 @@ $$
 $$
 * [1.8] A theory is...
 	* a **$\lambda$-theory** if all the $\lambda\beta$ rules are valid under it.
-	* **consistent** if not all terms are equated under it.
+	* [**consistent**](#consistency) if not all terms are equated under it.
 	* **maximally consistent/Hilbert-Post complete** if adding any equations
 	  makes it inconsistent.
 
@@ -61,3 +61,16 @@ $$
 	  $\bm \theta \equiv (\lambda xy.y(xxy))(\lambda xy.y(xxy))$
 * **First Recursion Theorem**: every term has a fixed point (just apply a fixed
   point combinator to it).
+
+# Consistency
+
+* **Theorem 2.6.1.** $\lambda\beta$ and $\lambda\beta\eta$ are consistent, as
+  they do not equate $\mathbf k$ and $\mathbf i$.
+* **Lemma 2.6.2.** $\mathcal T_{\mathrm{NF}}$ which equates closed terms without
+  NFs, is inconsistent.
+* **Bohm's Theorem** states that for any distinct closed $\beta\eta$-NF terms,
+  they can be applied to the same sequence of terms to give $\mathbf t$ and
+  $\mathbf f$.
+* **Lemma 2.7.2.** For any distinct closed $\beta$($\eta$)-NF terms, they are
+  not equal under $\lambda\beta$($\eta$).
+* **Lemma 2.7.1.** Any $\lambda$-theory that equates such terms is inconsistent.
