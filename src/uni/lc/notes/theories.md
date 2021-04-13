@@ -10,7 +10,7 @@ title: LC, Equational Theories
   definition using variable swapping operation $(y\;x)\,\boldsymbol\cdot$)
 * [1.5] Terms are **$\beta$-convertible** (infix $\beta$) using
   **capture-avoiding substitution** (cf. [blind contextual
-  substitution](#contexts)).
+  substitution](syntax.html#contexts)).
 	* Substituting $t$ for every *free* occurrrence of variable $x$ in $s$ is
 	  written as $s[t/x]$, defined inductively in slides.
 	* $\beta$-conversion: $(\lambda x.s)t \;\beta\; s[t/x]$.

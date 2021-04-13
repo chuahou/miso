@@ -49,7 +49,7 @@
 <ul>
 <li><strong>Syntactic equality</strong> (<span class="math inline">\(\equiv\)</span>) equates terms that are the same string.</li>
 <li>[1.4] Terms are <strong><span class="math inline">\(\alpha\)</span>-convertible/equivalent</strong> (<span class="math inline">\(\equiv_\alpha\)</span>) if they are the same term up to renaming <em>bound</em> variables. (Slides show formal definition using variable swapping operation <span class="math inline">\((y\;x)\,\boldsymbol\cdot\)</span>)</li>
-<li>[1.5] Terms are <strong><span class="math inline">\(\beta\)</span>-convertible</strong> (infix <span class="math inline">\(\beta\)</span>) using <strong>capture-avoiding substitution</strong> (cf. <a href="#contexts">blind contextual substitution</a>).
+<li>[1.5] Terms are <strong><span class="math inline">\(\beta\)</span>-convertible</strong> (infix <span class="math inline">\(\beta\)</span>) using <strong>capture-avoiding substitution</strong> (cf. <a href="syntax.html#contexts">blind contextual substitution</a>).
 <ul>
 <li>Substituting <span class="math inline">\(t\)</span> for every <em>free</em> occurrrence of variable <span class="math inline">\(x\)</span> in <span class="math inline">\(s\)</span> is written as <span class="math inline">\(s[t/x]\)</span>, defined inductively in slides.</li>
 <li><span class="math inline">\(\beta\)</span>-conversion: <span class="math inline">\((\lambda x.s)t \;\beta\; s[t/x]\)</span>.</li>

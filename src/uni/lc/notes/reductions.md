@@ -1,23 +1,24 @@
 ---
-title: Reductions
+title: LC, Reductions
 ---
 
-# [2.1] Reduction
+# Reductions
 
-A **notion of reduction** or **redex rule** over a set $S$ is a binary relation
-on $S$. For our case, we consider reductions over $\Lambda$ [(or
-$\Lambda/\!\!\equiv_\alpha$)](theories.html#alpha-conversion).
+* [2.1] **Notion of reduction** or **redex rule** is a binary relation over a
+  set.
+* We consider reductions over $\Lambda$
+  [(or $\Lambda/\!\!\equiv_\alpha$)](theories.html#notions-of-equality).
 
 For a reduction $R$, we have
 
 * **one-step $R$ reduction $\to_R$** defined by
 
-\begin{aligned}
-(R) &\; \frac{}{s \to_R t} \; ((s, t) \in R) \\
-(\text{left-app}) &\; \frac{s \to_R t}{su \to_R tu} \\
-(\text{right-app}) &\; \frac{s \to_R t}{us \to_R ut} \\
-(\text{abs}) &\; \frac{s \to_R t}{\lambda x.s \to_R \lambda x.t}
-\end{aligned}
+$$
+(R) \; \frac{}{s \to_R t} \; ((s, t) \in R) \hspace{2em}
+(\text{abs}) \; \frac{s \to_R t}{\lambda x.s \to_R \lambda x.t} \\[3ex]
+(\text{left-app}) \; \frac{s \to_R t}{su \to_R tu} \hspace{2em}
+(\text{right-app}) \; \frac{s \to_R t}{us \to_R ut}
+$$
 
 * **reflexive closure** $\to_R^=$, with added rule
 
@@ -42,18 +43,14 @@ $$
 
 ## Alternative characterisations
 
-### Lemma 2.1.1
+* **Lemma 2.1.1.**
 
-* $s \to_R^+ t$ (transitive closure) iff for $n \geq 1$ and terms
-  $s_0,\ldots,s_n$,
-
-$$ s \equiv s_0 \to_R s_1 \to_R \ldots \to_R s_n \equiv t $$
-
-* $s \twoheadrightarrow_R t$ (reflexive and transitive closure) iff the same for
-  $n \geq 0$ (there can be 0 terms in between for reflexivity)
-
-* $s =_R t$ iff there is a zig-zag for some $n \geq 0$ and terms
-  $s_0, \ldots, s_{n-1}, t_1, \ldots, t_n$, given by
+	* $s \to_R^+ t$ iff
+	$s \equiv s_0 \to_R s_1 \to_R \ldots \to_R s_n \equiv t$ for $n \geq 1$
+	* $s \twoheadrightarrow_R t$ iff the same
+	  for $n \geq 0$
+	* $s =_R t$ iff there is a zig-zag for some $n \geq 0$ and terms
+	  $s_0, \ldots, s_{n-1}, t_1, \ldots, t_n$, given by
 
 ```{.tex .tikz width=70%}
 \node[anchor=east] (s0) at (0,0) {\(s \equiv s_0\)};
@@ -72,62 +69,37 @@ $$ s \equiv s_0 \to_R s_1 \to_R \ldots \to_R s_n \equiv t $$
 \draw[->>] (tn) -- (sn1);
 ```
 
-### Lemma 2.1.2
+* **Lemma 2.1.2.**  $s \to_R t$ iff there is a one-hole unary context $C[X]$ and
+  terms $u, v$ such that $C[u] \equiv s$ and $C[v] \equiv t$ and $u \; R \; v$.
+	* $u$ is a $R$-redex contracted to $v$.
 
-$s \to_R t$ iff there is a one-hole unary context $C[X]$ and terms
-$u, v$ such that $C[u] \equiv s$ and $C[v] \equiv t$ and $u \; R \; v$.
+# $\beta$-reduction
 
-We call $u$ a $R$-redex that is contracted to $v$.
+* [2.2] Uses the relation $\beta$ in
+  [$\beta$-conversion](theories.html#notions-of-equality)
+  ($(\lambda x.s)t \;\beta\; s[t/x]$).
+* Implements [$\lambda\beta$ theory](theories.html#theories)
+  ($s =_\beta t \iff \lambda\beta \vdash s = t$).
+* [2.3] A one-step reduction $\to_\beta$ with redex $(\lambda x.p)q$ contracted
+  to $p[q/x]$ is
+	* **cancelling** if $x$ does not occur free in $p$ (and is deleted), and
+	* **duplicating** if $x$ occurs at least twice in $p$ (and is duplicated).
+* [2.3] If for every $\lambda x.p$ in a term, $x$ occurs in $p$
+	* at least once, the term is a **$\lambda I$-term**. (non-cancelling)
+	* exactly once, the term is **affine**. (non-duplicating)
+	* at most once, the term is **linear**. (non-cancelling and non-duplicating)
+	* **Lemma 2.3.1.** If $s$ is a ???-term and $s \to_\beta t$ (or
+	  $s \to_{\beta\eta} t$) then so is $t$.
+	* **Lemma 2.3.2.** (bracketed results)
 
-# [2.2] $\beta$-reduction
+# $\eta$-reduction/expansion
 
-**$\beta$-reduction** uses the
-[relation $\beta$](theories.html#beta-conversion-1), defined as
-
-$$
-\beta = \{ \langle (\lambda x.s)t, s[t/x] \rangle \mid s, t \in \Lambda \}
-$$
-
-It *implements* the
-[$\lambda\beta$ theory](theories.html#standard-lambdabeta-theory), since
-$s =_\beta t \iff \lambda\beta \vdash s = t$.
-
-## [2.3] Types of reductions/terms
-
-For $s \to_\beta t$, where some redex in $s$ given by $(\lambda x.p)q$ is
-contracted to $p[q/x]$ in $t$, the reduction is
-
-* **cancelling** if $x$ does not occur free in $p$ and hence $q$ is deleted,
-* **duplicating** if $x$ occurs free in $p$ at least twice and hence $q$ is
-  replicated.
-
-If for every $\lambda x.p$ in a term $s$,
-
-* $x$ occurs free at least once in $p$, then $s$ is a **$\lambda I$-term**
-* $x$ occurs free at most once in $p$, then $s$ is **affine**/BCK
-* $x$ occurs free exactly once in $p$, then $s$ is **linear**/unitary/BCI.
-
-### Lemma 2.3.1/2.3.2
-
-If $s$ is a ???-term and $s \to_\beta t$ (or $s \to_{\beta\eta} t$), then $t$ is
-also a ???-term.
-
-If a term is
-
-* $\lambda I$, all $\beta$-reductions on it are non-cancelling
-* affine, all $\beta$-reductions on it are non-duplicating
-* linear, all $\beta$-reductions on it are non-cancelling and non-duplicating.
-
-# [2.2] $\eta$-reduction/expansion
-
-Based on [extensionality](theories.html#extensionality-lambdabetaeta),
-we can have
-
-* **$\eta$-reduction** given by
-  $\eta^{\operatorname{red}} = \{ \langle \lambda x.sx, s \rangle \mid s \in
-  \Lambda, x \notin \operatorname{FV}(s) \}$
-* **$\eta$-expansion** given by
-  $\eta^{\operatorname{exp}} = \{ \langle \lambda s, x.sx \rangle \mid s \in
-  \Lambda, x \notin \operatorname{FV}(s) \}$
-* $\beta\eta = \beta \cup \eta^{\operatorname{red}}$, which implements
-  [$\lambda\beta\eta$](theories.html#extensionality-lambdabetaeta).
+* [2.2] Based on [extensionality](theories.html#theories), we can have
+	* **$\eta$-reduction** given by $\eta^{\operatorname{red}} = \{ \langle
+	  \lambda x.sx, s \rangle \mid s \in \Lambda, x \notin \operatorname{FV}(s)
+	  \}$
+	* **$\eta$-expansion** given by $\eta^{\operatorname{exp}} = \{ \langle
+	  \lambda s, x.sx \rangle \mid s \in \Lambda, x \notin \operatorname{FV}(s)
+	  \}$
+	* $\beta\eta = \beta \cup \eta^{\operatorname{red}}$, which implements
+	  [$\lambda\beta\eta$](theories.html#theories).

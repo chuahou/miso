@@ -10,18 +10,14 @@ computation. Its most basic form consists of variables, $\lambda$-abstractions
 and applications.
 
 * [Syntax](notes/syntax.md)
-  ($\lambda$-terms [$\gets$](notes/syntax.html#lambda-terms),
-  free/bound variables and capture [$\gets$](notes/syntax.html#binding-of-variables),
-  contexts [$\gets$](notes/syntax.html#contexts))
+  ($\lambda$-terms, free/bound variables and capture, contexts)
 * [Equational theories](notes/theories.md)
-  (equalities [$\gets$](notes/theories.html#notions-of-equality),
-  theories [$\gets$](notes/theories.html#theories),
-  fixed points [$\gets$](notes/theories.html#fixed-points))
+  (equalities, theories, fixed points)
+* [Reductions](notes/reductions.md)
+  (reductions, $\lambda I$/affine/linear terms)
 
 ...
 
-* [Reductions](notes/reductions.md) (reductions, $\lambda I$/affine/linear
-  terms, $\beta$/$\eta$-reductions)
 * [Normal forms](notes/nf.md) (NFs, normalizing, diamond/CR/unique-NF,
   $\beta$/$\eta$ CR, commute)
 * [Consistency](notes/consistency.md) ($\lambda\beta$/$\lambda\eta$ consistent,
