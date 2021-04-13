@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Solvability | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Solvability" class="title">LC, Solvability</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[3.3] Closed <span class="math inline">\(s\)</span> is <strong>solvable</strong> if for some closed <span class="math inline">\(t\)</span>s, <span class="math inline">\(\lambda\beta \vdash st_1\ldots t_n = \mathbf i\)</span>.
+<ul>
+<li><span class="math inline">\(s\)</span> with <span class="math inline">\(\mathrm{FV}(s) \subseteq \{x_1, \ldots x_n\}\)</span> is solvable if <span class="math inline">\(\lambda x_1\ldots x_n.s\)</span> is solvable.</li>
+</ul></li>
+<li><strong>Lemma 3.3.2.</strong> Closed <span class="math inline">\(s\)</span> is solvable iff it has a <a href="redstrats.html#reduction-strategies">head NF</a>.</li>
+<li><strong>Genericity Lemma (3.3.3).</strong> For all unsolvable <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> having a <span class="math inline">\(\beta\)</span>-NF, and all one-hole contexts <span class="math inline">\(C[X]\)</span>, <span class="math inline">\(\lambda\beta \vdash C[s] = t \implies \forall u. C[u] = t\)</span>.</li>
+<li>Theories that equate unsolvables
+<ul>
+<li><span class="math inline">\(\mathcal H = \lambda\beta + \{ s = t \mid s,t \text{ closed and
+unsolvable} \}\)</span></li>
+<li><span class="math inline">\(\mathcal H^* = \lambda\beta + \{ s = t \mid \forall C[X].\, C[s] \text{ solvable} \iff C[t] \text{ solvable} \}\)</span></li>
+<li>Both are consistent (see notes).</li>
+</ul></li>
+<li>Theories that
+<ul>
+<li>equate all unsolvable terms are <strong>sensible</strong>.</li>
+<li>do not equate an unsolvable term with a solvable term are <strong>semi-sensible</strong>.</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

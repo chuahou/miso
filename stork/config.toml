@@ -10,6 +10,7 @@ files = [
 	{title = "LC, Reductions", url = "https://chuahou.dev/miso/uni/lc/notes/reductions.html", path = "docs/uni/lc/notes/reductions.html"},
 	{title = "LC, Syntax", url = "https://chuahou.dev/miso/uni/lc/notes/syntax.html", path = "docs/uni/lc/notes/syntax.html"},
 	{title = "LC, Equational Theories", url = "https://chuahou.dev/miso/uni/lc/notes/theories.html", path = "docs/uni/lc/notes/theories.html"},
+	{title = "LC, Solvability", url = "https://chuahou.dev/miso/uni/lc/notes/solvability.html", path = "docs/uni/lc/notes/solvability.html"},
 ]
 
 [output]

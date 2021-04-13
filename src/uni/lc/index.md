@@ -19,3 +19,5 @@ and applications.
   $\beta$/$\eta$/$\beta\eta$ CR)
 * [Reduction strategies](notes/redstrats.md) (strategies, red. sequences,
   standard red. sequences)
+* [Solvability](notes/solvability.md) (solvability, genericity, theories
+  $\mathcal H$, $\mathcal H^*$, sensible, semi-sensible)
