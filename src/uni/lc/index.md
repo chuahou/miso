@@ -14,7 +14,9 @@ by Andrew Ker.*
   premisses hold).
 	* **Lemma 1.1.1.** For inductively defined sets $S$ and $T$, if every rule
 	  for $S$ is valid for $T$ then $S \subseteq T$.
+	* [1.2] Structural induction using the same rules.
 * [1.2] **Set of $\lambda$ terms** ($\Lambda$) are finite strings defined by
+  (notational conventions in notes)
 
 $$
 \frac{}{x \in \Lambda} \; x \in \mathcal V
@@ -24,27 +26,9 @@ $$
 \frac{s \in \Lambda}{(\lambda x.s) \in \Lambda} \; x \in \mathcal V
 $$
 
-* Notational conventions include abstractions $\lambda x.$ binding as far right
-  as possible, and
-
-$$
-(\lambda x.s) \equiv \lambda x.s \hspace{1em}
-(((wx)y)z) \equiv wxyz \\[1ex]
-\lambda x.\lambda y.s \equiv \lambda xy.s \hspace{1em}
-f(\lambda x.s) \equiv f\lambda x.s
-$$
-
 * **Subterms** are substrings that are also terms, **strict** if they are not
-  the full term. (Recursive rules in notes.)
-
-## Structural induction
-
-* [1.2] **Structural induction** on terms done with
-	* Base case on variables ($P(x)$ for all $x \in \mathcal V$), and
-	* Recursive cases for application and abstraction.
-* **Strong induction** done with
-	* Same base case, and
-	* Inductive case "if $P(s)$ for every *strict subterm* $s$".
+  the full term. (Recursive rules in notes.) **Strong structural induction** on
+  subterms.
 
 ## Binding of variables
 
@@ -58,9 +42,8 @@ $$
 
 * [1.6] A **context** $C[X]$ is a term with holes that can be *blindly*
   substituted for any term (**contextual substitution**).
-* Blind substitution allows variables to be **captured**, e.g.
-  $C[x] \equiv \lambda x.xx$ from above has $x$ being captured.
-* Not considered up to $\alpha$-equivalence, as
+* Blind substitution allows variables to be **captured**.
+* Not considered up to [$\alpha$-equivalence](#equational-theories), as
   $C[X] \equiv \lambda x.xX \equiv_\alpha \lambda y.yX \equiv D[X]$
   but
   $C[x] \equiv \lambda x.xx \not\equiv_\alpha \lambda y.yx \equiv D[x]$.
@@ -102,10 +85,8 @@ $$
 $$
 (\beta) \; \frac{}{(\lambda x.s) t = s[t/x]}
 $$
-* Functions are **extensionally equal** iff they have the same output for the
-  same input on all inputs.
-	* Represented by the $\eta$ rule, which when added to $\lambda\beta$ gives
-	  the $\lambda\beta\eta$ theory.
+* **Extensional equality** by $\eta$ rule, which when added to $\lambda\beta$
+  gives the $\lambda\beta\eta$ theory.
 $$
 (\eta) \; \frac{}{\lambda x.sx = s} \; x \notin \operatorname{FV}(s)
 $$
