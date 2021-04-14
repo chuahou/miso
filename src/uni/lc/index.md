@@ -21,3 +21,5 @@ and applications.
   standard red. sequences)
 * [Solvability](notes/solvability.md) (solvability, genericity, theories
   $\mathcal H$, $\mathcal H^*$, sensible, semi-sensible)
+* [Computation](notes/computation.md) (bools/$\mathbb N$/lists,
+  recursive functions, $\lambda$-definable, undecidability)

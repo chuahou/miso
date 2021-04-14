@@ -11,6 +11,7 @@ title: LC, Solvability
 * **Genericity Lemma (3.3.3).** For all unsolvable $s$ and $t$ having a
   $\beta$-NF, and all one-hole contexts $C[X]$,
   $\lambda\beta \vdash C[s] = t \implies \forall u. C[u] = t$.
+	* Means unsolvalbe terms are *computationally insignificant*.
 * Theories that equate unsolvables
 	* $\mathcal H = \lambda\beta + \{ s = t \mid s,t \text{ closed and
 	  unsolvable} \}$

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Computation | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Computation" class="title">LC, Computation</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#encodings">Encodings</a>
+<ul>
+<li><a href="#booleans">Booleans</a></li>
+<li><a href="#church-numerals">Church numerals</a></li>
+<li><a href="#lists">Lists</a></li>
+</ul></li>
+<li><a href="#recursion">Recursion</a>
+<ul>
+<li><a href="#total-recursive-functions">Total recursive functions</a></li>
+<li><a href="#partially-recursive-functions">Partially recursive functions</a></li>
+</ul></li>
+<li><a href="#undecidability">Undecidability</a></li>
+</ul>
+</div>
+<h1 id="encodings">Encodings</h1>
+<h2 id="booleans">Booleans</h2>
+<ul>
+<li>[4] Representation as selectors of values
+<span class="math display">\[\begin{aligned}
+\mathbf t &amp;\equiv \lambda xy.x &amp;
+\mathbf f &amp;\equiv \lambda xy.y \\
+\mathbf{and} &amp;\equiv \lambda xy.xy\mathbf f &amp;
+\mathbf{or} &amp;\equiv \lambda xy.x\mathbf ty
+\end{aligned}\]</span></li>
+<li>If-else simply applies value, <span class="math inline">\(\mathbf{cond} \equiv \mathbf i\)</span></li>
+</ul>
+<h2 id="church-numerals">Church numerals</h2>
+<ul>
+<li>[4.1] Encodes natural number <span class="math inline">\(n\)</span> as <span class="math inline">\(n\)</span>-fold composition, <span class="math inline">\(\;\ulcorner\! n \!\urcorner\; \equiv \lambda fx.f(f(f\ldots(f\,x))\ldots)\)</span></li>
+<li>Combinators given by
+<span class="math display">\[\begin{aligned}
+\mathbf{succ} &amp;\equiv \lambda nfx.f(nfx) &amp;
+\mathbf{zero?} &amp;\equiv \lambda n.n(\lambda x.\mathbf f)\mathbf t \\
+\mathbf{add} &amp;\equiv \lambda mnfx.mf(nfx) &amp;
+\mathbf{mult} &amp;\equiv \lambda mnf.m(nf)
+\end{aligned}\]</span></li>
+</ul>
+<h2 id="lists">Lists</h2>
+<ul>
+<li>Encode <span class="math inline">\(\mathbf{nil}\)</span> as <span class="math inline">\(\lambda xy.y \equiv \mathbf f\)</span></li>
+<li>Encode <span class="math inline">\(h :: L\)</span> as <span class="math inline">\(\lambda xy.xhL\)</span></li>
+<li>Operations, using <span class="math inline">\(\mathbf\Omega\)</span> to diverge for empty lists: <span class="math display">\[
+\mathbf{isempty?} \equiv \lambda l.l(\lambda xy.\mathbf f)\mathbf t \\[.5ex]
+\mathbf{head} \equiv \lambda l.l(\lambda xy.x)\mathbf\Omega \hspace{1em}
+\mathbf{tail} \equiv \lambda l.l(\lambda xy.y)\mathbf\Omega
+\]</span></li>
+</ul>
+<h1 id="recursion">Recursion</h1>
+<p>Recursion can be implemented using <a href="theories.html#fixed-points"><em>fixed point combinators</em></a> (example in slides).</p>
+<h2 id="total-recursive-functions">Total recursive functions</h2>
+<ul>
+<li>[4.2] <span class="math inline">\(\phi : \mathbb N^m \to \mathbb N\)</span> is <strong><span class="math inline">\(\lambda\)</span>-definable</strong> by term <span class="math inline">\(f\)</span> if <span class="math inline">\(f \;\ulcorner\! n_1 \!\urcorner\; \ldots \;\ulcorner\! n_m \!\urcorner\; \twoheadrightarrow_\beta \;\ulcorner\! \phi(n_1,\ldots,n_m) \!\urcorner\;\)</span>.</li>
+<li><strong>Total recursive functions</strong> is set <span class="math inline">\(\mathcal R_0\)</span> inductively defined by
+<ul>
+<li>Initial functions: zero, successor, projections <span class="math inline">\(\langle n_1, \ldots n_m \rangle \mapsto n_i\)</span></li>
+<li>Composition (<span class="math inline">\(\bm n\)</span> is vector) <span class="math display">\[\frac{
+  \chi: \mathbb N^m \to \mathbb N \in \mathcal R_0 \hspace{1.5em}
+  \psi_i: \mathbb N^l \to \mathbb N \in \mathcal R_0
+  \text{ for } 1 \leq i \leq m
+}{
+  \bm n \mapsto \chi(\psi_1(\bm n), \ldots, \psi_m(\bm n)) \in \mathcal R_0
+}\]</span></li>
+<li>Primitive recursion <span class="math display">\[\frac{
+  \chi: \mathbb N^m \to \mathbb N \in \mathcal R_0 \hspace{1.5em}
+  \psi: \mathbb N^{m+2} \to \mathbb N \in \mathcal R_0
+}{
+  \phi = \langle k, \bm n \rangle \mapsto
+  \begin{cases}
+  \chi(\bm n) &amp;k = 0 \text{ (base case)} \\
+  \psi(\phi(k-1, \bm n), k-1, \bm n) &amp;k &gt; 0 \text{ (recursive)}
+  \end{cases} \in \mathcal R_0
+}\]</span></li>
+<li>Minimisation (to <span class="math inline">\(0\)</span>) for <span class="math inline">\(\bm n\)</span> where <span class="math inline">\(\exists k.\,\chi(k, \bm n) = 0\)</span> <span class="math display">\[\frac{
+  \chi: \mathbb N^{m+1} \to \mathbb N \in \mathcal R_0
+}{
+  (\bm n \mapsto \text{least $k$ such that $\chi(k, \bm n) = 0$})
+  \in \mathcal R_0
+}\]</span></li>
+</ul></li>
+<li><strong>Theorem 4.2.1.</strong> Function is recursive iff it is <span class="math inline">\(\lambda\)</span>-definable.
+<ul>
+<li>Effectively computable functions are recursive (Church Thesis).</li>
+<li><span class="math inline">\(\lambda\)</span>-definable functions closed under rules for <span class="math inline">\(\mathcal R_0\)</span>.</li>
+</ul></li>
+</ul>
+<h2 id="partially-recursive-functions">Partially recursive functions</h2>
+<ul>
+<li>[4.4] <span class="math inline">\(\phi: \mathbb N^m \to \mathbb N\)</span> is <strong>strongly <span class="math inline">\(\lambda\)</span>-definable</strong> by term <span class="math inline">\(f\)</span> if
+<ul>
+<li><span class="math inline">\(f \;\ulcorner\! n_1 \!\urcorner\; \ldots \;\ulcorner\! n_m \!\urcorner\; = \;\ulcorner\! \phi(n_1,\ldots,n_m) \!\urcorner\;\)</span> if <span class="math inline">\(\phi(n_1, \ldots, n_m)\)</span> is defined</li>
+<li>and is unsolvable otherwise.</li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/General_recursive_function"><strong>Partially recursive functions</strong></a> are the same as <a href="#total-recursive-functions">total recursive functions</a> but partial functions are allowed.
+<ul>
+<li>Requirement for minimisation removed.</li>
+<li>Composition is strict (undefined if any of the composed functions undefined).</li>
+</ul></li>
+<li><strong>Turing Completeness.</strong> Function partially recursive iff strongly <span class="math inline">\(\lambda\)</span>-definable.</li>
+</ul>
+<h1 id="undecidability">Undecidability</h1>
+<ul>
+<li>[4.3] <strong>Gödel numbering</strong> for <span class="math inline">\(\lambda\)</span>-terms <span class="math inline">\(\sharp:\Lambda \to \mathbb N\)</span>.
+<ul>
+<li><span class="math inline">\(\;\ulcorner\!\!\ulcorner\! s \!\urcorner\!\!\urcorner\; = \;\ulcorner\! \sharp s \!\urcorner\;\)</span></li>
+<li>Recursive functions that are <span class="math inline">\(\lambda\)</span>-definable <span class="math inline">\(\mathrm{app}(\sharp s, \sharp t) = \sharp(st)\)</span> and <span class="math inline">\(\mathrm{gnum}(n) = \sharp \,\ulcorner\! n \!\urcorner\;\)</span></li>
+</ul></li>
+<li><strong>Second Recursion Theorem 4.3.1.</strong> Every term <span class="math inline">\(f\)</span> has term <span class="math inline">\(u\)</span> s.t. <span class="math inline">\(\lambda\beta \vdash f \;\ulcorner\!\!\ulcorner\!u\!\urcorner\!\!\urcorner\; = u\)</span>.</li>
+<li><strong>Scott-Curry Theorem 4.3.2.</strong> For nonempty <span class="math inline">\(A, B \subseteq \Lambda\)</span> closed under <span class="math inline">\(\beta\)</span>, there is no <span class="math inline">\(f\)</span> such that for <span class="math inline">\(s\)</span>, <span class="math inline">\(f \;\ulcorner\!\!\ulcorner\!s\!\urcorner\!\!\urcorner\; = \mathbf t \text{ or } \mathbf f\)</span> and <span class="math inline">\(f \;\ulcorner\!\!\ulcorner\!s\!\urcorner\!\!\urcorner\; = \begin{cases} \mathbf t &amp; s \in A \\ \mathbf f &amp; s \in B \end{cases}\)</span></li>
+<li><strong>Corollary 4.3.3.</strong> Nontrivial <span class="math inline">\(A \subseteq \Lambda\)</span> closed under <span class="math inline">\(\beta\)</span> is not recursive.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
