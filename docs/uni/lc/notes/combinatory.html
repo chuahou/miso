@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Combinatory Logic | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Combinatory Logic" class="title">LC, Combinatory Logic</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#combinatory-logic">Combinatory logic</a>
+<ul>
+<li><a href="#translations">Translations</a></li>
+</ul></li>
+<li><a href="#combinatory-algebras">Combinatory algebras</a></li>
+</ul>
+</div>
+<h1 id="combinatory-logic">Combinatory logic</h1>
+<ul>
+<li>[5.1] <strong>CL-terms</strong>, <span class="math inline">\(\mathcal T_\mathrm{CL}\)</span>, given by <span class="math display">\[
+\newcommand\TCL{\mathcal T_\mathrm{CL}}
+\newcommand\hspc{\hspace{1.5em}}
+\frac{}{x \in \TCL} \, x \in \mathcal V \hspc
+\frac{}{\mathbf K \in \TCL} \hspc
+\frac{}{\mathbf S \in \TCL} \hspc
+\frac{A \in \TCL \;\; B \in \TCL}{(A \cdot B) \in \TCL}
+\]</span>
+<ul>
+<li>No free variables or abstractions, no <span class="math inline">\(\alpha\)</span>-conversion.</li>
+</ul></li>
+<li>Equality given by (cf. <a href="theories.html#theories"><span class="math inline">\(\lambda\beta\)</span> equality</a>) <span class="math inline">\(CL \vdash\)</span> <span class="math display">\[
+\newcommand\hspc{\hspace{1.5em}}
+(\text{refl.}) \; \frac{}{A = A} \hspc
+(\text{symm.}) \; \frac{A = B}{B = A} \hspc
+(\text{trans.}) \; \frac{A = B\;\;B = C}{A = C} \\[1.8ex]
+(\text{application}) \; \frac{A = A'\;\;B = B'}{AB = A'B'} \\[1.6ex]
+(\mathbf K) \; \frac{}{\mathbf KAB = A} \hspc
+(\mathbf S) \; \frac{}{\mathbf SABC = AC(BC)}
+\]</span>
+<ul>
+<li>Write <span class="math inline">\(\mathbf I \equiv \mathbf{SKK}\)</span>.</li>
+</ul></li>
+<li>[5.2] <strong>Abstraction</strong> meta-operation (not part of syntax) <span class="math display">\[
+\newcommand\llambda{\lambda\hspace{-0.43em}\lambda}
+\begin{aligned}
+\llambda x.x &amp;\equiv \mathbf{SKK} \equiv \mathbf I \\
+\llambda x.B &amp;\equiv \mathbf KB &amp; \text{$x$ not in $B$} \\
+\llambda x.BC &amp;\equiv \mathbf S(\llambda x.B)(\llambda x.C) &amp; \text{$x$ in $BC$}
+\end{aligned}
+\]</span>
+<ul>
+<li><strong>Lemma 5.2.1.</strong> <span class="math inline">\(\lambda\hspace{-0.43em}\lambda\)</span> simulates <span class="math inline">\(\beta\)</span>-reduction.
+<ul>
+<li><span class="math inline">\(x\)</span> does not occur in <span class="math inline">\(\lambda\hspace{-0.43em}\lambda x.A\)</span>.</li>
+<li><span class="math inline">\(CL \vdash (\lambda\hspace{-0.43em}\lambda x.A)B = A[B/x]\)</span>.</li>
+<li>if <span class="math inline">\(x \neq y\)</span> and <span class="math inline">\(x\)</span> not in <span class="math inline">\(B\)</span> then <span class="math inline">\(CL \vdash (\lambda\hspace{-0.43em}\lambda x.A)[B/y] = \lambda\hspace{-0.43em}\lambda x.(A[B/y])\)</span>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="translations">Translations</h2>
+<ul>
+<li>[5.3] <strong>Translations</strong> between <span class="math inline">\(\lambda\)</span>-calculus and CL
+<span class="math display">\[\begin{aligned}
+x_{cl} &amp;\equiv x &amp;
+x_\lambda &amp;\equiv x \\
+(\lambda x.s)_{cl} &amp;\equiv \lambda\hspace{-0.43em}\lambda x.s_{cl} &amp;
+(AB)_\lambda &amp;\equiv A_\lambda B_\lambda \\
+(st)_{cl} &amp;\equiv s_{cl}t_{cl} &amp;
+\mathbf K_\lambda &amp;\equiv \mathbf k \\
+&amp;&amp; \mathbf S_\lambda &amp;\equiv \mathbf s
+\end{aligned}\]</span></li>
+<li><strong>Lemma 5.3.1.</strong>
+<ul>
+<li><span class="math inline">\(\lambda\beta \vdash (\lambda\hspace{-0.43em}\lambda x.A)_\lambda = \lambda x.A_\lambda\)</span></li>
+<li><span class="math inline">\(\lambda\beta \vdash (s_{cl})_\lambda = s\)</span></li>
+<li><span class="math inline">\(CL \vdash A = B \implies \lambda\beta \vdash A_\lambda = B_\lambda\)</span></li>
+<li><span class="math inline">\(\lambda\beta\)</span> equality equates more than <span class="math inline">\(CL\)</span> equality.</li>
+</ul></li>
+<li>Strengthening <span class="math inline">\(CL\)</span> to ~<span class="math inline">\(\lambda\beta\)</span>
+<ul>
+<li>Adding extensionality: too strong, closer to <span class="math inline">\(\lambda\beta\eta\)</span></li>
+<li><span class="math inline">\(CL + \text{WExt} + \text{K-Ext} + \text{S-Ext}\)</span> perfect (see sheet 3).</li>
+<li>Adding 5 axioms also works (see notes).</li>
+</ul></li>
+</ul>
+<h1 id="combinatory-algebras">Combinatory algebras</h1>
+<ul>
+<li>[5.5] <strong>Combinatory algebra</strong> is set <span class="math inline">\(\mathcal A\)</span>, binop <span class="math inline">\(\bullet\)</span>, <span class="math inline">\(K, S \in \mathcal A\)</span> s.t. <span class="math display">\[
+K \bullet X \bullet Y = X \hspace{1.5em}
+S \bullet X \bullet Y \bullet Z = X \bullet Z (Y \bullet Z)
+\]</span>
+<ul>
+<li>Never commutative, associative or finite.</li>
+</ul></li>
+<li><strong>Denotation</strong> <span class="math inline">\((A)_\rho\)</span> of <span class="math inline">\(A \in \mathcal T_{cl}\)</span> in environment <span class="math inline">\(\rho : \mathcal V \to \mathcal A\)</span> given inductively by <span class="math display">\[
+(x)_\rho = \rho(x) \hspace{1.5em}
+(\mathbf K)_\rho = K \hspace{1.5em}
+(\mathbf S)_\rho = S \hspace{1.5em}
+(A \cdot B)_\rho = (A)_\rho \bullet (B)_\rho
+\]</span>
+<ul>
+<li><strong>Denotation of <span class="math inline">\(\lambda\)</span>-term</strong> <span class="math inline">\(\llbracket s \rrbracket_\rho = (s_{cl})_\rho\)</span></li>
+</ul></li>
+<li><strong>Lemma 5.5.1.</strong> <span class="math inline">\(CL \vdash A = B \iff\)</span> for <em>all</em> algebras and <em>all</em> environments, <span class="math inline">\((A)_\rho = (B)_\rho\)</span>.</li>
+<li><strong><span class="math inline">\(\lambda\)</span>-algebra</strong> is CA s.t.
+<ul>
+<li><span class="math inline">\(\lambda\beta \vdash A_\lambda = B_\lambda \implies \forall \rho. (A)_\rho = (B)_\rho\)</span>, OR</li>
+<li><span class="math inline">\(\lambda\beta \vdash s = t \implies \forall \rho. \llbracket s \rrbracket_\rho = \llbracket t \rrbracket_\rho\)</span> and <span class="math inline">\(\llbracket\mathbf k \rrbracket = K\)</span> and <span class="math inline">\(\llbracket\mathbf s \rrbracket = S\)</span></li>
+</ul></li>
+<li><strong>Theorem 5.5.3.</strong> Every CA is <strong>combinatory complete</strong>, i.e. for CL term <span class="math inline">\(T\)</span> with free vars in <span class="math inline">\(x_1, \ldots, x_n\)</span>, there is <span class="math inline">\(F \in \mathcal A\)</span> for all <span class="math inline">\(A_i\)</span>s s.t. in <span class="math inline">\(\rho : x_i \mapsto A_i\)</span> <span class="math display">\[
+(T)_\rho = F \bullet A_1 \bullet \ldots \bullet A_n
+\]</span></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

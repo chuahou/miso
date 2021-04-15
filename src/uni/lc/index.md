@@ -23,3 +23,5 @@ and applications.
   $\mathcal H$, $\mathcal H^*$, sensible, semi-sensible)
 * [Computation](notes/computation.md) (bools/$\mathbb N$/lists,
   recursive functions, $\lambda$-definable, undecidability)
+* [Combinatory logic](notes/combinatory.md) (CL, translations, CAs,
+  $\lambda$-algebras, comb. completeness)
