@@ -25,3 +25,5 @@ and applications.
   recursive functions, $\lambda$-definable, undecidability)
 * [Combinatory logic](notes/combinatory.md) (CL, translations, CAs,
   $\lambda$-algebras, comb. completeness)
+* [Simple types](notes/types.md) ($\text{TA}_\lambda$, typing, typability,
+  strongly normalizability)

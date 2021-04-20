@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Simple Types | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Simple Types" class="title">LC, Simple Types</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#currys-textta_lambda">Curry’s <span class="math inline">\(\text{TA}_\lambda\)</span></a></li>
+<li><a href="#typability">Typability</a></li>
+</ul>
+</div>
+<h1 id="currys-textta_lambda">Curry’s <span class="math inline">\(\text{TA}_\lambda\)</span></h1>
+<ul>
+<li>[6.1] Types (set <span class="math inline">\(\mathbf{Typ}\)</span>) given by <span class="math display">\[
+\frac{}{a \in \mathbf{Typ}}\;(a \in \mathcal{TV})
+\hspace{2em}
+\frac{A \in \mathbf{Typ} \;\;\;\; B \in \mathbf{Typ}}{(A \Rightarrow B) \in
+\mathbf{Typ}}
+\]</span></li>
+<li><strong>Type context</strong> is <span class="math inline">\(\{ x_i : A_i \}\)</span> where <span class="math inline">\(x_i \in \mathcal V\)</span> and <span class="math inline">\(A_i \in \mathbf{Typ}\)</span>, for distinct <span class="math inline">\(x_i\)</span>.
+<ul>
+<li>Contexts <strong>consistent</strong> if they don’t disagree on any variable’s type.</li>
+<li><strong>Subjects</strong> are <span class="math inline">\(\operatorname{Subj}(\{x_i : A_i\}) = \{x_i\}\)</span>.</li>
+<li><span class="math inline">\(\Gamma \upharpoonright s\)</span> is <span class="math inline">\(\Gamma\)</span> <strong>restricted</strong> to <span class="math inline">\(\operatorname{FV}(s)\)</span>.</li>
+</ul></li>
+<li>Typing relations between contexts, <span class="math inline">\(\Lambda\)</span> and <span class="math inline">\(\mathbf{Typ}\)</span> are
+<ul>
+<li><span class="math inline">\(\mapsto\)</span>
+<span class="math display">\[\begin{aligned}
+(\text{var})\;&amp;\frac{}{\{x:A\} \mapsto x:A} \\[2ex]
+(\text{app})\;&amp;\frac{\Gamma \mapsto s: B \Rightarrow A \;\;\;
+  \Delta \mapsto t:B}
+  {\Gamma \cup \Delta \mapsto st:A}
+  \;\;\;\text{$\Gamma, \Delta$ consistent} \\[2ex]
+(\text{abs})\;&amp;\frac{\Gamma \mapsto s:A}
+  {\Gamma - x \mapsto \lambda x.s: B \Rightarrow A}
+  \;\;\;\text{$\Gamma, \{x:B\}$ consistent}
+\end{aligned}\]</span></li>
+<li><span class="math inline">\(\vdash\)</span> (“proves”): <span class="math inline">\(\Gamma \vdash s:A \iff \exists \Gamma' \subseteq \Gamma \text{ s.t. } \Gamma' \mapsto s:A\)</span></li>
+<li><span class="math inline">\(\vdash\)</span> supports <strong>weakening</strong> but <span class="math inline">\(\mapsto\)</span> does not.</li>
+</ul></li>
+<li><strong>Relevance Lemma 6.1.1.</strong>
+<ul>
+<li>If <span class="math inline">\(\Gamma \mapsto s:A\)</span> then <span class="math inline">\(\operatorname{Subj}(\Gamma) = \operatorname{FV}(s)\)</span>.</li>
+<li>If <span class="math inline">\(\Gamma \vdash s:A\)</span> then <span class="math inline">\(\Gamma \upharpoonright s \mapsto s:A\)</span>.</li>
+</ul></li>
+<li><strong>Subject Construction Lemma 6.2.1.</strong>
+<ul>
+<li>Deduction tree for type has same structure as construction tree for term.</li>
+<li>Subtree is construction tree for deduction at its root.</li>
+<li>Final step is of form
+<span class="math display">\[\begin{aligned}
+\text{If $s \equiv x$,}&amp;&amp;
+  &amp;\frac{}{\{x:A\} \mapsto x:A} \;\;(\text{var}) \\[2ex]
+\text{If $s \equiv pq$,}&amp;&amp;
+  &amp;\frac{\Gamma \upharpoonright p \mapsto p: B \Rightarrow A
+  \;\;\;
+  \Gamma \upharpoonright q \mapsto q: B}
+  {\Gamma \mapsto pq:A} \;\;(\text{app}) \\[2ex]
+\text{If $s \equiv \lambda x.p$,}&amp;&amp;
+  &amp;\frac{\Gamma \red{\cup \{x:B\}} \mapsto p:A}
+  {\Gamma \mapsto \lambda x.p : B \Rightarrow A}
+  \;\;(\text{abs})\hspace{1em}\text{\red{if $x \in \operatorname{FV}(p)$}}
+\end{aligned}\]</span></li>
+</ul></li>
+<li><strong><span class="math inline">\(\alpha\)</span>-invariance Lemma 6.2.2.</strong> <span class="math inline">\(\alpha\)</span>-equivalent terms have the same type.</li>
+<li><strong>Substitution Lemma 6.2.3.</strong>
+<ul>
+<li>If
+<ul>
+<li><span class="math inline">\(\Gamma \cup \{x:B\} \mapsto s:A\)</span> with <span class="math inline">\(x \notin \operatorname{Subj}(\Gamma)\)</span></li>
+<li><span class="math inline">\(\Delta \mapsto t:B\)</span></li>
+<li><span class="math inline">\(\Gamma\)</span> and <span class="math inline">\(\Delta\)</span> consistent, <span class="math inline">\(x \notin \operatorname{FV}(t)\)</span></li>
+</ul></li>
+<li>Then <span class="math inline">\(\Gamma \cup \Delta \mapsto s[t/x] : A\)</span>.</li>
+</ul></li>
+<li>[6.3] <strong>Subject Reduction Theorem.</strong> If <span class="math inline">\(\Gamma \vdash s:A\)</span>, and <span class="math inline">\(s \to_\beta t\)</span> then <span class="math inline">\(\Gamma \vdash t:A\)</span>.
+<ul>
+<li><strong>Subject expansion</strong> does <em>not</em> hold.</li>
+</ul></li>
+</ul>
+<h1 id="typability">Typability</h1>
+<ul>
+<li>[7.1] Term <strong>typable</strong> if some context proves it has some type.
+<ul>
+<li><strong>Lemma 7.1.1.</strong> Typability closed under <em>subterms, abstraction, <span class="math inline">\(\beta\)</span>-reduction</em>.</li>
+<li>[Lecture 14] <a href="https://en.wikipedia.org/wiki/Programming_Computable_Functions">PCF</a> used to make untypable things into constants instead.</li>
+</ul></li>
+<li>[7.2] All typable terms are <a href="nf.html#normal-forms">strongly normalizable</a>.
+<ul>
+<li>Long proofs given in Lecture 15/Chapter 7.</li>
+</ul></li>
+<li><strong>Corollary 7.3.1.</strong> Equality of typable terms is decidable.</li>
+<li><strong>Corollary 7.3.2.</strong> <span class="math inline">\(\text{TA}_\lambda\)</span> has no fixed-point combinators.</li>
+<li>[7.3] <span class="math inline">\(\text{TA}_\lambda\)</span> terms define the <a href="https://arxiv.org/pdf/cs/0701022.pdf"><strong>extended polynomials</strong></a>.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
