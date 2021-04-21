@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC, Principal Typing | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="LC, Principal Typing" class="title">LC, Principal Typing</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#principal-typing">Principal typing</a></li>
+<li><a href="#unification">Unification</a></li>
+<li><a href="#hindleys-algorithm">Hindley’s algorithm</a></li>
+</ul>
+</div>
+<h1 id="principal-typing">Principal typing</h1>
+<ul>
+<li>[8.1] <strong>Type substitution</strong> <span class="math inline">\(\mathbb S : TV \to \mathbf{Typ}\)</span>.
+<ul>
+<li>Extended to <span class="math inline">\(\mathbf{Typ} \to \mathbf{Typ}\)</span>.</li>
+<li>Written <span class="math inline">\([A_1/a_1, \ldots, A_n/a_n]\)</span> for distinct <span class="math inline">\(a_i\)</span>s.</li>
+<li><strong>Identity/empty</strong> substitution <span class="math inline">\(\mathbb E\)</span>.</li>
+<li>[Lecture 16] Support <span class="math inline">\(\operatorname{Supp}(\mathbb S)\)</span> is set of variables <span class="math inline">\(a_i\)</span>s of non-trivial components <span class="math inline">\([A_i/a_i]\)</span>.</li>
+<li>[8.2] <strong>Composition</strong> <span class="math inline">\(\circ\)</span> and <strong>union</strong> <span class="math inline">\(\cup\)</span> the obvious way.</li>
+<li>[Lecture 17] <strong>Restriction</strong> <span class="math inline">\(\upharpoonright\)</span> to subset of <span class="math inline">\(TV\)</span>.</li>
+</ul></li>
+<li><span class="math inline">\(A'\)</span> is an <strong>instance</strong> of <span class="math inline">\(A\)</span> if <span class="math inline">\(\mathbb S(A) \equiv A'\)</span> for some <span class="math inline">\(\mathbb S\)</span>.
+<ul>
+<li><span class="math inline">\(A\)</span> is <strong>generalization</strong> of <span class="math inline">\(A'\)</span>.</li>
+</ul></li>
+<li><strong>Principal type</strong> <span class="math inline">\(A\)</span> of <span class="math inline">\(s\)</span> is such that
+<ul>
+<li><span class="math inline">\(\Gamma \vdash s:A\)</span> for some <span class="math inline">\(\Gamma\)</span>, and</li>
+<li>If <span class="math inline">\(\Delta \vdash s:B\)</span> then <span class="math inline">\(B\)</span> is an instance of <span class="math inline">\(A\)</span>.</li>
+</ul></li>
+<li><strong>Principal deduction</strong> <span class="math inline">\(\bm\Delta_s\)</span> is typing deduction such that any other deduction is an instance of it.
+<ul>
+<li><strong>Lemma 8.1.1.</strong> If <span class="math inline">\(\bm\Delta\)</span> is a typing deduction then so is <span class="math inline">\(\mathbb S(\bm\Delta)\)</span>.</li>
+</ul></li>
+</ul>
+<h1 id="unification">Unification</h1>
+<ul>
+<li>[8.3] <strong>Unifier</strong> <span class="math inline">\(\mathbb U\)</span> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> such that <span class="math inline">\(\mathbb U(A) \equiv \mathbb U(B)\)</span> (called <strong>unification</strong>).</li>
+<li><strong>Most general unifier</strong> <span class="math inline">\(\mathbb U\)</span> (m.g.u.) for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> such that any <span class="math inline">\(\mathbb S\)</span> has <span class="math inline">\(\mathbb T\)</span> such that <span class="math inline">\(\mathbb T \circ \mathbb U = \mathbb S\)</span>.
+<ul>
+<li>Unique up to renaming type variables.</li>
+</ul></li>
+<li><strong>Theorem 8.3.2.</strong> Every pair of unifiable types has a m.g.u.
+<ul>
+<li><a href="https://dl.acm.org/doi/10.1145/321250.321253">Robinson’s algorithm</a> for finding m.g.u. given in notes. Start with <span class="math inline">\(\mathbb E\)</span> and add <span class="math inline">\([C/c] \,\circ\)</span> each iteration.</li>
+</ul></li>
+</ul>
+<h1 id="hindleys-algorithm">Hindley’s algorithm</h1>
+<ul>
+<li>[8.4] Outputs principal deduction <span class="math inline">\(\bm\Delta_s\)</span> or that <span class="math inline">\(s\)</span> is untypable.</li>
+<li>Recursive on term structure
+<ul>
+<li>Variable case <span class="math inline">\(x\)</span>: Pick any <span class="math inline">\(a \in TV\)</span>. Proof obvious. <span class="math display">\[\overline{\{x:a\} \mapsto x:a}\]</span></li>
+<li>Abstraction case <span class="math inline">\(\lambda x.p\)</span>: Recurse on <span class="math inline">\(p\)</span>. Proof by subject construction.
+<div style="color:red">
+Red parts if <span class="math inline">\(x \in \operatorname{FV}(p)\)</span>.
+</div>
+<span class="math display">\[
+\frac{\{\red{x:A,} \ldots\} \mapsto p:B}
+  {\{\ldots\} \mapsto \lambda x.p: A \Rightarrow B}
+\]</span></li>
+<li>Application case <span class="math inline">\(pq\)</span>: Recurse on <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, obtaining (with no common type variables) <span class="math display">\[
+\{\vec x:\vec A, \vec z:\vec C\} \mapsto p:P \\[1ex]
+\{\vec y:\vec B, \vec z:\vec D\} \mapsto q:Q
+\]</span>
+<ul>
+<li>If <span class="math inline">\(P \equiv E \Rightarrow F\)</span> then unify <span class="math inline">\(\langle \vec C, E \rangle\)</span> with <span class="math inline">\(\langle \vec D, Q \rangle\)</span>. <span class="math display">\[
+\frac{\mathbb U(\bm\Delta_p) \hspace{4em} \mathbb U(\bm\Delta_q)}
+  {\{\vec x:\mathbb U(\vec A), \vec y:\mathbb U(B), \vec z:\mathbb U(C)\}
+  \mapsto pq:\mathbb U(F)}
+\]</span></li>
+<li>Otherwise <span class="math inline">\(P \equiv a\)</span> then unify <span class="math inline">\(\langle \vec C, a \rangle\)</span> with <span class="math inline">\(\langle \vec D, Q \Rightarrow f \rangle\)</span>. <span class="math display">\[
+\frac{\mathbb U(\bm\Delta_p) \hspace{4em} \mathbb U(\bm\Delta_q)}
+  {\{\vec x:\mathbb U(\vec A), \vec y:\mathbb U(B), \vec z:\mathbb U(C)\}
+  \mapsto pq:\mathbb U(f)}
+\]</span></li>
+</ul></li>
+</ul></li>
+<li>[8.5] <strong>Corollary.</strong> Typable terms have effectively computable principal types.</li>
+<li><strong>Corollary 8.5.1.</strong> These are decidable:
+<ul>
+<li>Given <span class="math inline">\(s\)</span> and <span class="math inline">\(A\)</span>, does <span class="math inline">\(\Gamma \vdash s:A\)</span>?</li>
+<li>Given <span class="math inline">\(s\)</span>, does <span class="math inline">\(\Gamma \vdash s:A\)</span>?</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

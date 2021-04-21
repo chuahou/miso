@@ -27,3 +27,5 @@ and applications.
   $\lambda$-algebras, comb. completeness)
 * [Simple types](notes/types.md) ($\text{TA}_\lambda$, typing, typability,
   strongly normalizability)
+* [Principal typing](notes/printyp.md) (principal types/deductions, unification,
+  Hindley's algo)
