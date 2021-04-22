@@ -16,6 +16,3 @@ files = [
 	{title = "LC, Simple Types", url = "https://chuahou.dev/miso/uni/lc/notes/types.html", path = "docs/uni/lc/notes/types.html"},
 	{title = "LC, Principal Typing", url = "https://chuahou.dev/miso/uni/lc/notes/printyp.html", path = "docs/uni/lc/notes/printyp.html"},
 ]
-
-[output]
-filename = "stork/index.st"

@@ -38,10 +38,7 @@ done
 # End off configuration file.
 cat >> $CONFIG_FILE <<EOF
 ]
-
-[output]
-filename = "${OUTPUT_FILE}"
 EOF
 
 # Update index.
-stork --build $CONFIG_FILE
+stork build --input $CONFIG_FILE --output $OUTPUT_FILE
