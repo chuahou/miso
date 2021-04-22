@@ -41,6 +41,6 @@ Incomplete summaries yet to be transferred may be found
 	* Machine Learning
 * Hilary
 	* Algorithms and Data Structures
-	* Concurrent Programming
+	* [Concurrent Programming](cp/index.md)
 	* Computational Complexity
 	* [Lambda Calculus](lc/index.md)

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CP, Basics | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="CP, Basics" class="title">CP, Basics</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[1.6] <strong>Processes</strong>/<strong>threads</strong> implement concurrent tasks. They can communicate using shared memory (threads) or using system calls (processes).</li>
+<li>[1.7] Advantages include speed, more intuitive design for multi-task systems, and taking advantage of distributed computing.</li>
+<li>Some definitions are:
+<ul>
+<li>[1.7] Structures
+<ul>
+<li><strong>Data-parallel</strong>: do same thing on different parts of data.</li>
+<li><strong>Task-parallel</strong>: do different things.</li>
+</ul></li>
+<li>[1.27] <strong>Atomic</strong> actions cannot be interrupted.</li>
+<li>Actions are <strong>independent</strong> if reversing their order has no effect.</li>
+<li>[1.33] Correctness properties
+<ul>
+<li><strong>Safety</strong>: system satisfies invariant after every action (being correct).</li>
+<li><strong>Liveness</strong>: system does something useful overall.</li>
+</ul></li>
+<li>Performance properties
+<ul>
+<li><strong>Latency</strong>: requests are serviced quickly.</li>
+<li><strong>Throughput</strong>: high number of requests processed overall.</li>
+</ul></li>
+<li>[4.10] <strong>Fairness</strong> means no request/event is starved.
+<ul>
+<li><strong>Equable</strong> if all equally served.</li>
+</ul></li>
+<li>[2.30] <strong>Happens-before</strong> preorder (refl. &amp; trans.) <span class="math inline">\(\preceq\)</span>.</li>
+</ul></li>
+<li>[1.25, 3.52] CSO basics</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>proc { ... }    <span class="co">// process</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">run</span>(p: PROC)    <span class="co">// run process</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>p.<span class="fu">fork</span>          <span class="co">// run in parallel to current thread</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>p || q          <span class="co">// parallel composition</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>|| (<span class="kw">for</span> (...) <span class="kw">yield</span> proc { ...})</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="fu">exit</span>()          <span class="co">// stop thread pool</span></span></code></pre></div>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

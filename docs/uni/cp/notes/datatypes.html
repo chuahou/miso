@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CP, Datatypes | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="CP, Datatypes" class="title">CP, Datatypes</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[7.2] <strong>Concurrent datatypes</strong> can be <em>concurrently</em> accessed by multiple threads.</li>
+<li>[7.4] Users can’t check preconditions easily due to <a href="https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use">TOCTTOU</a>.
+<ul>
+<li>[7.6] <strong>Total</strong> operations use e.g. <code>Option</code> to handle invalid preconditions.</li>
+<li><strong>Partial</strong> operations block till precondition holds.
+<ul>
+<li>[7.25] Partial implementations must beware deadlocks.</li>
+<li>[7.28] E.g. terminate when all workers waiting.</li>
+</ul></li>
+</ul></li>
+<li>[7.9] <a href="patterns.html#clientserver">Server</a> has private sequential datatype, processing operations one by one.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
