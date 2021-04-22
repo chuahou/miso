@@ -7,10 +7,8 @@
     # unstable branch used for HLS
     unstable.url = "nixpkgs/nixpkgs-unstable";
 
-    stork = {
-      url   = "github:jameslittle230/stork/v1.1.0";
-      flake = false;
-    };
+    # own branch with stork added
+    add-stork.url = "github:chuahou/nixpkgs/add-stork";
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, ... }:
@@ -37,12 +35,8 @@
     });
 
     storkOverlay = self: super: {
-      stork = super.rustPlatform.buildRustPackage {
-        pname       = "stork";
-        version     = "v1.1.0";
-        src         = inputs.stork;
-        cargoSha256 = "sha256-BAdNrj8OqG93c177w0SsnLFUQXW9dXVgBagaZT3CxmM=";
-      };
+      stork = super.callPackage
+        "${inputs.add-stork}/pkgs/applications/misc/stork" {};
     };
 
   in rec {
