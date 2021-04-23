@@ -13,6 +13,9 @@ resources.
 * [Message passing](notes/message.md)
 * [Design patterns](notes/patterns.md)
 * [Datatypes](notes/datatypes.md)
+* [Synchronization](notes/sync.md)
+* [Monitors](notes/monitors.md)
+* [Semaphores](notes/semaphores.md)
 * [Testing](notes/testing.md)
 
 ## Resources

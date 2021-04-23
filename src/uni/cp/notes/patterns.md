@@ -71,3 +71,20 @@ title: CP, Design Patterns
 			\draw[<->] (\n) -- (\n\c);
 		}
 ```
+
+# Others
+
+* [11.3] **Recursive parallelism**.
+	* Calculate directly for base case, recurse by spawning parallel processes.
+	* [11.6] Need to limit number spawned.
+	* [11.9] Also consider [bag-of-tasks](#bag-of-tasks) with replacement.
+* [11.10] **Parallel collections** as [in
+  Scala](https://docs.scala-lang.org/overviews/parallel-collections/overview.html).
+* [11.11] **Competition parallel**.
+	* In problems where different algorithms perform well/badly in different
+	  situations, run in parallel and use result of first to finish.
+* [11.12] **Task-parallel**.
+* [11.14] [**MapReduce**](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf).
+* [11.18] **Futures** where value computed while execution continues, e.g.
+  [Scala](https://docs.scala-lang.org/overviews/core/futures.html).
+* [11.21] **Lock-free programming** allowing race conditions.

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CP, Semaphores | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="CP, Semaphores" class="title">CP, Semaphores</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[12.2] Basic operations
+<ul>
+<li><code>down</code>/<code>P</code>/<code>wait</code>/<code>acquire</code></li>
+<li><code>up</code>/<code>V</code>/<code>signal</code>/<code>release</code></li>
+</ul></li>
+<li>[12.3] <a href="https://www.cs.ox.ac.uk/teaching/materials20-21/concurrentprogramming/doc/io/threadcso/semaphore/Semaphore.html">CSO implementation</a>
+<ul>
+<li><code>BooleanSemaphore(initiallyAvailable: Boolean)</code></li>
+<li><code>MutexSemaphore = BooleanSemaphore(true)</code></li>
+<li><code>SignallingSemaphore = BooleanSemaphore(false)</code></li>
+<li>[12.39] <a href="https://www.cs.ox.ac.uk/teaching/materials20-21/concurrentprogramming/doc/io/threadcso/semaphore/CountingSemaphore.html"><code>CountingSemaphore(available: Int)</code></a>
+<ul>
+<li>Internal value = # permits for <code>down</code>s.</li>
+</ul></li>
+<li>[12.38] <code>...Semaphore(fair = true)</code> to provide fairness to waiters.</li>
+</ul></li>
+<li>[12.7] Easy to deadlock when acquiring multiple semaphores.</li>
+<li>[12.11] Multiple <code>up</code>s before <code>down</code> means subsequent signals are lost.
+<ul>
+<li>[12.12] Ensure <span class="math inline">\(\texttt{up}_1 \prec \texttt{down}_1 \prec \texttt{up}_2\)</span>.</li>
+</ul></li>
+<li>[12.16] <strong>Passing the baton</strong>. First thread <code>down</code>s mutex, signals to second thread, second thread <code>up</code>s mutex.
+<ul>
+<li>Waiting thread must lift mutex before waiting (otherwise deadlock).</li>
+</ul></li>
+<li>[12.27] Ephemeral semaphores can be used like ephemeral reply channels.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

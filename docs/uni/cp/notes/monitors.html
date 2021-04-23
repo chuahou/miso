@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CP, Monitors | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="CP, Monitors" class="title">CP, Monitors</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[9.2] Lower level primitives than <a href="message.html">channels</a>.</li>
+<li>[9.4] <strong>Mutual exclusion</strong> so that at most one of some ops performed at a time.</li>
+<li>[9.6] Scala <a href="https://www.scala-lang.org/api/current/scala/AnyRef.html"><code>AnyRef</code>s</a> are monitors with <code>obj.synchronized { ... }</code> blocks.
+<ul>
+<li>At most one thread active in a monitor’s <code>synchronized</code> block.</li>
+<li>[9.20] Suspended waiting with <code>wait()</code>, <code>notify()</code>, <code>notifyAll()</code>.
+<ul>
+<li>[9.21] Beware spurious wake-ups. Use <code>while (!cond) wait();</code></li>
+<li>[9.24] Scala uses <strong>signal-and-continue</strong> (block with <code>notify()</code> completes first), vs <strong>signal-and-wait</strong>.</li>
+</ul></li>
+<li>[9.26] <code>wait(t)</code> with timeout <code>t</code>.</li>
+</ul></li>
+<li>[10.6] <a href="https://www.cs.ox.ac.uk/teaching/materials20-21/concurrentprogramming/doc/io/threadcso/monitor/Monitor.html">CSO <code>Monitor</code>s</a> allow targeted notifications (but slower).
+<ul>
+<li>[10.7] <code>Condition</code> to wait on with <code>monitor.newCondition</code>.</li>
+<li><code>await()</code>, <code>await(cond)</code>, <code>signal()</code>, <code>signalAll()</code> on <code>Condition</code>.</li>
+</ul></li>
+<li>Fine-grained locking
+<ul>
+<li>[9.10] Separate locks or [9.11] striped locking</li>
+<li>[9.12] Lock shards (disjoint subsets of object by hash) independently.</li>
+</ul></li>
+<li>[9.14] Java <a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html"><code>Lock</code>s</a> for explicit locking with <code>lock()</code>, <code>unlock()</code>, <code>tryLock()</code>.</li>
+<li>[10.24] Signals may be lost if notification sent before waiting.
+<ul>
+<li>[10.25] Consider drawing sequence diagrams.</li>
+<li>[10.29] Use state variables (especially in quiescent/inactive states).</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
