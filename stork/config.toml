@@ -5,6 +5,8 @@ files = [
 	{title = "Search", url = "https://chuahou.dev/miso/misc/search.html", path = "docs/misc/search.html"},
 	{title = "Algorithms and Data Structures", url = "https://chuahou.dev/miso/uni/ads/index.html", path = "docs/uni/ads/index.html"},
 	{title = "ADS, Amortized Analysis", url = "https://chuahou.dev/miso/uni/ads/notes/amortized.html", path = "docs/uni/ads/notes/amortized.html"},
+	{title = "ADS, Red-Black Diagrams", url = "https://chuahou.dev/miso/uni/ads/notes/bst-rb-diag.html", path = "docs/uni/ads/notes/bst-rb-diag.html"},
+	{title = "ADS, BSTs", url = "https://chuahou.dev/miso/uni/ads/notes/bst.html", path = "docs/uni/ads/notes/bst.html"},
 	{title = "ADS, Union-Find", url = "https://chuahou.dev/miso/uni/ads/notes/uf.html", path = "docs/uni/ads/notes/uf.html"},
 	{title = "Concurrent Programming", url = "https://chuahou.dev/miso/uni/cp/index.html", path = "docs/uni/cp/index.html"},
 	{title = "CP, Basics", url = "https://chuahou.dev/miso/uni/cp/notes/basics.html", path = "docs/uni/cp/notes/basics.html"},

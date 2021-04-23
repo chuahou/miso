@@ -7,6 +7,7 @@ no-toc: true
 
 * [Amortized analysis](notes/amortized.md)
 * [Union-find](notes/uf.md)
+* [Binary search trees](notes/bst.md)
 
 ## Resources
 
