@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ADS, Union-Find | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="ADS, Union-Find" class="title">ADS, Union-Find</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<p><span class="math inline">\(\Rightarrow\)</span> CLRS 21.</p>
+<ul>
+<li>[2.2] Maintain collection <span class="math inline">\(\mathcal F\)</span> of <em>disjoint</em> sets.
+<ul>
+<li><strong>Representative</strong> element <span class="math inline">\(\operatorname{rep}(S)\)</span> of <span class="math inline">\(S \in \mathcal F\)</span>.</li>
+<li><code>Make-Set(x)</code>: add <span class="math inline">\(\{x\}\)</span> to <span class="math inline">\(\mathcal F\)</span>.</li>
+<li><code>Find-Set(x)</code>: return <span class="math inline">\(\operatorname{rep}(S) \in \mathcal F\)</span> where <span class="math inline">\(x \in S\)</span>.</li>
+<li><code>Union(x, y)</code>: replace <span class="math inline">\(S \ni x\)</span> and <span class="math inline">\(T \ni y\)</span> with <span class="math inline">\(S \cup T\)</span>.</li>
+<li><span class="math inline">\(n\)</span> elements and <span class="math inline">\(m\)</span> operations in analysis.</li>
+</ul></li>
+<li>[2.5] Array and linked list methods have slow <span class="math inline">\(\mathcal O(n)\)</span> <code>Union</code>.</li>
+<li>[2.8] Linked list with weighted union.
+<ul>
+<li>Append shorter list to longer list.</li>
+<li>Total <span class="math inline">\(\mathcal O(m + n \log n)\)</span> time.</li>
+</ul></li>
+<li>[2.10] <strong>Disjoint-set forests</strong>.
+<ul>
+<li>Each set is a tree with <span class="math inline">\(\operatorname{rep}\)</span> as root.</li>
+<li>Each element has parent pointer.</li>
+<li><span class="math inline">\(\mathcal O(1)\)</span> <code>Make-Set</code>, <span class="math inline">\(\mathcal O(h)\)</span> <code>Find-Set</code> and <code>Union</code> where <span class="math inline">\(h\)</span> is tree height.</li>
+<li>[2.11] <strong>Link-by-height</strong>: link shorter tree root to taller tree.
+<ul>
+<li>[2.13] Tree with height <span class="math inline">\(k\)</span> has <span class="math inline">\(\geq 2^k\)</span> nodes.</li>
+<li><span class="math inline">\(\mathcal O(h) = \mathcal O(\log n)\)</span>.</li>
+</ul></li>
+<li>[2.15] <strong>Path compression</strong>: during <code>Find-Set</code>, set parent of every element passed to root.
+<ul>
+<li>[2.17] Track <strong>rank</strong> as we did height, then rank <span class="math inline">\(\geq h\)</span> (<span class="math inline">\(h = \mathcal O(\log n)\)</span>).</li>
+<li>[2.18] Amortized <span class="math inline">\(\mathcal O(\log^* n)\)</span> (<span class="math inline">\(n \leq 2^{65536} \implies \log^* n \leq 5\)</span>).</li>
+</ul></li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

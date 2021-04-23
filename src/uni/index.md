@@ -40,7 +40,7 @@ Incomplete summaries yet to be transferred may be found
 	* Computer Security
 	* Machine Learning
 * Hilary
-	* Algorithms and Data Structures
+	* [Algorithms and Data Structures](ads/index.md)
 	* [Concurrent Programming](cp/index.md)
 	* Computational Complexity
 	* [Lambda Calculus](lc/index.md)
