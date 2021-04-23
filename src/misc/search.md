@@ -9,5 +9,6 @@ head-extra: <link rel="stylesheet" type="text/css" href="/stork/basic.css"/>
 <script src="/stork/stork.js"></script>
 <script>
 	stork.initialize("../stork/stork.wasm");
-	stork.register("stork", "../stork/index.st");
+	stork.downloadIndex("stork", "../stork/index.st");
+	stork.attach("stork");
 </script>
