@@ -71,3 +71,29 @@ $\Rightarrow$ CLRS 12/13.
 	  $\mathcal O(\log n)$.
 	* [Diagrams](bst-rb-diag.md).
 	* Cases maintain black-height property and remove red-red violation.
+* `Delete` similar but more complicated.
+
+# Splay trees
+
+* [4.5] **Splay trees** self-adjusting with no extra data, amortized $\mathcal
+  O(\log n)$.
+	* Splay accessed item to root.
+	* Frequently accessed items near root.
+* Operations
+	* [4.7] `Splay` operation until item is root.
+		* Zig-zig: rotate parent and grandparent, rotate self and parent.
+		* Zig-zag: rotate self and parent, rotate self and grandparent.
+		* If item not in tree, splay successor/predecessor.
+	* [4.8] `Search`: just `Splay`. `Insert`: insert normally then `Splay`.
+	  `Delete`: `Splay`, then replace root with predecessor.
+		* $\mathcal O(1)$ calls to `Splay`, amortized $\mathcal O(\log n)$
+		  `Splay`.
+* [4.15] **Access lemma**: Charge of splaying node $x$ at most
+  $1 + 3(r'(x) - r(x))$.
+	* [4.14] $r(x)$ is $\log$ of no. of nodes in subtree of $x$.
+	* [4.20] **General access lemma**: at most $1 + 3 \log (\sum W / w_x)$.
+* [4.2] **Statically optimal tree** $T^*$ has minimum aggregate look-up cost for
+  given access probabilities.
+	* [4.23] Splay trees within constant factor of statically optimal tree.
+	* [Conjecture](https://en.wikipedia.org/wiki/Splay_tree#Dynamic_optimality_conjecture):
+	  within constant factor of *dynamically* optimal tree.

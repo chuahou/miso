@@ -44,6 +44,7 @@
 <ul>
 <li><a href="#bsts">BSTs</a></li>
 <li><a href="#red-black-trees">Red-black trees</a></li>
+<li><a href="#splay-trees">Splay trees</a></li>
 </ul>
 </div>
 <h1 id="bsts">BSTs</h1>
@@ -93,6 +94,38 @@
 <li>First case <span class="math inline">\(\mathcal O(\log n)\)</span> times, second and third case once. Total <span class="math inline">\(\mathcal O(\log n)\)</span>.</li>
 <li><a href="bst-rb-diag.html">Diagrams</a>.</li>
 <li>Cases maintain black-height property and remove red-red violation.</li>
+</ul></li>
+<li><code>Delete</code> similar but more complicated.</li>
+</ul>
+<h1 id="splay-trees">Splay trees</h1>
+<ul>
+<li>[4.5] <strong>Splay trees</strong> self-adjusting with no extra data, amortized <span class="math inline">\(\mathcal O(\log n)\)</span>.
+<ul>
+<li>Splay accessed item to root.</li>
+<li>Frequently accessed items near root.</li>
+</ul></li>
+<li>Operations
+<ul>
+<li>[4.7] <code>Splay</code> operation until item is root.
+<ul>
+<li>Zig-zig: rotate parent and grandparent, rotate self and parent.</li>
+<li>Zig-zag: rotate self and parent, rotate self and grandparent.</li>
+<li>If item not in tree, splay successor/predecessor.</li>
+</ul></li>
+<li>[4.8] <code>Search</code>: just <code>Splay</code>. <code>Insert</code>: insert normally then <code>Splay</code>. <code>Delete</code>: <code>Splay</code>, then replace root with predecessor.
+<ul>
+<li><span class="math inline">\(\mathcal O(1)\)</span> calls to <code>Splay</code>, amortized <span class="math inline">\(\mathcal O(\log n)\)</span> <code>Splay</code>.</li>
+</ul></li>
+</ul></li>
+<li>[4.15] <strong>Access lemma</strong>: Charge of splaying node <span class="math inline">\(x\)</span> at most <span class="math inline">\(1 + 3(r'(x) - r(x))\)</span>.
+<ul>
+<li>[4.14] <span class="math inline">\(r(x)\)</span> is <span class="math inline">\(\log\)</span> of no. of nodes in subtree of <span class="math inline">\(x\)</span>.</li>
+<li>[4.20] <strong>General access lemma</strong>: at most <span class="math inline">\(1 + 3 \log (\sum W / w_x)\)</span>.</li>
+</ul></li>
+<li>[4.2] <strong>Statically optimal tree</strong> <span class="math inline">\(T^*\)</span> has minimum aggregate look-up cost for given access probabilities.
+<ul>
+<li>[4.23] Splay trees within constant factor of statically optimal tree.</li>
+<li><a href="https://en.wikipedia.org/wiki/Splay_tree#Dynamic_optimality_conjecture">Conjecture</a>: within constant factor of <em>dynamically</em> optimal tree.</li>
 </ul></li>
 </ul>
 		</main>
