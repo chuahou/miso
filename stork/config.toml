@@ -8,6 +8,7 @@ files = [
 	{title = "ADS, Red-Black Diagrams", url = "https://chuahou.dev/miso/uni/ads/notes/bst-rb-diag.html", path = "docs/uni/ads/notes/bst-rb-diag.html"},
 	{title = "ADS, BSTs", url = "https://chuahou.dev/miso/uni/ads/notes/bst.html", path = "docs/uni/ads/notes/bst.html"},
 	{title = "ADS, Union-Find", url = "https://chuahou.dev/miso/uni/ads/notes/uf.html", path = "docs/uni/ads/notes/uf.html"},
+	{title = "ADS, Flow Networks", url = "https://chuahou.dev/miso/uni/ads/notes/flownet.html", path = "docs/uni/ads/notes/flownet.html"},
 	{title = "Concurrent Programming", url = "https://chuahou.dev/miso/uni/cp/index.html", path = "docs/uni/cp/index.html"},
 	{title = "CP, Basics", url = "https://chuahou.dev/miso/uni/cp/notes/basics.html", path = "docs/uni/cp/notes/basics.html"},
 	{title = "CP, Datatypes", url = "https://chuahou.dev/miso/uni/cp/notes/datatypes.html", path = "docs/uni/cp/notes/datatypes.html"},

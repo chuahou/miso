@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ADS, Flow Networks | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="ADS, Flow Networks" class="title">ADS, Flow Networks</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#flow-networks">Flow Networks</a></li>
+<li><a href="#ford-fulkerson-and-friends">Ford-Fulkerson and friends</a></li>
+<li><a href="#applications">Applications</a>
+<ul>
+<li><a href="#bipartite-matching">Bipartite matching</a></li>
+<li><a href="#min-cost-perfect-matching">Min-cost perfect matching</a></li>
+<li><a href="#circulation-with-demands">Circulation with demands</a></li>
+</ul></li>
+</ul>
+</div>
+<p><span class="math inline">\(\Rightarrow\)</span> Kleinberg &amp; Tardos 7.1/7.2/7.3</p>
+<h1 id="flow-networks">Flow Networks</h1>
+<ul>
+<li>[5.3] <strong>Flow network</strong> is <span class="math inline">\((G, s, t, c)\)</span>
+<ul>
+<li>Digraph <span class="math inline">\(G\)</span> with source <span class="math inline">\(s\)</span>, sink <span class="math inline">\(t\)</span>.</li>
+<li>Capacity function <span class="math inline">\(c : E \to \mathbb Z^+\)</span>.</li>
+<li>Assume no anti-parallel edges, no edges into <span class="math inline">\(s\)</span> or out of <span class="math inline">\(t\)</span>.</li>
+</ul></li>
+<li>[5.4] <strong><span class="math inline">\(s\)</span>-<span class="math inline">\(t\)</span> cut</strong> partitions vertices <span class="math inline">\((A, B)\)</span> with <span class="math inline">\(s \in A\)</span>, <span class="math inline">\(t \in B\)</span>.
+<ul>
+<li>Capacity is total capacity of edges out of <span class="math inline">\(A\)</span>.</li>
+<li><strong>Min-cut problem</strong>: find <span class="math inline">\(s\)</span>-<span class="math inline">\(t\)</span> cut with minimum capacity.</li>
+</ul></li>
+<li>[5.5] <strong>Flow</strong> is assignment <span class="math inline">\(f\)</span> on edges where
+<ul>
+<li>Capacity constraint <span class="math inline">\(0 \leq f(e) \leq c(e)\)</span>.</li>
+<li>Flow conservation: flow out of = flow into every vertex.</li>
+<li>Value <span class="math inline">\(\lvert f \rvert\)</span> is total flow out of <span class="math inline">\(s\)</span>.</li>
+</ul></li>
+<li>[5.6] <strong>Weak duality</strong>: max flow value <span class="math inline">\(\leq\)</span> min-cut capacity.
+<ul>
+<li>Cut with capacity = flow value certifies max flow.</li>
+</ul></li>
+</ul>
+<h1 id="ford-fulkerson-and-friends">Ford-Fulkerson and friends</h1>
+<ul>
+<li>[5.13] <strong>Ford-Fulkerson</strong> finds max flow <span class="math inline">\(f^*\)</span>.
+<ul>
+<li>Algorithm:
+<ul>
+<li>[5.10] <strong>Residual graph</strong> <span class="math inline">\(G_f\)</span> of flow <span class="math inline">\(f\)</span> has same vertices and
+<ul>
+<li>If <span class="math inline">\(f(e) &lt; c(e)\)</span> then <span class="math inline">\(e\)</span> with residual capacity <span class="math inline">\(c_f(e) = c(e) - f(e)\)</span></li>
+<li>If <span class="math inline">\(f(e) &gt; 0\)</span> then reverse edge with capacity <span class="math inline">\(c_f(e) = f(e)\)</span></li>
+<li>Augment along path <span class="math inline">\(P\)</span> with bottleneck capacity <span class="math inline">\(b_P\)</span>.</li>
+</ul></li>
+<li>While <span class="math inline">\(\exists\)</span> <span class="math inline">\(s\)</span>-<span class="math inline">\(t\)</span> path <span class="math inline">\(P\)</span> in <span class="math inline">\(G_f\)</span>, augment along <span class="math inline">\(P\)</span>.</li>
+</ul></li>
+<li>[6.10] Terminates for integral capacities.</li>
+<li><span class="math inline">\(\mathcal O(m\lvert f^*\rvert) = \mathcal O(mnC)\)</span> (<span class="math inline">\(m\)</span> edges, <span class="math inline">\(n\)</span> vertices, <span class="math inline">\(C\)</span> max capacity).</li>
+</ul></li>
+<li>[5.17] Final <span class="math inline">\(G_f\)</span> is cut with capacity <span class="math inline">\(f^*\)</span>, certifying max flow.</li>
+<li>[6.12] Improve by choosing better <span class="math inline">\(P\)</span>.
+<ul>
+<li>[6.13] <strong>Capacity scaling</strong> increases flow by at least 1/2 max <span class="math inline">\(b_P\)</span>.
+<ul>
+<li><span class="math inline">\(G_f(\Delta)\)</span> restricted to edges with <span class="math inline">\(c_f \leq \Delta\)</span>.</li>
+<li>Halve <span class="math inline">\(\Delta\)</span> when necessary.</li>
+<li><span class="math inline">\(\mathcal O(m^2 \log C)\)</span>.</li>
+</ul></li>
+<li>[6.17] <strong>Edmonds-Karp</strong> uses BFS to choose shortest path, <span class="math inline">\(\mathcal O(nm^2)\)</span>.</li>
+<li>State of the art <span class="math inline">\(\mathcal O(nm)\)</span>.</li>
+</ul></li>
+</ul>
+<h1 id="applications">Applications</h1>
+<p><span class="math inline">\(\Rightarrow\)</span> Kleinberg &amp; Tardos 7.5–7.13</p>
+<h2 id="bipartite-matching">Bipartite matching</h2>
+<ul>
+<li>[7.3] Find max cardinality matching in bipartite graph.
+<ul>
+<li>[7.4] Reduce to max-flow on <span class="math inline">\(\red{s \to} L \to R \red{\to t}\)</span>.</li>
+<li>[7.7] Perfect matching if flow = partition size.</li>
+</ul></li>
+<li>[7.9] <strong>Hall’s theorem</strong>: Bipartite graph has perfect matching <span class="math inline">\(\iff\)</span> for every subset of paritition, <span class="math inline">\(\lvert N(S) \rvert \geq \lvert S \rvert\)</span>. (<span class="math inline">\(N(S)\)</span> are neighbours of <span class="math inline">\(S\)</span>.)
+<ul>
+<li>[7.12] Can find <span class="math inline">\(S\)</span> s.t. <span class="math inline">\(\lvert N(S) \rvert &lt; \lvert S \rvert\)</span> when no perfect matching.</li>
+<li>Use <span class="math inline">\(s \to L \xrightarrow\infty R \to t\)</span> and find min-cut <span class="math inline">\((A, B)\)</span>, and have <span class="math inline">\(S = L \cap A\)</span>.</li>
+</ul></li>
+</ul>
+<h2 id="min-cost-perfect-matching">Min-cost perfect matching</h2>
+<ul>
+<li>[8.3] Find perfect matching with minimum cost. (Edges have costs.)</li>
+<li>Adopt Ford-Fulkerson.
+<ul>
+<li>[8.7] Residual graph alternates unmatched and matched edges.
+<ul>
+<li>[8.9] Negative cost for matched reverse edges.</li>
+</ul></li>
+<li>[8.13] While not perfect, augment along min-cost path, increasing matching size by 1. <span class="math inline">\(\mathcal O(mn^2)\)</span>.</li>
+<li>[8.11] Perfect matching is min-cost <span class="math inline">\(\iff G_M\)</span> has no negative cycles.
+<ul>
+<li>[8.14] Algorithm produces no negative cycles, proof with prices.</li>
+<li>[8.17] Adapted algorithm with prices <span class="math inline">\(\mathcal O(mn\log n)\)</span>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="circulation-with-demands">Circulation with demands</h2>
+<ul>
+<li>[7.14] Demand per vertex <span class="math inline">\(d : V \to \mathbb Z\)</span>. No source/sink.
+<ul>
+<li>Flow conservation: <span class="math inline">\(\sum_\text{in} f(e) - \sum_\text{out} f(e) \red{= d(v)}\)</span>.</li>
+<li>Does circulation exist?</li>
+<li>[7.15] Reduce to flow network with added source/sink.
+<ul>
+<li>If <span class="math inline">\(d(v) &lt; 0\)</span>, <span class="math inline">\(c((\red s, v)) = -d(v)\)</span>.</li>
+<li>If <span class="math inline">\(d(v) &gt; 0\)</span>, <span class="math inline">\(c((v, \red t)) = d(v)\)</span>.</li>
+<li>Max-flow = demand = supply <span class="math inline">\(\iff\)</span> has circulation.</li>
+</ul></li>
+</ul></li>
+<li>[7.16] With lower bounds <span class="math inline">\(\ell: E \to \mathbb Z^+\)</span>.
+<ul>
+<li>Capacity constraints: <span class="math inline">\(\red{\ell(e) \leq} f(e) \leq c(e)\)</span>.</li>
+<li>[7.17] Remove lower bounds. For <span class="math inline">\(e = (u, v)\)</span>,
+<ul>
+<li><span class="math inline">\(d(u) \gets d(u) + \ell(e)\)</span></li>
+<li><span class="math inline">\(d(v) \gets d(v) - \ell(e)\)</span></li>
+</ul></li>
+</ul></li>
+<li>[7.19] Survey/airline scheduling etc. as circulations.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
