@@ -9,6 +9,10 @@ no-toc: true
 * [Union-find](notes/uf.md)
 * [Binary search trees](notes/bst.md)
 * [Flow networks](notes/flownet.md)
+* [Linear programming](notes/lp.md)
+
+NP-complete material not used, see
+[Computational Complexity](../complexity/index.md) course.
 
 ## Resources
 

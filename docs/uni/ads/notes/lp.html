@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ADS, Linear Programming | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="ADS, Linear Programming" class="title">ADS, Linear Programming</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#linear-programs">Linear Programs</a></li>
+<li><a href="#geometric-view">Geometric view</a></li>
+<li><a href="#applications">Applications</a></li>
+</ul>
+</div>
+<p><span class="math inline">\(\Rightarrow\)</span> Dasgupta, Papadimitriou, Vazirani 7.1.1/7.4/7.5/7.6.</p>
+<h1 id="linear-programs">Linear Programs</h1>
+<ul>
+<li>[9.3] <strong>Optimisation problem</strong> with linear objective function and (non-strict inequality) constraints.
+<ul>
+<li>[9.5] <strong>Feasible</strong>: feasible set <span class="math inline">\(\neq \emptyset\)</span>, <strong>bounded</strong>: optimal soln is finite.</li>
+<li><strong>Fundamental Theorem of LP</strong>: LP is exactly one of
+<ul>
+<li>infeasible,</li>
+<li>feasible and unbounded, or</li>
+<li>feasible, bounded, and <span class="math inline">\(\exists\)</span> solution achieving optimum.</li>
+</ul></li>
+<li>Optimum must be at intersection of some constraints.</li>
+</ul></li>
+</ul>
+<style type="text/css" rel="stylesheet">
+div.twocolrow:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+div.twocolcol {
+	float: left;
+	width: 50%;
+}
+</style>
+<div class="twocolrow">
+<div class="twocolcol" style="width:65%">
+<ul>
+<li>[9.10, 9.16] <strong>Primal formulation</strong> in standard maximum form
+<ul>
+<li>Maximisation</li>
+<li><span class="math inline">\(=\)</span> becomes <span class="math inline">\(\leq\)</span> and <span class="math inline">\(\geq\)</span></li>
+<li>All constraints are <span class="math inline">\(\leq\)</span></li>
+<li>All variables nonnegative</li>
+</ul></li>
+</ul>
+</div>
+<div class="twocolcol" style="padding:1em;width:35%">
+<p><span class="math display">\[
+\begin{array}{c l}
+\text{max} &amp; c^\intercal x \\
+\text{s.t.} &amp; Ax \leq b \\
+&amp;x \geq 0
+\end{array}
+\]</span></p>
+</div>
+</div>
+<div class="twocolrow">
+<div class="twocolcol" style="width:65%">
+<ul>
+<li>[9.16] <strong>Dual formulation</strong> in standard min form
+<ul>
+<li>[9.17] <strong>Weak duality</strong>: Values feasible in primal <span class="math inline">\(\leq\)</span> values feasible in dual.</li>
+<li><strong>Strong duality</strong>: Both optimums equal.</li>
+</ul></li>
+</ul>
+</div>
+<div class="twocolcol" style="padding:1em;width:35%">
+<p><span class="math display">\[
+\begin{array}{c l}
+\text{min} &amp; b^\intercal y \\
+\text{s.t.} &amp; A^\intercal y \geq c \\
+&amp;x \geq 0
+\end{array}
+\]</span></p>
+</div>
+</div>
+<ul>
+<li>[9.18] At most one true:
+<ul>
+<li>Primal optimum <span class="math inline">\(\leq\)</span> dual optimum</li>
+<li>Primal unbounded <span class="math inline">\(\implies\)</span> dual infeasible</li>
+<li>Dual unbounded <span class="math inline">\(\implies\)</span> primal infeasible</li>
+</ul></li>
+</ul>
+<h1 id="geometric-view">Geometric view</h1>
+<ul>
+<li>[9.21] <strong>Polyhedra</strong> analogous to LP constraints <span class="math inline">\(P = \{ x \in \mathbb R^n \mid Ax \leq b \}\)</span>
+<ul>
+<li><strong>Extreme point</strong> <span class="math inline">\(x^*\)</span> of <span class="math inline">\(P\)</span> if not midpoint of any 2 points in <span class="math inline">\(P\)</span>.
+<ul>
+<li>Bounded feasible LPs have optimum at extreme point.</li>
+</ul></li>
+<li><strong>Vertex</strong> of <span class="math inline">\(P\)</span> has <span class="math inline">\(n\)</span> linearly independent active constraints.
+<ul>
+<li>Vertex <span class="math inline">\(\iff\)</span> extreme point.</li>
+</ul></li>
+</ul></li>
+<li>[9.24] <strong>Simplex method</strong>: start from vertex and move to neighbour till optimal.</li>
+</ul>
+<h1 id="applications">Applications</h1>
+<ul>
+<li>[10.5] <strong>Feasibility questions</strong>: is region feasible?
+<ul>
+<li>[10.6] Simplex etc. needs starting point, [10.8] add slack variables.</li>
+</ul></li>
+<li>[10.11] <strong>Integrality constraints</strong> are common.
+<ul>
+<li>[10.10] Integer linear programs are NP-hard.</li>
+<li>[10.11] Can round fractional solution to approximate.</li>
+<li>Some problems have all vertices integral <span class="math inline">\(\implies\)</span> directly solve OK.
+<ul>
+<li>[10.14] Constraints <em>totally unimodular</em> <span class="math inline">\(\to\)</span> sufficient condition.</li>
+</ul></li>
+</ul></li>
+<li>[10.15] <strong>Zero-sum games</strong>:
+<ul>
+<li>Matrix <span class="math inline">\(A\)</span>, row player <span class="math inline">\(R\)</span> picks row and likewise for column <span class="math inline">\(C\)</span>.</li>
+<li><span class="math inline">\(R\)</span> payoff <span class="math inline">\(= A_{ij}\)</span>, <span class="math inline">\(C\)</span> payoff <span class="math inline">\(= - A_{ij}\)</span>.</li>
+<li>Mixed strategy: setting probabilities for each choice, either player sets first.</li>
+<li>[10.18] <strong>Von Neumann’s Theorem</strong>: minimax/maximin is Nash equilibrium, order of setting does not matter. (primal-dual pair)</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

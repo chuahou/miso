@@ -17,7 +17,7 @@ $\Rightarrow$ Kleinberg & Tardos 7.1/7.2/7.3
 	* Capacity constraint $0 \leq f(e) \leq c(e)$.
 	* Flow conservation: flow out of = flow into every vertex.
 	* Value $\lvert f \rvert$ is total flow out of $s$.
-* [5.6] **Weak duality**: max flow value $\leq$ min-cut capacity.
+* [5.6] [**Weak duality**](lp.md): max flow value $\leq$ min-cut capacity.
 	* Cut with capacity = flow value certifies max flow.
 
 # Ford-Fulkerson and friends
