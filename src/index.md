@@ -18,4 +18,6 @@ brain~~.*
 
 <h2 style="text-align:left">Others</h2>
 
+* [Recipes](recipes/index.md)
+* [Random links and notes](misc/random.md)
 * [Stork Search](misc/search.md)
