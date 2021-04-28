@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ADS, Approximation | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="ADS, Approximation" class="title">ADS, Approximation</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[13.2] Approximate intractable problems with rigorous guarantees of ratio.</li>
+<li>[13.3] <span class="math inline">\(\rho\)</span>-approximation algorithm gives solutions
+<ul>
+<li><span class="math inline">\(\leq \rho \cdot \text{OPT}\)</span> for some <span class="math inline">\(\rho \geq 1\)</span> for minimisation.</li>
+<li><span class="math inline">\(\geq \rho \cdot \text{OPT}\)</span> for some <span class="math inline">\(\rho &gt; 0\)</span> for maximisation.</li>
+</ul></li>
+<li>Design methods (adapt to problem).
+<ul>
+<li>[13.6] <strong>Combinatorial method</strong> by observing problem structure.</li>
+<li>[13.7] <strong>LP rounding</strong>: problem is ILP <span class="math inline">\(\to\)</span> relax to LP <span class="math inline">\(\to\)</span> round to <span class="math inline">\(\mathbb Z\)</span>.</li>
+<li>[13.12] <strong>Greedy algorithms</strong>.</li>
+<li>[14.3] <strong>Randomisation</strong>. Randomly guess enough times.
+<ul>
+<li>[14.5] Repeat sufficient iterations to have large success probability.</li>
+<li>[14.7] Derandomize by greedily maximizing conditional <span class="math inline">\(\mathbb E\)</span>.</li>
+</ul></li>
+<li>[14.9] <strong>Randomized LP rounding</strong>: do LP rounding, but use LP solution as probabilities for randomized rounding.</li>
+<li>[14.12] Randomly combining randomized algorithms that perform better for different cases can improve <span class="math inline">\(\mathbb E\)</span> approx ratio.</li>
+</ul></li>
+<li>[14.14] Approximation can be NP-hard.
+<ul>
+<li>HamiltonianCycle <span class="math inline">\(\leq\)</span> approximating TSP within factor.
+<ul>
+<li>[14.15] MetricTSP 2-approximation not NP-hard.</li>
+</ul></li>
+<li>[14.19] NP-hardness can apply to specific ratios.</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

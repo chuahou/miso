@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ADS, FPT | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="ADS, FPT" class="title">ADS, FPT</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[15.2] Use (relatively) faster exponential algorithms to get exact solutions.</li>
+<li>[15.5] <strong>Fixed-parameter tractable</strong> w.r.t. [15.4] computable parameter <span class="math inline">\(k\)</span> if running time within <span class="math inline">\(f(k) \cdot \lvert I \rvert^c\)</span> for constant <span class="math inline">\(c\)</span>, computable <span class="math inline">\(f\)</span>.</li>
+<li>[15.6] <strong>Bounded-Search-Tree</strong> algorithms recurse on smaller instances with smaller parameters (exhaustive search).
+<ul>
+<li>Depth in terms of <span class="math inline">\(k\)</span> and not input size.</li>
+</ul></li>
+<li>[15.10] <strong>Kernelisation</strong> reduces instance <span class="math inline">\((I, k)\)</span> to <span class="math inline">\((I', k')\)</span> in poly-time, where <span class="math inline">\(k' \leq k\)</span> and <span class="math inline">\(\lvert I' \rvert \leq\)</span> computable <span class="math inline">\(f(k)\)</span>. Then brute force <span class="math inline">\((I', k')\)</span>.
+<ul>
+<li>[15.12] Use relaxed LP to kernelise.</li>
+<li>[15.11] FPT <span class="math inline">\(\implies\)</span> has kernelisation algorithm.</li>
+</ul></li>
+<li>[16.3] <strong>Colour-coding</strong> for finding specific subgraph.
+<ul>
+<li>Randomly colour (no. colours = no. vertices in subgraph), then find colourful (1 of each) copy of subgraph. Repeat sufficiently.</li>
+</ul></li>
+<li>[16.6] Some parameterised problems are not known FPT.
+<ul>
+<li>Exponential Time Hypothesis: 3SAT does not admit <span class="math inline">\(2^{\mathcal O(n)}\)</span> algo.</li>
+</ul></li>
+<li>[16.8] Bounded-Search-Tree can be used for non-FPT problems to improve exponential running time.</li>
+<li>[16.11] Randomized algorithms can lead to faster exponential algorithms.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
