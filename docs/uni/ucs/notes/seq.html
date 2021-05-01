@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UCS, Sequential Process | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="UCS, Sequential Process" class="title">UCS, Sequential Process</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li><p>[1] Process described by how it <em>communicates</em> with external environment.</p></li>
+<li><p><strong>Alphabet of communications</strong> <span class="math inline">\(\Sigma\)</span> is set of atomic interactions.</p>
+<ul>
+<li>Instantaneous once “handshaken” between process and environment.</li>
+</ul></li>
+<li><p>[1.1.1] Process <span class="math inline">\(\textit{STOP}\)</span> does nothing.</p></li>
+</ul>
+<hr />
+<ul>
+<li><p><strong>Prefixing</strong>: <span class="math inline">\(a \to P\)</span>: offers <span class="math inline">\(a\)</span> (waits indefinitely till environment accepts) then becomes process <span class="math inline">\(P\)</span>.</p></li>
+<li><p>[1.1.2] <strong>Recursion</strong>: <span class="math inline">\(P = F(P)\)</span> written <span class="math inline">\(\mu\,P.F(P)\)</span>.</p></li>
+<li><p>[1.1.3] <strong>Prefix choice</strong>: <span class="math inline">\(?x:A \to P(x)\)</span> offers environment choice of <span class="math inline">\(x \in A\)</span> then becomes <span class="math inline">\(P(x)\)</span>.</p>
+<ul>
+<li>[Slide 1.7] <span class="math inline">\(\textit{RUN}_A ={} ?x:A \to \textit{RUN}_A\)</span></li>
+</ul></li>
+<li><p><strong>Guarded alternative</strong>: <span class="math inline">\((a \to P(a) \;|\; b \to P(b) \;|\; \ldots)\)</span> is choice over events <span class="math inline">\(a, b, \ldots\)</span> by environment.</p></li>
+<li><p><strong>Channels</strong> form compound events with infix dot.</p>
+<ul>
+<li>Channel <span class="math inline">\(c\)</span> that communicates type <span class="math inline">\(T\)</span> has set of events <span class="math inline">\(c.T \subseteq \Sigma\)</span>.</li>
+<li>Declared <span class="math inline">\(\textbf{channel } c:T\)</span>.</li>
+<li>Pattern matching: write <span class="math inline">\(?y : c.T \to P(y)\)</span> as <span class="math inline">\(c?x:T \to P'(x)\)</span>.</li>
+<li>Output events <span class="math inline">\(c.x\)</span> written <span class="math inline">\(c!x\)</span>.</li>
+<li>[1.2.4] Compound channels.</li>
+</ul></li>
+<li><p>[1.1.3] Process state consist of</p>
+<ul>
+<li>Parameters, e.g. <span class="math inline">\(x\)</span> in <span class="math inline">\(P(x)\)</span>, and</li>
+<li>Inputs, e.g. <span class="math inline">\(x\)</span> in <span class="math inline">\(?x \to \ldots\)</span></li>
+<li>Identifiers have the same value throughout their scope.</li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>[1.2.1] <strong>External choice</strong>: <span class="math inline">\(P \mathrel\square Q\)</span> gives environment choice between <em>first events</em>.
+<ul>
+<li>Strictly generalizes guarded alternatives by replacing <span class="math inline">\(\mid\)</span> with <span class="math inline">\(\mathrel\square\)</span>.</li>
+<li><span class="math inline">\(P \mathrel\square \textit{STOP} = P\)</span>.</li>
+<li><span class="math inline">\(\mathop{\Large\square}\{P_i\} = P_1 \mathrel\square P_2 \ldots\)</span>, <span class="math inline">\(\mathop{\Large\square}\{\} = \textit{STOP}\)</span>.</li>
+<li>If first events have nonempty intersection then internal nondeterminism.</li>
+</ul></li>
+<li>[1.2.2] <strong>Internal/nondeterministic choice</strong>: <span class="math inline">\(P \sqcap Q\)</span> may behave like either <span class="math inline">\(P\)</span> or <span class="math inline">\(Q\)</span>. <span class="math inline">\(\mathop{\Large\sqcap} \{P_i\}\)</span> may behave like any <span class="math inline">\(P_i\)</span>.
+<ul>
+<li><span class="math inline">\(\mathop{\Large\sqcap} \{\}\)</span> does not make sense.</li>
+<li><span class="math inline">\(P\)</span> <strong>refines</strong> <span class="math inline">\(Q\)</span>: <span class="math inline">\(P \sqsupseteq Q\)</span> if <span class="math inline">\(P \sqcap Q = Q\)</span>.
+<ul>
+<li><span class="math inline">\(P\)</span> more deterministic than <span class="math inline">\(Q\)</span>.</li>
+<li><span class="math inline">\(P\)</span> can be used in place of <span class="math inline">\(Q\)</span>.</li>
+</ul></li>
+</ul></li>
+<li>[1.2.3] <strong>Conditional choice</strong>: <code>if b then P else Q</code> written <span class="math inline">\(P \mathrel{&lt;\hspace{-0.7em}|} b \mathrel{|\hspace{-0.7em}&gt;} Q\)</span>.
+<ul>
+<li><span class="math inline">\(P \mathrel{&lt;\hspace{-0.7em}|} b \mathrel{|\hspace{-0.7em}&gt;} \textit{STOP}\)</span> written <span class="math inline">\(b\&amp;P\)</span>.</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

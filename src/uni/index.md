@@ -44,3 +44,7 @@ Incomplete summaries yet to be transferred may be found
 	* [Concurrent Programming](cp/index.md)
 	* Computational Complexity
 	* [Lambda Calculus](lc/index.md)
+* Trinity
+	* [Concurrency](ucs/index.md)
+	* Logic and Proof
+	* Computer Networks
