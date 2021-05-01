@@ -44,21 +44,17 @@
 
 </div>
 <ul>
-<li><p>[1] Process described by how it <em>communicates</em> with external environment.</p></li>
+<li><p>[1, 1.5] Process described by how it <em>communicates</em> with external environment.</p></li>
 <li><p><strong>Alphabet of communications</strong> <span class="math inline">\(\Sigma\)</span> is set of atomic interactions.</p>
 <ul>
 <li>Instantaneous once “handshaken” between process and environment.</li>
 </ul></li>
-<li><p>[1.1.1] Process <span class="math inline">\(\textit{STOP}\)</span> does nothing.</p></li>
 </ul>
 <hr />
 <ul>
 <li><p><strong>Prefixing</strong>: <span class="math inline">\(a \to P\)</span>: offers <span class="math inline">\(a\)</span> (waits indefinitely till environment accepts) then becomes process <span class="math inline">\(P\)</span>.</p></li>
 <li><p>[1.1.2] <strong>Recursion</strong>: <span class="math inline">\(P = F(P)\)</span> written <span class="math inline">\(\mu\,P.F(P)\)</span>.</p></li>
-<li><p>[1.1.3] <strong>Prefix choice</strong>: <span class="math inline">\(?x:A \to P(x)\)</span> offers environment choice of <span class="math inline">\(x \in A\)</span> then becomes <span class="math inline">\(P(x)\)</span>.</p>
-<ul>
-<li>[Slide 1.7] <span class="math inline">\(\textit{RUN}_A ={} ?x:A \to \textit{RUN}_A\)</span></li>
-</ul></li>
+<li><p>[1.1.3] <strong>Prefix choice</strong>: <span class="math inline">\(?x:A \to P(x)\)</span> offers environment choice of <span class="math inline">\(x \in A\)</span> then becomes <span class="math inline">\(P(x)\)</span>.</p></li>
 <li><p><strong>Guarded alternative</strong>: <span class="math inline">\((a \to P(a) \;|\; b \to P(b) \;|\; \ldots)\)</span> is choice over events <span class="math inline">\(a, b, \ldots\)</span> by environment.</p></li>
 <li><p><strong>Channels</strong> form compound events with infix dot.</p>
 <ul>
@@ -81,7 +77,7 @@
 <ul>
 <li>Strictly generalizes guarded alternatives by replacing <span class="math inline">\(\mid\)</span> with <span class="math inline">\(\mathrel\square\)</span>.</li>
 <li><span class="math inline">\(P \mathrel\square \textit{STOP} = P\)</span>.</li>
-<li><span class="math inline">\(\mathop{\Large\square}\{P_i\} = P_1 \mathrel\square P_2 \ldots\)</span>, <span class="math inline">\(\mathop{\Large\square}\{\} = \textit{STOP}\)</span>.</li>
+<li>Over finite sets <span class="math inline">\(\mathop{\Large\square}\{P_i\} = P_1 \mathrel\square P_2 \ldots\)</span>, <span class="math inline">\(\mathop{\Large\square}\{\} = \textit{STOP}\)</span>.</li>
 <li>If first events have nonempty intersection then internal nondeterminism.</li>
 </ul></li>
 <li>[1.2.2] <strong>Internal/nondeterministic choice</strong>: <span class="math inline">\(P \sqcap Q\)</span> may behave like either <span class="math inline">\(P\)</span> or <span class="math inline">\(Q\)</span>. <span class="math inline">\(\mathop{\Large\sqcap} \{P_i\}\)</span> may behave like any <span class="math inline">\(P_i\)</span>.
@@ -97,6 +93,20 @@
 <ul>
 <li><span class="math inline">\(P \mathrel{&lt;\hspace{-0.7em}|} b \mathrel{|\hspace{-0.7em}&gt;} \textit{STOP}\)</span> written <span class="math inline">\(b\&amp;P\)</span>.</li>
 </ul></li>
+</ul>
+<hr />
+<ul>
+<li>Standard processes
+<ul>
+<li>[1.1.1] <span class="math inline">\(\textit{STOP}\)</span> does nothing.</li>
+<li>[1.3] <span class="math inline">\(\textit{RUN}_A ={} ?x:A \to \textit{RUN}_A\)</span></li>
+<li>[1.3] <span class="math inline">\(\textit{Chaos}_A = \textit{STOP} \sqcap (?x:A \to \textit{Chaos}_A)\)</span></li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>[1.6] Machine-readable CSP<sub><em>M</em></sub> syntax considerations can be found here.</li>
+<li>[1.6.1] FDR requires finite state space, hence often need to write a finite spec refining the real (infinite) spec.</li>
 </ul>
 		</main>
 		<!-- Generated body ends here -->

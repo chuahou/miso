@@ -2,12 +2,10 @@
 title: UCS, Sequential Process
 ---
 
-* [1] Process described by how it *communicates* with external environment.
+* [1, 1.5] Process described by how it *communicates* with external environment.
 
 * **Alphabet of communications** $\Sigma$ is set of atomic interactions.
 	* Instantaneous once "handshaken" between process and environment.
-
-* [1.1.1] Process $\textit{STOP}$ does nothing.
 
 ---
 
@@ -18,7 +16,6 @@ title: UCS, Sequential Process
 
 * [1.1.3] **Prefix choice**: $?x:A \to P(x)$ offers environment choice of
   $x \in A$ then becomes $P(x)$.
-	* [Slide 1.7] $\textit{RUN}_A ={} ?x:A \to \textit{RUN}_A$
 
 * **Guarded alternative**: $(a \to P(a) \;|\; b \to P(b) \;|\; \ldots)$ is
   choice over events $a, b, \ldots$ by environment.
@@ -43,8 +40,8 @@ title: UCS, Sequential Process
 	* Strictly generalizes guarded alternatives by replacing $\mid$ with
 	  $\mathrel\square$.
 	* $P \mathrel\square \textit{STOP} = P$.
-	* $\mathop{\Large\square}\{P_i\} = P_1 \mathrel\square P_2 \ldots$,
-	  $\mathop{\Large\square}\{\} = \textit{STOP}$.
+	* Over finite sets $\mathop{\Large\square}\{P_i\} = P_1 \mathrel\square P_2
+	  \ldots$, $\mathop{\Large\square}\{\} = \textit{STOP}$.
 	* If first events have nonempty intersection then internal nondeterminism.
 
 * [1.2.2] **Internal/nondeterministic choice**: $P \sqcap Q$ may behave like
@@ -58,3 +55,17 @@ title: UCS, Sequential Process
   $P \mathrel{<\hspace{-0.7em}|} b \mathrel{|\hspace{-0.7em}>} Q$.
 	* $P \mathrel{<\hspace{-0.7em}|} b \mathrel{|\hspace{-0.7em}>}
 	  \textit{STOP}$ written $b\&P$.
+
+---
+
+* Standard processes
+	* [1.1.1] $\textit{STOP}$ does nothing.
+	* [1.3] $\textit{RUN}_A ={} ?x:A \to \textit{RUN}_A$
+	* [1.3] $\textit{Chaos}_A = \textit{STOP} \sqcap (?x:A \to \textit{Chaos}_A)$
+
+---
+
+* [1.6] Machine-readable CSP<sub>*M*</sub> syntax considerations can be found
+  here.
+* [1.6.1] FDR requires finite state space, hence often need to write a
+  finite spec refining the real (infinite) spec.
