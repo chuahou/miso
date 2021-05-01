@@ -11,7 +11,9 @@ CSP is a
 to specify and understand concurrent systems.
 
 * [Sequential process in CSP](notes/seq.md)
-* [CSP algebra](notes/algebra.md)
+* [CSP algebra laws](notes/algebra.md)
+* [Traces model](notes/traces.md)
+* [Operational LTS semantics](notes/lts.md)
 
 ## Resources
 

@@ -1,5 +1,5 @@
 ---
-title: UCS, Algebra
+title: UCS, Algebra Laws
 ---
 
 * [2.1] Idempotence, symmetry and associativity for each of $\square$ and

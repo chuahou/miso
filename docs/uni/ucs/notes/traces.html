@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UCS, Traces Model | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="UCS, Traces Model" class="title">UCS, Traces Model</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#traces-model">Traces model</a></li>
+<li><a href="#trace-specifications">Trace specifications</a></li>
+<li><a href="#trace-notation">Trace notation</a></li>
+</ul>
+</div>
+<h1 id="traces-model">Traces model</h1>
+<ul>
+<li>[1.4] <strong>Trace</strong> is a sequence of communcations of process.</li>
+<li>[2.2.1] <span class="math inline">\(\textit{traces}(P) \subseteq \Sigma^*\)</span> is set of all finite traces of <span class="math inline">\(P\)</span>.
+<ul>
+<li>Nonempty (contains at minimum <span class="math inline">\(\langle\rangle\)</span>) and prefix-closed.</li>
+<li>Each operator has a rule (see book/notes).
+<ul>
+<li><span class="math inline">\(\square\)</span> and <span class="math inline">\(\sqcap\)</span> have same traces semantics.</li>
+<li>Recursion: <span class="math inline">\(\textit{traces}(\mu\,p.Q)\)</span> is least fixed point of <span class="math inline">\(F\)</span>, where <span class="math inline">\(F(X)\)</span> maps <span class="math inline">\(\textit{traces}(P) \mapsto \textit{traces}(Q[P/p])\)</span>.</li>
+<li>Mutual recursion: same but over vectors of processes and trace-sets.</li>
+</ul></li>
+<li><strong>Traces model</strong> <span class="math inline">\(\mathcal T\)</span>: set of all such subsets.</li>
+<li>[2.2.2] Trace equality <span class="math inline">\(P =_T Q\)</span> means <span class="math inline">\(\textit{traces}(P) = \textit{traces}(Q)\)</span>.
+<ul>
+<li><span class="math inline">\(P = Q\)</span> in the <a href="algebra.html">algebra</a> <span class="math inline">\(\implies P =_T Q\)</span> (but not <span class="math inline">\(\mathord{\impliedby}\)</span>).</li>
+</ul></li>
+</ul></li>
+<li>[2.2.3] Guarded recursions have a <strong>unique fixed point</strong> (under <span class="math inline">\(=_T\)</span>).
+<ul>
+<li>[2.2.1] Guarded recursion: all recursive calls preceded by event(s).</li>
+</ul></li>
+</ul>
+<h1 id="trace-specifications">Trace specifications</h1>
+<ul>
+<li>[2.2.4] <strong>Behavioural trace specification</strong>: <span class="math inline">\(P \mathrel{\textbf{sat}} R(tr)\)</span> means <span class="math inline">\(\forall tr \in \textit{traces}(P).\,R(tr)\)</span>.
+<ul>
+<li>Inductive proof rules by Hoare in book/notes.</li>
+<li>[Slide 2.37] Recursion proof rule: <span class="math inline">\(X\)</span> is least fixed point of <span class="math inline">\(\mu\,P.F(P)\)</span>
+<ul>
+<li>If <span class="math inline">\(\textit{STOP} \mathrel{\textbf{sat}} R(tr)\)</span>, and</li>
+<li><span class="math inline">\(Y \mathrel{\textbf{sat}} R(tr) \implies F(Y) \mathrel{\textbf{sat}} R(tr)\)</span>,</li>
+<li>Then <span class="math inline">\(X \mathrel{\textbf{sat}} R(tr)\)</span>.</li>
+<li>Can also apply componentwise for mutual recursion.</li>
+</ul></li>
+<li><span class="math inline">\(\textit{STOP}\)</span> satsifies any spec that is satisfied by some processes.</li>
+</ul></li>
+<li>In practice, construct process <span class="math inline">\(\textit{Spec} \mathrel{\textbf{sat}} R(tr)\)</span> and test <span class="math inline">\(\textit{Spec} \sqsubseteq_T \textit{Impl}\)</span>.</li>
+<li>[1.4] <span class="math inline">\(P\)</span> <strong>trace refines</strong> <span class="math inline">\(Q\)</span>: <span class="math inline">\(P \sqsupseteq_T Q\)</span> iff <span class="math inline">\(\textit{traces}(P) \subseteq \textit{traces}(Q)\)</span>.
+<ul>
+<li>[2.2.4] Refinement is transitive and monotone.
+<ul>
+<li>Can refine each component (compositional development).</li>
+</ul></li>
+<li><span class="math inline">\(P \sqsubseteq_T P'\)</span> and <span class="math inline">\(P \mathrel{\textbf{sat}} R(tr)\)</span> implies <span class="math inline">\(P' \mathrel{\textbf{sat}} R(tr)\)</span>.
+<ul>
+<li>Stepwise refinement <span class="math inline">\(\textit{Spec} \sqsubseteq P \sqsubseteq \ldots \sqsubseteq \textit{Impl}\)</span>.</li>
+</ul></li>
+</ul></li>
+<li>[2.2.4] <strong>Characteristic process</strong> <span class="math inline">\(P_R\)</span> of specification <span class="math inline">\(R\)</span> is such that <span class="math inline">\(Q \mathrel{\textbf{sat}} R(tr) \iff P_R \sqsubseteq_T Q\)</span>.
+<ul>
+<li><span class="math inline">\(P_R =_T \mathop{\Large\sqcap}\{P \mid P \mathrel{\textbf{sat}} R(tr)\}\)</span>.</li>
+<li>Decide satisfaction of <span class="math inline">\(R\)</span> by refinement of <span class="math inline">\(P_R\)</span>.</li>
+</ul></li>
+</ul>
+<h1 id="trace-notation">Trace notation</h1>
+<ul>
+<li>[2.2.1] Sequence notation <span class="math inline">\(\langle a, b, c \rangle\)</span>.</li>
+<li>Concatenation <span class="math inline">\({}\mathbin{\hat{}}{}\)</span>.</li>
+<li><span class="math inline">\(n\)</span>-fold concatenation <span class="math inline">\(s^n\)</span>.</li>
+<li><span class="math inline">\(s\)</span> prefix of <span class="math inline">\(t\)</span> written <span class="math inline">\(s \leq t\)</span>.</li>
+<li>[2.2.4] <span class="math inline">\(\#s\)</span> denotes length of sequence <span class="math inline">\(s\)</span>.</li>
+<li><span class="math inline">\(s \upharpoonright A\)</span> for <span class="math inline">\(A \subseteq \Sigma\)</span> means sequence <span class="math inline">\(s\)</span> restricted to members of <span class="math inline">\(A\)</span>.</li>
+<li><span class="math inline">\(s \downarrow c\)</span> for <span class="math inline">\(c \in \Sigma\)</span> means no. of occurrences of <span class="math inline">\(c\)</span> in <span class="math inline">\(s\)</span>.</li>
+<li><span class="math inline">\(s \downarrow c\)</span> for channel <span class="math inline">\(c\)</span> means values in <span class="math inline">\(s\)</span> communicated along <span class="math inline">\(c\)</span>.</li>
+<li>[2.2.5] Set of initial events <span class="math inline">\(\textit{initials}(P) = \{ a \mid \langle a \rangle \in \textit{traces}(P) \}\)</span>.</li>
+<li><span class="math inline">\(P / s\)</span> is behaviour of <span class="math inline">\(P\)</span> after trace <span class="math inline">\(s\)</span>: <span class="math inline">\(\textit{traces}(P/s) = \{ t \mid s\mathbin{\hat{}}t \in \textit{traces}(P)\)</span>.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

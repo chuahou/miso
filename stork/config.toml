@@ -39,5 +39,7 @@ files = [
 	{title = "LC, Simple Types", url = "https://chuahou.dev/miso/uni/lc/notes/types.html", path = "docs/uni/lc/notes/types.html"},
 	{title = "Concurrency", url = "https://chuahou.dev/miso/uni/ucs/index.html", path = "docs/uni/ucs/index.html"},
 	{title = "UCS, Sequential Process", url = "https://chuahou.dev/miso/uni/ucs/notes/seq.html", path = "docs/uni/ucs/notes/seq.html"},
-	{title = "UCS, Algebra", url = "https://chuahou.dev/miso/uni/ucs/notes/algebra.html", path = "docs/uni/ucs/notes/algebra.html"},
+	{title = "UCS, Algebra Laws", url = "https://chuahou.dev/miso/uni/ucs/notes/algebra.html", path = "docs/uni/ucs/notes/algebra.html"},
+	{title = "UCS, Traces Model", url = "https://chuahou.dev/miso/uni/ucs/notes/traces.html", path = "docs/uni/ucs/notes/traces.html"},
+	{title = "UCS, LTS Semantics", url = "https://chuahou.dev/miso/uni/ucs/notes/lts.html", path = "docs/uni/ucs/notes/lts.html"},
 ]
