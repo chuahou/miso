@@ -11,11 +11,12 @@ CSP is a
 to specify and understand concurrent systems.
 
 * [Sequential process in CSP](notes/seq.md)
+* [CSP algebra](notes/algebra.md)
 
 ## Resources
 
 **Course textbook**: A. W. Roscoe,
-[Understanding Concurrent Systems](www.cs.ox.ac.uk/ucs/), Chapters 1–8,
+[Understanding Concurrent Systems](http://www.cs.ox.ac.uk/ucs/), Chapters 1–8,
 Springer 2010.
 
 [FDR4: CSP refinement checker](https://cocotec.io/fdr/).

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UCS, Algebra | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="UCS, Algebra" class="title">UCS, Algebra</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li><p>[2.1] Idempotence, symmetry and associativity for each of <span class="math inline">\(\square\)</span> and <span class="math inline">\(\sqcap\)</span>. Below illustrated for <span class="math inline">\(\square\)</span>:</p>
+<span class="math display">\[\begin{aligned}
+P \mathbin\square P &amp;= P &amp;\text{$\square$-idem} \\
+P \mathbin\square Q &amp;= Q \mathbin\square P &amp;\text{$\square$-sym} \\
+P \mathbin\square (Q \mathbin\square R) &amp;=
+  (P \mathbin\square Q) \mathbin\square R &amp;\text{$\square$-assoc}
+\end{aligned}\]</span></li>
+<li><p>Distributivity over <span class="math inline">\(\sqcap\)</span>: any <span class="math inline">\(F(\cdot)\)</span> is distributive if it uses <em>at most one copy</em> of its argument. <span class="math display">\[
+\begin{aligned}
+F(P \sqcap Q) &amp;= F(P) \sqcap F(Q) &amp;\text{$F$-dist} \\
+F(\mathop{\large\sqcap} S) &amp;= \mathop{\large\sqcap}\{F(P) \mid P \in S\}
+  &amp;\text{$F$-Dist}
+\end{aligned}
+\]</span></p>
+<ul>
+<li>True for <a href="seq.html">all operators</a> but recursion.</li>
+<li>Distributivity of <span class="math inline">\(\sqcap\)</span> over <span class="math inline">\(\square\)</span>. <span class="math display">\[
+\begin{aligned}
+P \sqcap (Q \mathbin\square R) &amp;= (P \sqcap Q) \mathbin\square (P \sqcap R)
+&amp;\text{$\sqcap$-$\square$-dist}
+\end{aligned}
+\]</span></li>
+</ul></li>
+<li><p><strong>Step laws</strong> show first step actions.</p>
+<span class="math display">\[\begin{aligned}
+&amp;(?x:A \to P) \mathbin\square (?x:B \to Q) = \\
+&amp;\hspace{2em} ?x:A \cup B \to \left((P \sqcap Q)
+  \mathbin{&lt;\hspace{-0.7em}|} x \in A \cap B \mathbin{|\hspace{-0.7em}&gt;}
+  (P \mathbin{&lt;\hspace{-0.7em}|} x \in A \mathbin{|\hspace{-0.7em}&gt;} Q)\right)
+&amp;\text{$\square$-step} \\[1ex]
+&amp;\textit{STOP} {}={} ?x:\{\} \to P &amp;\text{$\textit{STOP}$-step}
+\end{aligned}\]</span></li>
+<li><p><span class="math inline">\(\textit{STOP}\)</span> is a unit of <span class="math inline">\(\square\)</span>. <span class="math display">\[\textit{STOP} \mathbin\square P = P \hspace{2em}\text{$\square$-unit}\]</span></p></li>
+<li><p>Conditional choice is idempotent and distributive over <span class="math inline">\(\sqcap\)</span>, and</p>
+<span class="math display">\[\begin{aligned}
+  P \mathbin{&lt;\hspace{-0.7em}|} \textrm{true} \mathbin{|\hspace{-0.7em}&gt;} Q
+  &amp;= P
+  &amp;\text{${}\mathbin{&lt;\hspace{-0.7em}|} \textrm{true} \mathbin{|\hspace{-0.7em}&gt;}{}$-id} \\
+  P \mathbin{&lt;\hspace{-0.7em}|} \textrm{false} \mathbin{|\hspace{-0.7em}&gt;} Q
+  &amp;= Q
+  &amp;\text{${}\mathbin{&lt;\hspace{-0.7em}|} \textrm{false} \mathbin{|\hspace{-0.7em}&gt;}{}$-id}
+\end{aligned}\]</span></li>
+<li><p>Law of recursion <span class="math display">\[
+  \mu\, p. P = P[\mu\, p.P/p] \hspace{2em} \text{$\mu$-unwind}
+\]</span></p></li>
+<li><p>Some laws are not present in some models, including <span class="math inline">\(\square\)</span>-idem and <span class="math inline">\(\sqcap\)</span>-<span class="math inline">\(\square\)</span>-dist. Denoted by * in the book/slides.</p></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
