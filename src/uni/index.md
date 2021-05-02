@@ -46,5 +46,5 @@ Incomplete summaries yet to be transferred may be found
 	* [Lambda Calculus](lc/index.md)
 * Trinity
 	* [Concurrency](ucs/index.md)
-	* Logic and Proof
+	* [Logic and Proof](logic/index.md)
 	* Computer Networks

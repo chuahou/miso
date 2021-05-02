@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>L&P, Propositional Logic | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="L&P, Propositional Logic" class="title">L&P, Propositional Logic</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#syntax">Syntax</a></li>
+<li><a href="#semantics">Semantics</a></li>
+<li><a href="#boolean-algebra">Boolean algebra</a></li>
+</ul>
+</div>
+<hr />
+<ul>
+<li>[2.1] Analyses truth values of compound sentences wrt their constituents.
+<ul>
+<li><strong>Atomic propositions</strong>: true or false, independent. Content irrelevant.</li>
+<li><strong>Logical connectives</strong>: connect sentences.</li>
+</ul></li>
+</ul>
+<h1 id="syntax">Syntax</h1>
+<ul>
+<li>[2.2.1] Set of formulas <span class="math inline">\(\mathcal F(X)\)</span> <a href="../../lc/notes/syntax.html#lambda-terms">inductively defined</a> over countably infinite set <span class="math inline">\(X\)</span> of <strong>propositional variables</strong>.
+<ul>
+<li><span class="math inline">\(\textbf{true}\)</span>, <span class="math inline">\(\textbf{false}\)</span> are formulas.</li>
+<li>Members of <span class="math inline">\(X\)</span> are formulas.</li>
+<li><strong>Negation</strong> <span class="math inline">\(\lnot F\)</span> is formula.</li>
+<li><strong>Conjunction</strong> <span class="math inline">\((F \land G)\)</span> and <strong>disjunction</strong> <span class="math inline">\((F \lor G)\)</span> are formulas.</li>
+</ul></li>
+<li><strong>Subformulas</strong>: subtrees of syntax tree.</li>
+<li>[2.2.2] <strong>Derived connectives</strong>: macros, not part of syntax.
+<ul>
+<li><span class="math inline">\(\to\)</span>, <span class="math inline">\(\leftrightarrow\)</span>, <span class="math inline">\(\oplus\)</span>, <span class="math inline">\(\bigwedge_i\)</span>, <span class="math inline">\(\bigvee_i\)</span></li>
+</ul></li>
+<li>[2.3.3] <strong>Syntactically equivalent</strong>: <span class="math inline">\(F = G\)</span> if they are same string.</li>
+</ul>
+<h1 id="semantics">Semantics</h1>
+<ul>
+<li>[2.3.1] Definitions.
+<ul>
+<li><strong>Truth values</strong> <span class="math inline">\(\{0, 1\}\)</span>.</li>
+<li><strong>Assignment</strong> <span class="math inline">\(\mathcal A: X \to \{0, 1\}\)</span>, extended inductively with the obvious semantics/truth tables to <span class="math inline">\(\mathcal A: \mathcal F(X) \to \{0, 1\}\)</span>.</li>
+<li>For formula <span class="math inline">\(F\)</span> and assignment <span class="math inline">\(\mathcal A\)</span>
+<ul>
+<li><span class="math inline">\(F\)</span> <strong>holds under</strong> <span class="math inline">\(\mathcal A\)</span>/<span class="math inline">\(\mathcal A\)</span> is <strong>model</strong> of <span class="math inline">\(F\)</span> if <span class="math inline">\(\mathcal A(F) = 1\)</span>: <span class="math inline">\(\mathcal A \vDash F\)</span>.</li>
+<li><span class="math inline">\(F\)</span> <strong>satisfiable</strong> if holds under some <span class="math inline">\(\mathcal A\)</span>.</li>
+<li><span class="math inline">\(F\)</span> is <strong>valid</strong>/<strong>tautology</strong> if holds under all assignments.</li>
+</ul></li>
+<li><strong>Entailment</strong>: <span class="math inline">\(S \vDash F\)</span> if any <span class="math inline">\(\mathcal A\)</span> satisfying all formulas in <span class="math inline">\(S\)</span> also satisfies <span class="math inline">\(F\)</span>.</li>
+<li><strong>Logically equivalent</strong>: <span class="math inline">\(F \equiv G\)</span> if <span class="math inline">\(\mathcal A(F) = \mathcal A(G)\)</span> for all <span class="math inline">\(\mathcal A\)</span>.</li>
+</ul></li>
+</ul>
+<h1 id="boolean-algebra">Boolean algebra</h1>
+<ul>
+<li>[Slide 3.7] <strong>Boolean algebra</strong>: set <span class="math inline">\(A\)</span> with
+<ul>
+<li>Elements <span class="math inline">\(\textbf{true}, \textbf{false}\)</span></li>
+<li>Unary op <span class="math inline">\(\lnot\)</span>, binops <span class="math inline">\(\land, \lor\)</span></li>
+<li>Satisfies Boolean algebra axioms.</li>
+</ul></li>
+<li>[3.1.1] <strong>Boolean algebra axioms</strong> for <span class="math inline">\(\equiv\)</span> listed in notes, from truth tables.</li>
+<li><strong>De Morgan dual</strong> <span class="math inline">\(\overline F\)</span> such that <span class="math inline">\(\overline F \equiv \lnot F\)</span>.
+<span class="math display">\[\begin{gathered}
+\overline{\textbf{true}} = \textbf{false} \hspace{2em}
+\overline{\textbf{false}} = \textbf{true} \hspace{2em}
+\overline P = \lnot P \hspace{2em}
+\overline{\lnot P} = P \\[0.5ex]
+\overline{F \land G} = \overline F \lor \overline G \hspace{2em}
+\overline{F \lor G} = \overline F \land \overline G \hspace{2em}
+\overline{\lnot F} = \lnot \overline F
+\end{gathered}\]</span></li>
+<li>[3.1.2] <strong>Substitution</strong> of <span class="math inline">\(F\)</span> for instances of <span class="math inline">\(P\)</span> in <span class="math inline">\(G\)</span> written <span class="math inline">\(G[F/P]\)</span>.</li>
+<li><strong>Substitution Theorem.</strong> If <span class="math inline">\(F \equiv F'\)</span> and <span class="math inline">\(G \equiv G'\)</span> then <span class="math inline">\(G[F/P] \equiv G'[F'/P]\)</span>.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>
