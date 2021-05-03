@@ -27,6 +27,7 @@ title: UCS, Sequential Process
 	* Pattern matching: write $?y : c.T \to P(y)$ as $c?x:T \to P'(x)$.
 	* Output events $c.x$ written $c!x$.
 	* [1.2.4] Compound channels.
+		* $\{|e_i|\}$ set of events that extend any of the $e_i$.
 
 * [1.1.3] Process state consist of
 	* Parameters, e.g. $x$ in $P(x)$, and

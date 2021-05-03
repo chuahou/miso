@@ -47,4 +47,4 @@ Incomplete summaries yet to be transferred may be found
 * Trinity
 	* [Concurrency](ucs/index.md)
 	* [Logic and Proof](logic/index.md)
-	* Computer Networks
+	* [Computer Networks](networks/index.md)

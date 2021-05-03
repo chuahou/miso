@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Networks, Data Link Layer | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="Networks, Data Link Layer" class="title">Networks, Data Link Layer</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#data-link-layer">Data link layer</a></li>
+<li><a href="#ethernet-frame-structure">Ethernet frame structure</a></li>
+<li><a href="#link-aggregation">Link aggregation</a></li>
+<li><a href="#scaling">Scaling</a>
+<ul>
+<li><a href="#collisions">Collisions</a></li>
+<li><a href="#loops">Loops</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="data-link-layer">Data link layer</h1>
+<ul>
+<li>[3.2] Data link layer (OSI 2) transports coherent <em>frames</em> of bits between known participants.</li>
+<li>[3.2.1] Provides <em>ordered bit sequence</em> to physical layer below, provides frames to network layer above. [3.3] Services provided:
+<ul>
+<li>Delivers frames intact OR drops them (bits in a frame <strong>share fate</strong>).</li>
+<li>Provides frame-level error detection, discarding malformed ones.</li>
+<li>Addresses destinations (e.g. MAC).</li>
+<li>Abstracts over physical layer (single connection <span class="math inline">\(\neq\)</span> single physical path).</li>
+</ul></li>
+<li>[3.4] Low latency/jitter important as they bottleneck upper layer performance.</li>
+</ul>
+<h1 id="ethernet-frame-structure">Ethernet frame structure</h1>
+<ul>
+<li>[3.6] Preamble: alternating 1/0s to sync clocks.</li>
+<li>Start of frame: <code>0xAB</code>.</li>
+<li>Header: destination/source MAC, type/length field.</li>
+<li>Payload: for upper layers.</li>
+<li>Frame Check Sequence (FCS): Cyclic Redundancy Checksum [3.9].</li>
+<li>Post-frame gap: idle for some time.</li>
+</ul>
+<h1 id="link-aggregation">Link aggregation</h1>
+<ul>
+<li>[3.11] <strong>Link Aggregation Control Protocol (LACP)</strong>
+<ul>
+<li>Runs at both endpoints.</li>
+<li>Sends frames under one of multiple live physical links.
+<ul>
+<li>Uses same link to maintain ordering.</li>
+</ul></li>
+<li>Multicast LACP frames as keepalives.</li>
+</ul></li>
+</ul>
+<h1 id="scaling">Scaling</h1>
+<h2 id="collisions">Collisions</h2>
+<ul>
+<li>[3.8] <strong>Collisions</strong>: when multiple transmissions on same medium detected, stop sending and try after random time (exponential backoff).</li>
+<li>[4.2] Switches split network into collision domains.</li>
+<li>[4.3] <strong>Source MAC learning</strong>: use source MACs to maintain address table.
+<ul>
+<li>[4.4] Timeouts necessary since networks can change.</li>
+<li>Advertising frames sent upon connection.</li>
+</ul></li>
+</ul>
+<h2 id="loops">Loops</h2>
+<ul>
+<li>[4.5] Loops must be avoided as they very quickly clog network.</li>
+<li>[4.6] <strong>Spanning Tree Protocol</strong> to create spanning tree to use instead.
+<ul>
+<li>[4.7.1] <strong>Bridge Protocol Data Unit</strong>: payload of STP frame.</li>
+<li>Root originates, and each switch forwards (with updates):
+<ul>
+<li>Root known so far, which is lowest ID (root/bridge ID fields).</li>
+<li>Its distance from root (root path cost field).</li>
+</ul></li>
+<li>Block all ports on each link other than min-cost port.</li>
+<li>BPDUs also used as keepalives to detect failures.</li>
+<li><strong>Topology Change Notifications</strong> sent up to root then down throughout entire network.</li>
+<li>Slow to converge (50s) due to Max Age + twice Forwarding Delay to change port states. (Rapid STP makes this faster.)</li>
+</ul></li>
+<li>[4.8] <strong>Ethernet Ring Protection Switching</strong> for ring networks.
+<ul>
+<li>Ring protection link owner and its neighbour block link inbetween.</li>
+<li>Failed link blocked, originally blocked link unblocked.</li>
+<li>Downtime <span class="math inline">\(&lt;\)</span> 50ms.</li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Networks, Physical Layer | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="Networks, Physical Layer" class="title">Networks, Physical Layer</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+
+</div>
+<ul>
+<li>[2.2] Physical layer (OSI 1) transports information physically over distance.</li>
+<li>[2.3] Provides <em>bit stream</em> to data link layer. [2.4] Provides
+<ul>
+<li>Digital-analogue conversion.</li>
+<li>Low-level buffering.</li>
+<li>Error detection but no error correction.
+<ul>
+<li>[2.5] Hence reliability important.</li>
+</ul></li>
+<li>Multiplexing
+<ul>
+<li>over time (time divison multiplexing), or</li>
+<li>over frequencies (wave divison multiplexing).</li>
+</ul></li>
+</ul></li>
+<li>[2.5] Reliability <span class="math inline">\(\leftrightarrow\)</span> bandwidth tradeoff.</li>
+<li>[2.6] Signalling is time-synchronized with some encoding.
+<ul>
+<li>[2.6.1] Non-return to zero (NRZ) encoding: 1 = high, 0 = low.
+<ul>
+<li>[2.6.2] Clock drift problematic.</li>
+</ul></li>
+<li>[2.6.4] Manchester encoding: 1 = low→high, 0 = high→low (or opp.).
+<ul>
+<li>Sync clocks using transitions.</li>
+<li>Read bits away from transmissions.</li>
+</ul></li>
+<li>[2.6.5] Differential Manchester: 1 = no-change, 0 = change (or opp.), in addition to change at middle of window.
+<ul>
+<li>Sync clocks using middle transitions.</li>
+<li>No dependence on absolute values, only changes.</li>
+<li>Early/late bit-read points.</li>
+</ul></li>
+</ul></li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

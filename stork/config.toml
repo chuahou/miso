@@ -45,4 +45,8 @@ files = [
 	{title = "Logic and Proof", url = "https://chuahou.dev/miso/uni/logic/index.html", path = "docs/uni/logic/index.html"},
 	{title = "L&P, Propositional Logic", url = "https://chuahou.dev/miso/uni/logic/notes/prop.html", path = "docs/uni/logic/notes/prop.html"},
 	{title = "L&P, Normal Forms", url = "https://chuahou.dev/miso/uni/logic/notes/nf.html", path = "docs/uni/logic/notes/nf.html"},
+	{title = "Computer Networks", url = "https://chuahou.dev/miso/uni/networks/index.html", path = "docs/uni/networks/index.html"},
+	{title = "Networks, Metrics", url = "https://chuahou.dev/miso/uni/networks/notes/metrics.html", path = "docs/uni/networks/notes/metrics.html"},
+	{title = "Networks, Physical Layer", url = "https://chuahou.dev/miso/uni/networks/notes/physical.html", path = "docs/uni/networks/notes/physical.html"},
+	{title = "Networks, Data Link Layer", url = "https://chuahou.dev/miso/uni/networks/notes/datalink.html", path = "docs/uni/networks/notes/datalink.html"},
 ]
