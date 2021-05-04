@@ -1,28 +1,12 @@
 {
   "nodes": {
-    "add-stork": {
-      "locked": {
-        "lastModified": 1619063047,
-        "narHash": "sha256-SlP/UQHyAGfyZiq9N0KotuZrjokkeJScNj9Z4xX9wc8=",
-        "owner": "chuahou",
-        "repo": "nixpkgs",
-        "rev": "e334f125677e615bb720fb39b2418fcfc372a978",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chuahou",
-        "ref": "add-stork",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1619033779,
-        "narHash": "sha256-opq3DqB/lNCR/1oUx8PkooAO3zRGcZLqp+BSuwy093Q=",
+        "lastModified": 1620079298,
+        "narHash": "sha256-gZNInan1XpwDya+DYrqvET1+h2QOZ3EC7AjSMUrFIPU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5c0e6a8c319dfeff5365615266de8522386d7e5d",
+        "rev": "a565a2165ab6e195d7c105a8416b8f4b4d0349a4",
         "type": "github"
       },
       "original": {
@@ -33,18 +17,17 @@
     },
     "root": {
       "inputs": {
-        "add-stork": "add-stork",
         "nixpkgs": "nixpkgs",
         "unstable": "unstable"
       }
     },
     "unstable": {
       "locked": {
-        "lastModified": 1619042025,
-        "narHash": "sha256-LXB7u/Nej080M1cfpjy8GNz01pzO/gnJsLAswv60Hpo=",
+        "lastModified": 1620132322,
+        "narHash": "sha256-D4quIsXPEgxCemVh9G+ISQT9czkgkmMY7eUOgapdArw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f73da2880a93dc24e185297a6af747efdeac5f01",
+        "rev": "3e62e383f4bbe40b38eb89d7df84c1c6d6c25db6",
         "type": "github"
       },
       "original": {

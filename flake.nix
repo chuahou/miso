@@ -2,13 +2,8 @@
   description = "Personal notes with Hakyll";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-20.09";
-
-    # unstable branch used for HLS
+    nixpkgs.url  = "nixpkgs/nixos-20.09";
     unstable.url = "nixpkgs/nixpkgs-unstable";
-
-    # own branch with stork added
-    add-stork.url = "github:chuahou/nixpkgs/add-stork";
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, ... }:
@@ -16,7 +11,7 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [ hlsOverlay storkOverlay ];
+      overlays = [ hlsOverlay ];
     };
 
     hsOverrideOverlay =
@@ -34,11 +29,6 @@
         unstable.legacyPackages.${super.system}.haskell-language-server;
     });
 
-    storkOverlay = self: super: {
-      stork = super.callPackage
-        "${inputs.add-stork}/pkgs/applications/misc/stork" {};
-    };
-
   in rec {
     defaultPackage.${system} = pkgs.haskell.lib.dontHaddock
       (pkgs.haskellPackages.callCabal2nix "miso" ./. {});
@@ -55,7 +45,7 @@
           pkgs.poppler_utils
 
           # stork search
-          pkgs.stork
+          unstable.legacyPackages.${system}.stork
         ]);
       })).env;
   };
