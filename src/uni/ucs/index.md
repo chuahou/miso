@@ -14,6 +14,7 @@ to specify and understand concurrent systems.
 * [CSP algebra laws](notes/algebra.md)
 * [Traces model](notes/traces.md)
 * [Operational LTS semantics](notes/lts.md)
+* [Parallel operators](notes/parallel.md)
 
 ## Resources
 
