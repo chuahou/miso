@@ -95,7 +95,14 @@ P \inter Q = {}?x:A \cup B \to{}&amp;
 <ul>
 <li>Deadlock eventually reaches <span class="math inline">\(\textit{STOP}\)</span> sequentially.</li>
 </ul></li>
-<li>[3.2] <strong>Commmunication graph</strong> has processes as nodes, and edges when intersection of alphabets <span class="math inline">\(\neq \emptyset\)</span>.</li>
+<li>[3.2] <strong>Commmunication graph</strong> has processes as nodes, and edges when intersection of alphabets <span class="math inline">\(\neq \emptyset\)</span>.
+<ul>
+<li>[4.2.1] <strong>Deadlock graph</strong> has directed edges from process to another process it has an ungranted request to.
+<ul>
+<li>Deadlock when <span class="math inline">\(\exists\)</span> cycle in this graph.</li>
+<li>Tree without <em>strong conflict</em> is deadlock-free.</li>
+</ul></li>
+</ul></li>
 <li>[3.5] Parallel composition used to <em>restrict</em> specifications.
 <ul>
 <li>[Slide 3.36] <span class="math inline">\(\land\)</span> on trace specifications.</li>

@@ -65,6 +65,10 @@ $$
 		* Deadlock eventually reaches $\textit{STOP}$ sequentially.
 	* [3.2] **Commmunication graph** has processes as nodes, and edges when
 	  intersection of alphabets $\neq \emptyset$.
+		* [4.2.1] **Deadlock graph** has directed edges from process to another
+		  process it has an ungranted request to.
+			* Deadlock when $\exists$ cycle in this graph.
+			* Tree without *strong conflict* is deadlock-free.
 	* [3.5] Parallel composition used to *restrict* specifications.
 		* [Slide 3.36] $\land$ on trace specifications.
 	* Symmetric, associative and distributive once alphabets accounted for, not
