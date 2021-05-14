@@ -32,13 +32,13 @@ title: L&P, Propositional Logic
 	  $\mathcal A: \mathcal F(X) \to \{0, 1\}$.
 	* For formula $F$ and assignment $\mathcal A$
 		* $F$ **holds under** $\mathcal A$/$\mathcal A$ is **model** of $F$ if
-		  $\mathcal A(F) = 1$: $\mathcal A \vDash F$.
+		  $\mathcal A\llbracket F\rrbracket = 1$: $\mathcal A \vDash F$.
 		* $F$ **satisfiable** if holds under some $\mathcal A$.
 		* $F$ is **valid**/**tautology** if holds under all assignments.
 	* **Entailment**: $S \vDash F$ if any $\mathcal A$ satisfying all formulas
 	  in $S$ also satisfies $F$.
-	* **Logically equivalent**: $F \equiv G$ if $\mathcal A(F) = \mathcal A(G)$
-	  for all $\mathcal A$.
+	* **Logically equivalent**: $F \equiv G$ if $\mathcal A\llbracket F
+	  \rrbracket = \mathcal A\llbracket G \rrbracket$ for all $\mathcal A$.
 
 # Boolean algebra
 

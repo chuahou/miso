@@ -79,12 +79,12 @@
 <li><strong>Assignment</strong> <span class="math inline">\(\mathcal A: X \to \{0, 1\}\)</span>, extended inductively with the obvious semantics/truth tables to <span class="math inline">\(\mathcal A: \mathcal F(X) \to \{0, 1\}\)</span>.</li>
 <li>For formula <span class="math inline">\(F\)</span> and assignment <span class="math inline">\(\mathcal A\)</span>
 <ul>
-<li><span class="math inline">\(F\)</span> <strong>holds under</strong> <span class="math inline">\(\mathcal A\)</span>/<span class="math inline">\(\mathcal A\)</span> is <strong>model</strong> of <span class="math inline">\(F\)</span> if <span class="math inline">\(\mathcal A(F) = 1\)</span>: <span class="math inline">\(\mathcal A \vDash F\)</span>.</li>
+<li><span class="math inline">\(F\)</span> <strong>holds under</strong> <span class="math inline">\(\mathcal A\)</span>/<span class="math inline">\(\mathcal A\)</span> is <strong>model</strong> of <span class="math inline">\(F\)</span> if <span class="math inline">\(\mathcal A\llbracket F\rrbracket = 1\)</span>: <span class="math inline">\(\mathcal A \vDash F\)</span>.</li>
 <li><span class="math inline">\(F\)</span> <strong>satisfiable</strong> if holds under some <span class="math inline">\(\mathcal A\)</span>.</li>
 <li><span class="math inline">\(F\)</span> is <strong>valid</strong>/<strong>tautology</strong> if holds under all assignments.</li>
 </ul></li>
 <li><strong>Entailment</strong>: <span class="math inline">\(S \vDash F\)</span> if any <span class="math inline">\(\mathcal A\)</span> satisfying all formulas in <span class="math inline">\(S\)</span> also satisfies <span class="math inline">\(F\)</span>.</li>
-<li><strong>Logically equivalent</strong>: <span class="math inline">\(F \equiv G\)</span> if <span class="math inline">\(\mathcal A(F) = \mathcal A(G)\)</span> for all <span class="math inline">\(\mathcal A\)</span>.</li>
+<li><strong>Logically equivalent</strong>: <span class="math inline">\(F \equiv G\)</span> if <span class="math inline">\(\mathcal A\llbracket F \rrbracket = \mathcal A\llbracket G \rrbracket\)</span> for all <span class="math inline">\(\mathcal A\)</span>.</li>
 </ul></li>
 </ul>
 <h1 id="boolean-algebra">Boolean algebra</h1>
