@@ -65,4 +65,4 @@ title: UCS, Traces Model
 * [2.2.5] Set of initial events $\textit{initials}(P) = \{ a \mid \langle a
   \rangle \in \textit{traces}(P) \}$.
 * $P / s$ is behaviour of $P$ after trace $s$:
-  $\textit{traces}(P/s) = \{ t \mid s\mathbin{\hat{}}t \in \textit{traces}(P)$.
+  $\textit{traces}(P/s) = \{ t \mid s\mathbin{\hat{}}t \in \textit{traces}(P)\}$.

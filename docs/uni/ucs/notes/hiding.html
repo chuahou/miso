@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UCS, Hiding and Renaming | chuahou.dev</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- KaTeX -->
+		<link rel="stylesheet" href="../../../katex/katex.min.css">
+		<script defer src="../../../katex/katex.min.js"></script>
+		<script defer src="../../../katex/contrib/auto-render.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="../../../css/latex.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/default.css">
+
+		
+
+		
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1 id="UCS, Hiding and Renaming" class="title">UCS, Hiding and Renaming</h1>
+			<p style="text-align:center; font-size:0.9em">
+				<code>
+					&dollar; cd
+					<a href="https://chuahou.dev/miso/">/</a>
+					<a href="..">..</a>
+				</code>
+			</p>
+		</div>
+		
+
+		
+		<div class="side">
+			<p><a href="#">To page top</a></p>
+		</div>
+		
+
+		<!-- Generated body starts here -->
+		<main>
+		<div id="toc">
+<ul>
+<li><a href="#hiding">Hiding</a></li>
+<li><a href="#renaming">Renaming</a></li>
+<li><a href="#link-parallel">Link parallel</a></li>
+<li><a href="#unbounded-determinism">Unbounded determinism</a></li>
+</ul>
+</div>
+<h1 id="hiding">Hiding</h1>
+<ul>
+<li>[5.1] <strong>Hiding</strong>: <span class="math inline">\(P \setminus X\)</span> has events in <span class="math inline">\(X\)</span> made into <span class="math inline">\(\tau\)</span>s.
+<ul>
+<li>Distributive, symmetric, <span class="math inline">\(\setminus Y \setminus X\)</span> is <span class="math inline">\(\setminus (X \cup Y)\)</span>, unit is <span class="math inline">\(\{\}\)</span>.</li>
+<li>Distributive over <span class="math inline">\(\underset A\Vert\)</span>, <span class="math inline">\({}_X \Vert_Y\)</span> when alphabets disjoint from hidden set.</li>
+<li><em>Step law</em>: visible events <span class="math inline">\(\rhd\)</span> nondet choice of hidden events.</li>
+<li>Traces restricted <span class="math inline">\(\upharpoonright (\Sigma \setminus X)\)</span></li>
+</ul></li>
+<li><strong>Sliding</strong> <span class="math inline">\(P \rhd Q\)</span> offers <span class="math inline">\(P\)</span>’s events, but otherwise <span class="math inline">\(\tau\)</span>s into <span class="math inline">\(Q\)</span>.
+<ul>
+<li>Distributive, associative, idempotent, unit is <span class="math inline">\(\textit{STOP}\)</span>.</li>
+</ul></li>
+<li>[5.1.1] Hiding <span class="math inline">\(\square\)</span> of internal events becomes <span class="math inline">\(\sqcap\)</span>.</li>
+<li>[5.1.1] <strong>Divergence</strong>: process does internal actions forever (livelock).
+<ul>
+<li>Process that only diverges: <span class="math inline">\(\mathbf{div}\)</span>.</li>
+</ul></li>
+<li>[5.1.2] Hiding removes guardedness (and hence UFP). <span class="math inline">\(P = a \to (P \setminus \{a\})\)</span> is not guarded.</li>
+</ul>
+<h1 id="renaming">Renaming</h1>
+<ul>
+<li>[5.2.1] <strong>Injective renaming</strong>: <span class="math inline">\(f[P]\)</span> performs <span class="math inline">\(f(a)\)</span> when <span class="math inline">\(P\)</span> performs <span class="math inline">\(a\)</span> where <span class="math inline">\(f\)</span> is 1-1 <span class="math inline">\(\Sigma \to \Sigma\)</span>.
+<ul>
+<li>Changes nothing but event names.</li>
+<li>Distributes over everything.</li>
+</ul></li>
+<li>[5.2.2] <strong>Non-injective renaming</strong>: can forget detail (abstraction).</li>
+<li>[5.2.3] <strong>Relational renaming</strong>: <span class="math inline">\(P\llbracket R \rrbracket\)</span> can do <span class="math inline">\(b\)</span> when <span class="math inline">\(P\)</span> performs <span class="math inline">\(a\)</span> and <span class="math inline">\(a \mathrel R b\)</span>.
+<ul>
+<li>Distributive over <span class="math inline">\(\sqcap\)</span> and <span class="math inline">\(\square\)</span>.</li>
+<li>May introduce nondeterminism.</li>
+<li>Can be written <span class="math inline">\(P \llbracket a,b / b,a \rrbracket\)</span>.</li>
+</ul></li>
+<li>Can rename based on context using <span class="math inline">\(\Vert\)</span> and <span class="math inline">\(P\llbracket\cdot\rrbracket\)</span>.</li>
+<li>[5.2.3] Composition of renaming equivalent to functional/relation composition.</li>
+</ul>
+<h1 id="link-parallel">Link parallel</h1>
+<ul>
+<li>[5.3] <span class="math inline">\(P [a \leftrightarrow b] Q = (P \llbracket c/a \rrbracket \underset{\{|c|\}}\Vert Q \llbracket c/b \rrbracket) \setminus \{|c|\}\)</span> for fresh <span class="math inline">\(c\)</span>.</li>
+<li><strong>Piping</strong> <span class="math inline">\(P \gg Q = P [\textit{right} \leftrightarrow \textit{left}] Q\)</span>.</li>
+<li>[Slide 5.30] <strong>Enslavement</strong> <span class="math inline">\(P \mathbin{/\hspace{-6mu}/} Q = (P \mathbin{\underset{\alpha Q}\Vert} Q) \setminus \alpha Q\)</span>.</li>
+</ul>
+<h1 id="unbounded-determinism">Unbounded determinism</h1>
+<p>May be introduced by…</p>
+<ul>
+<li>[5.1.1] Infinite hiding.</li>
+<li>[5.2.2] Infinite-to-1 non-injective renaming.</li>
+</ul>
+		</main>
+		<!-- Generated body ends here -->
+
+		<p style="margin-top:3em; font-size:0.7em">Copyright &copy; 2021 Chua Hou.</p>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				renderMathInElement(document.body, {
+					throwOnError: true
+				});
+			});
+		</script>
+		<script src="../../../js/collapse.js"></script>
+	</body>
+</html>

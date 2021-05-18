@@ -15,6 +15,7 @@ to specify and understand concurrent systems.
 * [Traces model](notes/traces.md)
 * [Operational LTS semantics](notes/lts.md)
 * [Parallel operators](notes/parallel.md)
+* [Hiding and renaming](notes/hiding.md)
 
 ## Resources
 

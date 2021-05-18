@@ -44,51 +44,18 @@
 
 </div>
 <ul>
-<li><p>[3.4] <strong>Generalized/interface parallel</strong> <span class="math inline">\(P \mathbin{\underset X\Vert} Q\)</span>: synchronize on events in <span class="math inline">\(X\)</span>.</p>
-<ul>
-<li>Complex step law (but obvious) in book.</li>
-<li><span class="math inline">\(\textit{traces}(P \mathbin{\underset X\Vert} Q) = \bigcup \{s \mathbin{\underset X\Vert} t \mid s \in \textit{traces}(P) \land t \in \textit{traces}(Q)\}\)</span></li>
-</ul></li>
+<li><p>[3.4] <strong>Generalized/interface parallel</strong> <span class="math inline">\(P \mathbin{\underset X\Vert} Q\)</span>: synchronize on events in <span class="math inline">\(X\)</span>.</p></li>
 <li><p>[3.1] <strong>Synchronous parallel</strong> <span class="math inline">\(P \mathbin\Vert Q\)</span>: agree on everything, <span class="math inline">\(= P\mathbin{\underset\Sigma\Vert} Q\)</span></p>
 <ul>
-<li>Step law <span class="math inline">\(?x:A \to P \mathbin\Vert {}?x:B \to Q = ?x:A \cap B \to (P \mathbin\Vert Q)\)</span>.</li>
-<li><span class="math inline">\(\textit{traces}(P \mathbin\Vert Q) = \textit{traces}(P) \cap \textit{traces}(Q)\)</span>.</li>
+<li><span class="math inline">\(\cap\)</span> on traces.</li>
 </ul></li>
 <li><p>[3.2] <strong>Alphabetized parallel</strong> <span class="math inline">\(P \mathbin{{}_A\Vert_B} Q\)</span>: agree on <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(\approx P \mathbin{\underset{A \cap B}\Vert} Q\)</span></p>
 <ul>
 <li><span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span> have alphabets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> respectively.</li>
 <li>Indexed notation where process <span class="math inline">\(P_i\)</span> has alphabet <span class="math inline">\(A_i\)</span> written <span class="math inline">\(\mathop{\Large\Vert}_{i=1}^n (P_i, A_i)\)</span></li>
-<li>Step law given <span class="math inline">\(P = {}?x:A \to P'\)</span> and <span class="math inline">\(Q = {}?x:B \to Q'\)</span> <span class="math display">\[
-\begin{aligned}
-C &amp;= (A \cap (X \setminus Y)) \cup (B \cap (Y \setminus X)) \cup
-  (A \cap B \cap X \cap Y) \\[1ex]
-P \mathbin{{}_X\Vert_Y} Q &amp;= {}?x:C \to (P' \mathrel{&lt;\hspace{-0.7em}|} x \in X
-  \mathrel{|\hspace{-0.7em}&gt;} P \\[1ex]
-  &amp;\hspace{6em} {}_X\Vert_Y \\[1ex]
-  &amp;\hspace{6em} Q' \mathrel{&lt;\hspace{-0.7em}|} x \in Y
-  \mathrel{|\hspace{-0.7em}&gt;} Q)
-\end{aligned}
-\]</span></li>
-<li>Traces such that restrictions to each alphabet are traces of each process. <span class="math display">\[
-\textit{traces}(P \mathbin{{}_X\Vert_Y} Q) = \{ s \in (X \cup Y)^* \mid \hspace{5em} \\[1ex]
-\hspace{5em} s \upharpoonright X \in \textit{traces}(P) \land
-s \upharpoonright Y \in \textit{traces}(Q) \}
-\]</span></li>
+<li>Traces such that restrictions to each alphabet are traces of each process.</li>
 </ul></li>
-<li><p>[3.3] <strong>Interleaving</strong> <span class="math inline">\(P \mathbin{\vert\kern-0.25ex\Vert} Q\)</span>: run independently, <span class="math inline">\(= P \mathbin{\underset\emptyset\Vert} Q\)</span></p>
-<ul>
-<li>Step law <span class="math display">\[
-\newcommand{\inter}{\mathbin{\vert\kern-0.25ex\Vert}}
-\begin{aligned}
-P \inter Q = {}?x:A \cup B \to{}&amp;
-(P' \inter Q) \sqcap (P \inter Q') \\[1ex]
-&amp;\mathrel{&lt;\hspace{-0.7em}|} x \in A \cap B \mathrel{|\hspace{-0.7em}&gt;} \\[1ex]
-&amp;(P' \inter Q) \mathrel{&lt;\hspace{-0.7em}|} x \in A \mathrel{|\hspace{-0.7em}&gt;}
-(P \inter Q')
-\end{aligned}
-\]</span></li>
-<li><span class="math inline">\(\textit{traces}(P \mathbin{\vert\kern-0.25ex\Vert} Q) = \bigcup \{s \mathbin{\vert\kern-0.25ex\Vert} t \mid s \in \textit{traces}(P) \land t \in \textit{traces}(Q)\}\)</span></li>
-</ul></li>
+<li><p>[3.3] <strong>Interleaving</strong> <span class="math inline">\(P \mathbin{\vert\kern-0.25ex\Vert} Q\)</span>: run independently, <span class="math inline">\(= P \mathbin{\underset\emptyset\Vert} Q\)</span></p></li>
 <li><p>About parallel processes.</p>
 <ul>
 <li>[3.1.1] Parallel processes can be converted into sequential ones.
