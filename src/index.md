@@ -12,6 +12,8 @@ no-toc: true
 brain~~.*
 </center>
 
+This is no longer in use or maintained. It is kept online for reference only.
+
 <h2 style="text-align:left">Notes</h2>
 
 * [University Summaries](uni/index.md)
