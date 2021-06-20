@@ -1,33 +1,12 @@
 {
   description = "Personal notes with Hakyll";
 
-  inputs = {
-    nixpkgs.url  = "nixpkgs/nixos-20.09";
-    unstable.url = "nixpkgs/nixpkgs-unstable";
-  };
+  inputs.nixpkgs.url  = "nixpkgs/nixos-21.05";
 
-  outputs = inputs@{ self, nixpkgs, unstable, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [ hlsOverlay ];
-    };
-
-    hsOverrideOverlay =
-      override:
-      self: super: {
-        haskellPackages = super.haskellPackages.override (old: {
-          overrides = super.lib.composeExtensions
-            (old.overrides or (_: _: {}))
-            (override self super);
-        });
-      };
-
-    hlsOverlay = hsOverrideOverlay (self: super: _: _: {
-      haskell-language-server =
-        unstable.legacyPackages.${super.system}.haskell-language-server;
-    });
+    pkgs = nixpkgs.legacyPackages.${system};
 
   in rec {
     defaultPackage.${system} = pkgs.haskell.lib.dontHaddock
@@ -45,7 +24,7 @@
           pkgs.poppler_utils
 
           # stork search
-          unstable.legacyPackages.${system}.stork
+          pkgs.stork
         ]);
       })).env;
   };
